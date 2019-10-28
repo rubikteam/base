@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>rbthemeslider</name>
+	<displayName><![CDATA[Rb Theme Slider]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[This is great module create slider for theme Prestashop!]]></description>
+	<author><![CDATA[R_B]]></author>
+	<tab><![CDATA[administration]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>

@@ -1,0 +1,527 @@
+/***************************************************
+  Mixins Themes 
+/***************************************************/
+/* Mixin Normal*/
+/* Mixin Clear */
+/* Mixin Border */
+/*background RGBA
+============================================*/
+/**
+ *   Blocks Layout Selectors 
+ */
+/***********************************************************************/
+/* line 4, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+#products .products {
+  transition: opacity .3s ease;
+}
+
+/* line 7, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+#products #facets-loader-icon {
+  display: none;
+}
+
+/* line 11, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+#products.-facets-loading #facets-loader-icon {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  padding-top: 0.5rem;
+}
+
+/* line 17, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+#products.-facets-loading .products {
+  opacity: .4;
+}
+
+/* line 22, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+#products #infinity-loader-icon {
+  text-align: center;
+  padding: 3rem 2rem;
+  display: none;
+}
+
+/* line 29, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+#products.-infinity-loading #infinity-loader-icon {
+  display: block;
+}
+
+/* line 36, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature {
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, outline .3s ease;
+}
+
+/* line 39, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature .iqitreviews-nb {
+  display: none;
+}
+
+/* line 44, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small {
+  position: relative;
+}
+
+/* line 46, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small .product-description {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+/* line 50, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small .product-title {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: .4rem;
+}
+
+/* line 55, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small .iqitreviews-simple {
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  margin-bottom: .2rem;
+}
+
+/* line 60, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small .regular-price {
+  text-decoration: line-through;
+}
+
+/* line 63, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small .product-price-and-shipping, .product-miniature-small .product-add-cart {
+  display: inline-block;
+}
+
+/* line 66, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small .btn-add-to-cart-small {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: currentColor;
+}
+
+/* line 72, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small:hover {
+  z-index: 2;
+}
+
+/* line 77, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small-grid {
+  text-align: center;
+}
+
+/* line 79, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-small-grid .product-thumbnail img {
+  margin: 0 auto;
+}
+
+/* line 86, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid .product-functional-buttons {
+  background: #fff;
+  padding: .2rem .4rem;
+  font-size: 0;
+  line-height: 0;
+  transition: opacity 0.2s cubic-bezier(0.7, 0, 0.3, 1), transform 0.2s cubic-bezier(0.7, 0, 0.3, 1);
+  backface-visibility: hidden;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* line 95, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid .product-functional-buttons a {
+  display: inline-block;
+  padding: .4rem;
+}
+
+/* line 99, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid .product-functional-buttons i {
+  font-size: 1.2rem;
+}
+
+/* line 104, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid .product-functional-buttons-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: .5rem;
+  transform: translate(-50%, 50%);
+  opacity: 0;
+}
+
+/* line 113, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid .product-availability {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: .5rem;
+  transition: opacity 0.2s cubic-bezier(0.7, 0, 0.3, 1), transform 0.2s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* line 122, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid:hover .product-functional-buttons-bottom {
+  transform: translate(-50%, 0%);
+  opacity: 1;
+}
+
+/* line 126, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-grid:hover .product-availability {
+  transform: translate(-50%, 1rem);
+  opacity: 0;
+  backface-visibility: hidden;
+}
+
+/* line 135, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default {
+  position: relative;
+}
+
+/* line 138, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .thumbnail-container {
+  position: relative;
+}
+
+/* line 142, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .product-thumbnail {
+  text-align: center;
+  display: block;
+  position: relative;
+}
+
+/* line 146, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .product-thumbnail img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 151, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .product-flags {
+  left: 0;
+  top: 0;
+}
+
+/* line 155, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default li.product-flag {
+  margin-top: .3rem;
+  text-align: left;
+}
+
+/* line 158, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default li.product-flag:first-child {
+  margin-top: 0;
+}
+
+/* line 163, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .product-add-cart .input-qty {
+  margin-right: 0.5rem;
+  max-width: 50px;
+  min-width: 25px;
+  text-align: center;
+  padding: 0 0.2em;
+  -moz-appearance: textfield;
+}
+
+/* line 170, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .product-add-cart .input-qty::-webkit-inner-spin-button, .product-miniature-default .product-add-cart .input-qty::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* line 177, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .product-title {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 181, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .price-countdown {
+  font-size: .8rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+}
+
+/* line 186, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .price-countdown .price-countdown-title {
+  padding-right: 0;
+}
+
+/* line 189, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .price-countdown .time-txt {
+  display: none;
+}
+
+/* line 194, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .variant-links .color {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgba(161, 161, 161, 0.25);
+  outline: none;
+}
+
+/* line 202, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default .regular-price {
+  text-decoration: line-through;
+}
+
+/* line 207, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-default:hover {
+  z-index: 2;
+}
+
+/* line 212, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.slick-products-carousel .slick-slide:not(.slick-active) .product-miniature {
+  box-shadow: none;
+}
+
+/* line 218, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default {
+  height: 100%;
+}
+
+/* line 220, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default .product-description {
+  padding-top: .8rem;
+}
+
+/* line 223, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default .product-category-name {
+  padding-bottom: .2rem;
+}
+
+/* line 226, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default .product-reference, .products-grid .product-miniature-default .product-brand {
+  margin-top: -0.2rem;
+}
+
+/* line 229, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default .iqitreviews-simple, .products-grid .product-miniature-default .product-title, .products-grid .product-miniature-default .product-reference, .products-grid .product-miniature-default .product-brand {
+  padding-bottom: .4rem;
+}
+
+/* line 232, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default .product-available {
+  display: none;
+}
+
+/* line 236, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-default .product-functional-buttons a:hover {
+  opacity: .6;
+}
+
+/* line 244, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-1 .products-variants, .products-grid .product-miniature-layout-1 .product-price-and-shipping, .products-grid .product-miniature-layout-3 .products-variants, .products-grid .product-miniature-layout-3 .product-price-and-shipping {
+  padding-bottom: .4rem;
+}
+
+/* line 247, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-1 .product-description-short, .products-grid .product-miniature-layout-3 .product-description-short {
+  padding-bottom: .5rem;
+}
+
+/* line 254, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .product-miniature-right {
+  text-align: right;
+}
+
+/* line 257, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .regular-price {
+  display: block;
+}
+
+/* line 260, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .product-add-cart {
+  padding-top: .6rem;
+}
+
+/* line 263, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .variant-links .color {
+  width: .8rem;
+  height: .8rem;
+}
+
+/* line 267, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .product-description-short {
+  padding-top: .4rem;
+}
+
+/* line 270, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .price-countdown-wrapper {
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+/* line 274, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .price-countdown {
+  margin-top: 0;
+  display: block;
+}
+
+/* line 278, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .btn-product-list {
+  white-space: normal;
+}
+
+/* line 281, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-2 .iqitreviews-simple {
+  font-size: .8rem;
+}
+
+/* line 287, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 {
+  text-align: center;
+}
+
+/* line 289, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .input-group-add-cart {
+  justify-content: center;
+}
+
+/* line 292, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-thumbnail, .products-grid .product-miniature-layout-3 .thumbnail-container {
+  position: static;
+}
+
+/* line 295, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-description {
+  position: absolute;
+  display: table;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .3s ease;
+  backface-visibility: hidden;
+  background: rgba(0, 0, 0, 0.78);
+  padding: 0;
+}
+
+/* line 310, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-description-inner {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  backface-visibility: hidden;
+  transition: transform .3s ease;
+  transform: translateY(-10%);
+  padding: 1rem;
+}
+
+/* line 320, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-overlay-link {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* line 329, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-description-short {
+  display: none !important;
+}
+
+/* line 332, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-flags {
+  transition: opacity .3s ease;
+}
+
+/* line 335, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-add-cart form, .products-grid .product-miniature-layout-3 .product-add-cart .btn-product-list, .products-grid .product-miniature-layout-3 .variant-links, .products-grid .product-miniature-layout-3 .product-functional-buttons-links {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 340, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-functional-buttons {
+  background: none !important;
+}
+
+/* line 343, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .iqitreviews-simple {
+  font-size: .8rem;
+}
+
+/* line 346, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3 .product-add-cart {
+  margin: .4rem 0;
+}
+
+/* line 351, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3:hover .product-flags {
+  opacity: 0;
+}
+
+/* line 354, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3:hover .product-description {
+  opacity: 1;
+}
+
+/* line 357, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.products-grid .product-miniature-layout-3:hover .product-description-inner {
+  transform: translateY(0%);
+}
+
+/* line 364, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list-row {
+  margin: 0;
+  padding: 1.4rem .7rem;
+}
+
+/* line 370, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list .product-price {
+  font-size: 1.5rem;
+}
+
+/* line 373, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list .product-title, .product-miniature-list .product-reference, .product-miniature-list .product-brand {
+  margin-bottom: 0.4rem;
+}
+
+/* line 376, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list .product-description-short {
+  margin: .6rem 0;
+}
+
+/* line 379, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list .product-price-and-shipping {
+  margin-bottom: 1rem;
+}
+
+/* line 382, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list .product-functional-buttons {
+  margin-top: 1rem;
+}
+
+/* line 384, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.product-miniature-list .product-functional-buttons .product-functional-buttons-links > a {
+  padding-right: .6rem;
+}
+
+/* line 390, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.js-lazy-product-image.product-thumbnail-first {
+  opacity: 0.3;
+  transition: opacity .3s ease;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;utf8,<svg width="18" height="18" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="%23000"> <g fill="none" fill-rule="evenodd"> <g transform="translate(1 1)" stroke-width="2"> <circle stroke-opacity=".5" cx="18" cy="18" r="18"/> <path d="M36 18c0-9.94-8.06-18-18-18"> <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/> </path> </g> </g> </svg>');
+}
+
+/* line 397, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+.js-lazy-product-image.loaded {
+  background-image: none;
+  opacity: 1;
+}
+
+@media (max-width: 575px) {
+  /* line 404, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/featuredproducts.scss */
+  .product-miniature-list .col-description, .product-miniature-list .col-buy {
+    padding-top: 1rem;
+  }
+}
+
+/*# sourceMappingURL=featuredproducts.css.map */

@@ -1,0 +1,83 @@
+/***************************************************
+  Mixins Themes 
+/***************************************************/
+/* Mixin Normal*/
+/* Mixin Clear */
+/* Mixin Border */
+/*background RGBA
+============================================*/
+/**
+ *   Blocks Layout Selectors 
+ */
+/***********************************************************************/
+/* line 3, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-rich {
+  word-wrap: break-word;
+}
+
+/* line 5, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-rich > strong {
+  margin-bottom: .5rem;
+  display: inline-block;
+}
+
+/* line 9, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-rich .part {
+  height: auto;
+  overflow: hidden;
+}
+
+/* line 12, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-rich .part .icon {
+  vertical-align: middle;
+  display: inline-block;
+  text-align: center;
+  width: 3rem;
+}
+
+/* line 17, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-rich .part .icon i {
+  font-size: 2rem;
+}
+
+/* line 21, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-rich .part .data {
+  width: auto;
+  overflow: hidden;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* line 30, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.contact-page-info {
+  border-right: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 35, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.block-iqitcontactpage hr {
+  margin: .3rem 0;
+}
+
+/* line 39, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.block-iqitcontactpage .part .icon {
+  min-width: 1rem;
+  margin-right: .3rem;
+  width: auto;
+}
+
+/* line 43, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+.block-iqitcontactpage .part .icon i {
+  font-size: 1rem;
+}
+
+/*** Responsive part ***/
+@media (max-width: 767px) {
+  /* line 52, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/contact.scss */
+  .contact-page-info {
+    border-right: none;
+    border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+    margin-bottom: 2rem;
+  }
+}
+
+/*# sourceMappingURL=contact.css.map */

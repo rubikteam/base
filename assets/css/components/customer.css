@@ -1,0 +1,421 @@
+/***************************************************
+  Mixins Themes 
+/***************************************************/
+/* Mixin Normal*/
+/* Mixin Clear */
+/* Mixin Border */
+/*background RGBA
+============================================*/
+/**
+ *   Blocks Layout Selectors 
+ */
+/***********************************************************************/
+/*** SOME GENERIC STYLES ***/
+/* line 10, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.table-labeled th {
+  vertical-align: middle;
+}
+
+/* line 13, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.table-labeled td {
+  vertical-align: middle;
+}
+
+/* line 16, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.table-labeled .label {
+  font-size: inherit;
+  padding: 4px 6px;
+  margin: 2px;
+  color: white;
+  display: inline-block;
+}
+
+/* line 25, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order .table {
+  margin-bottom: 0;
+}
+
+/* line 29, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order table th {
+  padding: 8px;
+}
+
+/* line 32, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order table td {
+  padding: 8px;
+}
+
+/* line 36, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order table thead th {
+  text-align: center;
+}
+
+/* line 43, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#customer-form .custom-checkbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 45, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#customer-form .custom-checkbox span {
+  flex: none;
+}
+
+/* line 48, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#customer-form .custom-checkbox label {
+  padding-left: 0.5rem;
+}
+
+/* line 51, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#customer-form .custom-checkbox em {
+  font-size: .8rem;
+  opacity: .8;
+}
+
+/* line 59, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#authentication .tooltip.tooltip-bottom {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 66, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#identity .radio-inline,
+#authentication .radio-inline {
+  padding: 0;
+}
+
+/* line 68, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#identity .radio-inline .custom-radio,
+#authentication .radio-inline .custom-radio {
+  margin-right: 0;
+}
+
+/*** Most of the customer account pages ***/
+/* line 75, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.my-account-page-content-wrapper {
+  border: 1px solid rgba(160, 160, 160, 0.25);
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+/* line 79, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.my-account-page-content-wrapper .my-account-side-links {
+  border-right: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 81, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.my-account-page-content-wrapper .my-account-side-links > a {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  flex: 0;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+  padding: .6rem;
+}
+
+/* line 88, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.my-account-page-content-wrapper .my-account-side-links > a:last-child {
+  border-bottom: none;
+}
+
+/* line 93, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-customer-account #content {
+  border: 1px solid rgba(160, 160, 160, 0.25);
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+/* line 97, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-customer-account #content .order-actions a {
+  padding: 0 2px;
+}
+
+/* line 101, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-customer-account #content .forgot-password {
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 16px;
+  padding-bottom: 15px;
+}
+
+/* line 107, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-customer-account #content .no-account {
+  text-align: center;
+  font-size: 1rem;
+}
+
+/*** Login page ***/
+/* line 116, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-authentication #content {
+  border: 1px solid rgba(160, 160, 160, 0.25);
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+/*** Addresses page ***/
+/* line 123, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address {
+  border: 1px solid rgba(160, 160, 160, 0.25);
+  margin-bottom: 30px;
+}
+
+/* line 126, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address .address-body {
+  padding: 16px;
+}
+
+/* line 128, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address .address-body h4 {
+  font-weight: 700;
+}
+
+/* line 131, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address .address-body address {
+  min-height: 144px;
+}
+
+/* line 135, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address .address-footer {
+  border-top: 1px solid rgba(160, 160, 160, 0.25);
+  padding: 8px 16px;
+}
+
+/* line 138, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address .address-footer a {
+  margin-right: 8px;
+}
+
+/* line 140, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .address .address-footer a span {
+  vertical-align: middle;
+}
+
+/* line 146, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .addresses-footer {
+  margin: 0 15px;
+}
+
+/* line 149, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-addresses .addresses-footer a span {
+  vertical-align: middle;
+  margin-top: 0.5rem;
+}
+
+/*** Order details page ***/
+/* line 159, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .box {
+  border: 1px solid rgba(160, 160, 160, 0.25);
+  padding: 1rem;
+  margin-bottom: 16px;
+}
+
+/* line 164, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-infos ul, .page-order-detail #order-infos2 ul {
+  margin: 0;
+}
+
+/* line 171, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-history .history-lines .history-line {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 174, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-history .history-lines .history-line:last-child {
+  border-bottom: 0;
+}
+
+/* line 177, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-history .history-lines .history-line .label {
+  display: inline-block;
+  margin: 4px 0;
+  color: white;
+  padding: 4px 6px;
+}
+
+/* line 187, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .addresses h4 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* line 193, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return {
+  margin-bottom: 16px;
+}
+
+/* line 196, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return th.head-checkbox {
+  width: 30px;
+}
+
+/* line 200, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return td {
+  padding: 1.375rem 0.75rem;
+}
+
+/* line 202, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return td.qty {
+  min-width: 125px;
+}
+
+/* line 204, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return td.qty .current {
+  width: 30%;
+  float: left;
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+/* line 210, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return td.qty .select {
+  width: 70%;
+  float: left;
+  margin: -0.625rem 0;
+  padding-left: 0.25rem;
+}
+
+/* line 215, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail #order-products.return td.qty .select select {
+  text-align: center;
+}
+
+/* line 223, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items {
+  padding: 0 !important;
+}
+
+/* line 225, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item {
+  padding: 16px 16px 0;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 228, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .checkbox {
+  width: 30px;
+  float: left;
+  padding: 0 15px;
+}
+
+/* line 233, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .content {
+  width: calc(100% - 30px);
+  float: left;
+  padding: 0 15px;
+}
+
+/* line 238, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .desc {
+  margin-bottom: 16px;
+}
+
+/* line 239, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .desc .name {
+  font-weight: bold;
+}
+
+/* line 244, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .qty {
+  margin-bottom: 16px;
+}
+
+/* line 246, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .qty .q {
+  margin-bottom: 4px;
+}
+
+/* line 249, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .order-items .order-item .qty .s {
+  margin-bottom: 4px;
+}
+
+/* line 256, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .messages .message {
+  margin-top: 8px;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 259, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .messages .message:last-child {
+  border-bottom: 0;
+}
+
+/* line 262, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .messages .message > div {
+  margin-bottom: 8px;
+}
+
+/* line 267, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.page-order-detail .customization {
+  margin-top: 12px;
+}
+
+/*** Order return page ***/
+/* line 273, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#order-return-infos .thead-default th {
+  color: #414141;
+}
+
+/* line 276, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#order-return-infos .customization {
+  margin-top: 12px;
+}
+
+/*** My account landing page ***/
+/*** History page ***/
+/* line 287, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#history .orders {
+  margin: 0 -16px;
+}
+
+/* line 289, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#history .orders .order {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 291, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#history .orders .order a h3 {
+  color: #878787;
+}
+
+/* line 297, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#history .orders .order .label {
+  display: inline-block;
+  margin: 4px 0;
+  padding: 4px 6px;
+  color: white;
+  border-radius: 3px;
+}
+
+/* line 304, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+#history .orders .order:last-child {
+  border-bottom: 0;
+}
+
+/*** FOOTER ***/
+/* line 313, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+.login-form {
+  margin-top: 15px;
+}
+
+/*** Responsive part ***/
+@media (max-width: 575px) {
+  /* line 321, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customer.scss */
+  .my-account-page-content-wrapper .my-account-side-links {
+    border-right: none;
+    border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+    padding-bottom: 1rem;
+    margin-bottom: 1.6rem;
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+}
+
+/*# sourceMappingURL=customer.css.map */

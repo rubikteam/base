@@ -1,0 +1,184 @@
+/**
+* 2007-2019 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2019 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+.rb_megamenu.hook-default {
+  clear: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.layout_layout5.hook-default .rb_menus_ul .rb_menus_li:not(:nth-child(2)):after {
+  display: none;
+}
+.container .rb_megamenu .container {
+  padding: 0;
+}
+
+.rb_block_type_product .thumbnail-container .product-description {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  height: auto;
+  position: relative;
+  text-align: left;
+  width: auto;
+}
+.layout_layout4 .rb_extra_item .cart-preview a {
+  padding: 13px 0;
+}
+.rb-dir-rtl .rb_block_type_product .thumbnail-container .product-description,
+.rb-dir-rtl .rb_block_type_product .thumbnail-container .product-title > a {
+  text-align: right;
+  display: block;
+}
+
+.rb_extra_item .cart-preview a {
+  display: block;
+  padding: 18px 0;
+}
+.rb_extra_item .user-info a {
+  display: inline-block;
+  padding: 18px 2px;
+  line-height: 22px;
+}
+.layout_layout4 .rb_extra_item .user-info a {
+    padding: 12px 2px;
+}
+.rb_block_type_product .thumbnail-container .thumbnail > img {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.rb_block_type_product .thumbnail-container .thumbnail {
+  float: left;
+  margin-right: 10px;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.rb_block_type_product .thumbnail-container .thumbnail{
+  border: 1px solid #D0D0D0;
+  overflow: hidden;
+}
+.rb_block_type_product .thumbnail-container {
+  box-shadow: none;
+  height: auto;
+  width: auto;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.rb_block_type_product .thumbnail-container:hover, .rb_block_type_product .thumbnail-container:hover .product-description {
+  box-shadow: none !important;
+}
+.rb_block_type_product .thumbnail-container .highlighted-informations {
+  box-shadow: none;
+  display: none;
+  position: static;
+}
+.rb_block_type_product .thumbnail-container .product-title > a {
+  font-weight: 600;
+  line-height: 18px;
+  text-align: left;
+}
+.rb_block_type_product .thumbnail-container .product-title {
+  margin-top: 0;
+  text-align: left;
+}
+.rb_block_type_product .product-miniature {
+  clear: left;
+  display: block;
+}
+.rb-dir-rtl .rb_block_type_product .product-miniature {
+  clear: right;
+}
+.rb_block_type_product .product-miniature:not(:last-child) {
+  margin-bottom: 10px;
+}
+.rb_block_type_product .product-price-and-shipping {
+  text-align: inherit !important;
+  margin-bottom: 10px;
+}
+.hook-default.layout_layout4 .rb_columns_ul > .rb_columns_li, 
+.hook-default.layout_layout5 .rb_columns_ul > .rb_columns_li {
+  border-left: medium none;
+}
+.rb-dir-rtl .rb_block_type_product .thumbnail-container .thumbnail {
+  float: right;
+  margin-right: 0px;
+  margin-left: 10px;
+  width: 90px;
+}
+.skin_default.layout_layout4.rb-dir-rtl .rb_columns_ul > .rb_columns_li:first-child, 
+.skin_default.layout_layout5.rb-dir-rtl .rb_columns_ul > .rb_columns_li:first-child {
+  border-left: none;
+}
+.layout_layout5.skin_default:not(.scroll_heading) .rb_blocks_li {
+  padding: 0 10px;
+}
+
+.hook-default .rb_megamenu_content .container {
+  padding: 0;
+}
+.hook-default.layout_layout5:not(.scroll_heading) .rb_bubble_text {
+  top: -5px;
+}
+@media (min-width: 768px) and (max-width: 1199px){
+    .changestatus .rb_extra_item .cart-preview a {
+      display: block;
+      padding: 13px 0;
+    }
+}
+@media (min-width: 768px){
+    .hook-default.layout_layout4:not(.scroll_heading) .rb_blocks_li {
+      padding: 0 15px;
+    }
+    
+    .hook-default.layout_layout4:not(.scroll_heading) .rb_columns_ul > .rb_columns_li {
+      margin: 20px 0 0;
+    }
+    .hook-default.layout_layout4:not(.scroll_heading) .rb_columns_ul > .rb_columns_li, 
+    .hook-default.layout_layout5:not(.scroll_heading) .rb_columns_ul > .rb_columns_li {
+      margin: 10px 0;
+    }
+}
+@media (max-width: 767px){
+    .rb_megamenu.hook-default {
+      background-color: rgba(0, 0, 0, 0);
+      margin-top: 10px;
+      padding: 0 15px;
+      width: 100%;
+    }
+    .rb_extra_item > div{
+        margin-left: 0;
+    }
+    .rb-dir-rtl .rb_menu_content_title {
+      float: right;
+    }
+}
+
+@media (max-width: 479px){
+    .rb_extra_item.active input[type="text"]{
+        width: 100%!important;
+    }
+}

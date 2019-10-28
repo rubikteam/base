@@ -1,0 +1,66 @@
+/***************************************************
+  Mixins Themes 
+/***************************************************/
+/* Mixin Normal*/
+/* Mixin Clear */
+/* Mixin Border */
+/*background RGBA
+============================================*/
+/**
+ *   Blocks Layout Selectors 
+ */
+/***********************************************************************/
+/* line 3, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+#manufacturer-description-wrapper > .card {
+  border: none;
+}
+
+/* line 8, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-alphabetical .ms-letter-selector {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+  padding-bottom: 0.625rem;
+}
+
+/* line 12, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-alphabetical .ms-letter-selector > .ms-l-sep {
+  padding: 0 0.25rem;
+  opacity: .4;
+}
+
+/* line 16, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-alphabetical .ms-letter-list {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+  padding: 1rem 0;
+}
+
+/* line 19, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-alphabetical .ms-letter-list:last-child {
+  border-bottom: none;
+}
+
+/* line 23, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-alphabetical .ms-letter-list > .ms-letter {
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* line 29, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-alphabetical .ms-letter-brands ul {
+  margin: 0;
+}
+
+/* line 35, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-grid .brand {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+/* line 40, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/brands.scss */
+.ms-grid .brand-img {
+  display: block;
+}
+
+/*# sourceMappingURL=brands.css.map */

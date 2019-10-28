@@ -1,0 +1,43 @@
+/***************************************************
+  Mixins Themes 
+/***************************************************/
+/* Mixin Normal*/
+/* Mixin Clear */
+/* Mixin Border */
+/*background RGBA
+============================================*/
+/**
+ *   Blocks Layout Selectors 
+ */
+/***********************************************************************/
+/* line 4, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customization-modal.scss */
+.customization-modal .modal-content {
+  border-radius: 0;
+  border: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 7, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customization-modal.scss */
+.customization-modal .modal-content .modal-body {
+  padding-top: 0;
+}
+
+/* line 9, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customization-modal.scss */
+.customization-modal .modal-content .modal-body .product-customization-line {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.25);
+}
+
+/* line 10, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customization-modal.scss */
+.customization-modal .modal-content .modal-body .product-customization-line .label {
+  font-weight: bold;
+  text-align: right;
+}
+
+/* line 17, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/customization-modal.scss */
+.customization-modal .modal-content .modal-body .product-customization-line:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/*# sourceMappingURL=customization-modal.css.map */

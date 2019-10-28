@@ -1,0 +1,54 @@
+/**
+* 2007-2019 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2019 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+#subtab-AdminRbthemefunctionManagement.has-review:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #fb0;
+	border-radius: .625rem;
+	height: 10px;
+	width: 10px;
+}
+#subtab-AdminRbthemefunctionReview {
+  	position: relative;
+}
+#subtab-AdminRbthemefunctionReview .notification-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    line-height: .875rem;
+    height: .875rem;
+    vertical-align: middle;
+    color: #fff;
+    background: #fb0;
+    font-size: .5625rem;
+    padding: 0 .25rem;
+    border-radius: .625rem;
+}

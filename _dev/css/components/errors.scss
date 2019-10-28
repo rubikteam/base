@@ -1,0 +1,21 @@
+@import "../theme_variables";
+
+#products,
+#pagenotfound {
+  #main {
+    .page-header {
+      margin: 32px 0 48px;
+    }
+    .page-content {
+      margin-bottom: 160px;
+    }
+  }
+  .page-not-found {
+    .search-widget {
+      padding: 0;
+      input {
+        width: 100%;
+      }
+    }
+  }
+}

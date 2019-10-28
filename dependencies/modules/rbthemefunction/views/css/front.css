@@ -1,0 +1,604 @@
+/**
+* 2007-2019 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2019 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+.rb-ajax-loading {
+	display: none;
+}
+.cssload-container {
+	width: 100%;
+	height: 49px;
+	text-align: center;
+}
+.cssload-speeding-wheel {
+	width: 49px;
+	height: 49px;
+	margin: 0 auto;
+	border: 3px solid rgb(0,0,0);
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: cssload-spin 575ms infinite linear;
+		-o-animation: cssload-spin 575ms infinite linear;
+		-ms-animation: cssload-spin 575ms infinite linear;
+		-webkit-animation: cssload-spin 575ms infinite linear;
+		-moz-animation: cssload-spin 575ms infinite linear;
+}
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes cssload-spin {
+	100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes cssload-spin {
+	100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-webkit-keyframes cssload-spin {
+	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes cssload-spin {
+	100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+.rb-loading {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+.rb-loading #loadFacebookG {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+#loadFacebookG{
+	width:125px;
+	height: 125px;
+	display: block;
+	position: relative;
+	margin:auto;
+}
+.facebook_blockG{
+	background-color:rgb(255,255,255);
+	border:3px solid rgb(0,0,0);
+	float:left;
+	height:89px;
+	margin-left:7px;
+	width:23px;
+	opacity:0.1;
+	animation-name:bounceG;
+		-o-animation-name:bounceG;
+		-ms-animation-name:bounceG;
+		-webkit-animation-name:bounceG;
+		-moz-animation-name:bounceG;
+	animation-duration:1.5s;
+		-o-animation-duration:1.5s;
+		-ms-animation-duration:1.5s;
+		-webkit-animation-duration:1.5s;
+		-moz-animation-duration:1.5s;
+	animation-iteration-count:infinite;
+		-o-animation-iteration-count:infinite;
+		-ms-animation-iteration-count:infinite;
+		-webkit-animation-iteration-count:infinite;
+		-moz-animation-iteration-count:infinite;
+	animation-direction:normal;
+		-o-animation-direction:normal;
+		-ms-animation-direction:normal;
+		-webkit-animation-direction:normal;
+		-moz-animation-direction:normal;
+	transform:scale(0.7);
+		-o-transform:scale(0.7);
+		-ms-transform:scale(0.7);
+		-webkit-transform:scale(0.7);
+		-moz-transform:scale(0.7);
+}
+#blockG_1{
+	animation-delay:0.45s;
+		-o-animation-delay:0.45s;
+		-ms-animation-delay:0.45s;
+		-webkit-animation-delay:0.45s;
+		-moz-animation-delay:0.45s;
+}
+#blockG_2{
+	animation-delay:0.6s;
+		-o-animation-delay:0.6s;
+		-ms-animation-delay:0.6s;
+		-webkit-animation-delay:0.6s;
+		-moz-animation-delay:0.6s;
+}
+#blockG_3{
+	animation-delay:0.75s;
+		-o-animation-delay:0.75s;
+		-ms-animation-delay:0.75s;
+		-webkit-animation-delay:0.75s;
+		-moz-animation-delay:0.75s;
+}
+@keyframes bounceG{
+	0%{
+		transform:scale(1.2);
+		opacity:1;
+	}
+
+	100%{
+		transform:scale(0.7);
+		opacity:0.1;
+	}
+}
+@-o-keyframes bounceG{
+	0%{
+		-o-transform:scale(1.2);
+		opacity:1;
+	}
+
+	100%{
+		-o-transform:scale(0.7);
+		opacity:0.1;
+	}
+}
+@-ms-keyframes bounceG{
+	0%{
+		-ms-transform:scale(1.2);
+		opacity:1;
+	}
+
+	100%{
+		-ms-transform:scale(0.7);
+		opacity:0.1;
+	}
+}
+@-webkit-keyframes bounceG{
+	0%{
+		-webkit-transform:scale(1.2);
+		opacity:1;
+	}
+
+	100%{
+		-webkit-transform:scale(0.7);
+		opacity:0.1;
+	}
+}
+@-moz-keyframes bounceG{
+	0%{
+		-moz-transform:scale(1.2);
+		opacity:1;
+	}
+
+	100%{
+		-moz-transform:scale(0.7);
+		opacity:0.1;
+	}
+}
+/******* STYLE ADD CART **********/
+#header .header-nav .blockcart{
+	position: relative;
+}
+#header .header-nav .blockcart .shopping_cart{ 
+	position: absolute;
+    z-index: 11;
+    background: #fff;
+    right: 0;
+    padding: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s linear 0s;
+    top: auto;
+    width: 300px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.24);
+}
+#header .header-nav .blockcart:hover .shopping_cart{ 
+	opacity: 1;
+	visibility: visible;
+	top:auto;
+}
+.shopping_cart .thumbnail-container{
+	margin:0;
+}
+.shopping_cart .thumbnail-container .product-thumbnail{
+	float: left;
+	width: 30%;
+}
+.shopping_cart .thumbnail-container .product-thumbnail img{
+	    max-width: 100%;
+    height: auto;
+}
+.shopping_cart article.rb-mini-product {
+    clear: both;
+    margin-bottom: 15px;
+}
+.shopping_cart .flex-container{
+	clear: both;
+	 text-align: left;
+    padding-top: 10px;
+    border-top: 1px dashed;
+}
+.shopping_cart .flex-container .cart-button a{
+	width: 50%;
+	background: #333;
+}
+.shopping_cart .flex-container .cart-button{
+	margin-top: 15px;
+}
+#header .header-nav .shopping_cart .flex-container .cart-total i{
+	color:#000;
+}
+.shopping_cart .product-description{
+	text-align: left;
+	float: left;
+	width: 70%;
+	padding-left: 15px;
+	white-space: normal;
+	position: relative;
+}
+
+#header .header-nav  .shopping_cart .product-description .product-title .rb-product{
+	color: #000;
+	font-size: 14px;
+	font-weight: 400;
+}
+.shopping_cart .product-description .product-brand,.shopping_cart .product-description .regular-price{
+	display: none;
+}
+.shopping_cart .product-description .product-price-and-shipping{
+	margin-bottom: 5px;
+}
+.shopping_cart .product-description .remove-product{
+	position: absolute;
+    right: -10px;
+    top: 0;
+}
+.rb-popup-content {
+	background: #fff;
+	padding: 1rem;
+	max-width: 650px;
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+}
+/******* END STYLE ADD CART **********/
+
+.send-wishlist {
+	display: none;
+}
+
+/******* STYLE AJAX LOADING **********/
+.cssload-container {
+	width: 100%;
+	height: 49px;
+	text-align: center;
+}
+.cssload-double-torus {
+	width: 49px;
+	height: 49px;
+	margin: 0 auto;
+	border: 4px double;
+	border-radius: 50%;
+	border-color: transparent rgba(0,0,0,0.9) rgba(0,0,0,0.9);
+	animation: cssload-spin 690ms infinite linear;
+		-o-animation: cssload-spin 690ms infinite linear;
+		-ms-animation: cssload-spin 690ms infinite linear;
+		-webkit-animation: cssload-spin 690ms infinite linear;
+		-moz-animation: cssload-spin 690ms infinite linear;
+}
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes cssload-spin {
+	100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes cssload-spin {
+	100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-webkit-keyframes cssload-spin {
+	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes cssload-spin {
+	100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+/******* END STYLE AJAX LOADING **********/
+
+/****** SALE POPUP **********/
+.sale-popup {
+	position: fixed;
+	visibility: hidden;
+	padding: 0;
+	background: #fff;
+	top: auto !important;
+	bottom: 0;
+	right: auto;
+	z-index: 100;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	-moz-box-shadow: 0 0 10px #333;
+	-webkit-box-shadow: 0 0 10px #333;
+	-o-box-shadow: 0 0 10px #333;
+	-ms-box-shadow: 0 0 10px #333;
+	box-shadow: 0 0 10px #333;
+	left: 20px;
+	border-radius: 4px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	-webkit-transform: translateY(100px);
+	-moz-transform: translateY(100px);
+	-ms-transform: translateY(100px);
+	-o-transform: translateY(100px);
+	transform: translateY(100px);
+}
+.rtl .sale-popup {
+    right: 20px;
+    left: auto;
+}
+@media (max-width: 480px) {
+    .sale-popup {
+	    left: 10px;
+	     right: 10px;
+	    max-width: 300px;
+  	}
+}
+.sale-popup.slideUp {
+    visibility: visible;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+}
+.sale-popup.box-center {
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	box-align: center;
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	-o-align-items: center;
+	align-items: center;
+	-ms-flex-align: center;
+}
+ .sale-popup.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+ .sale-popup .sale-popup-timeago {
+    display: block;
+    color: #666666;
+    font-size: .85714em;
+    line-height: normal;
+}
+ .sale-popup .button-close {
+    top: 0px;
+    cursor: pointer;
+    position: absolute;
+    font-family: "FontAwesome";
+    width: 20px;
+    height: 20px;
+    background: #56cfe1;
+    color: white;
+    font-size: 11px;
+    line-height: 20px;
+    text-align: center;
+    right: 0;
+}
+.rtl .sale-popup .button-close {
+	left: 0;
+	right: auto;
+}
+.sale-popup .sale-popup-img {
+	width: 70px;
+	float: left;
+}
+.rtl .sale-popup .sale-popup-img {
+	float: right;
+}
+.sale-popup .sale-popup-img img {
+	max-height: 90px !important;
+}
+.sale-popup .sale-popup-content {
+    width: calc(100% - 80px);
+    display: block;
+    padding: 0 10px;
+    float: left;
+    text-align: left;
+}
+.rtl .sale-popup .sale-popup-content {
+	float: right;
+}
+.rtl .sale-popup .sale-popup-content {
+	text-align: right;
+}
+@media (max-width: 480px) {
+	.sale-popup .sale-popup-content {
+		max-width: 180px;
+	}
+}
+.sale-popup h3 {
+	margin: 0;
+	font-size: 1em;
+	max-width: 255px;
+	font-weight: 700;
+	font-family: "Harmonia Sans Pro Cyr";
+	margin-bottom: 5px;
+}
+.sale-popup h3:hover a {
+	color: #d88f0f;
+}
+/****** END SALE POPUP **********/
+
+/****** POPUP **********/
+.fancyBoxActive:after {
+	position: fixed;
+	z-index: 9;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	content:""
+}
+.rb-popup-flex {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+#rb_newsletter_popup {
+	max-width: 350px;
+	margin: 0 7.8%;
+}
+#rb-newsletter-popup {
+	background: none;
+	border: 1px solid #7c7c7c;
+	padding: 10px 20px;
+	line-height: 22px;
+	font-size: 16px;
+	color: #535353;
+	border-radius: 22px;
+	width: 100%;
+	height: 44px;
+}
+.relative {
+	position: relative;
+}
+.rb-send-email {
+	cursor: pointer;
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 20px;
+    border: none;
+    background: none;
+    padding: 0;
+}
+.rb-email-alert {
+	margin-top: 10px;
+}
+.rb-email {
+	display: none;
+	margin-top: 10px;
+	border: 1px solid #7c7c7c;
+	border-radius: 22px;
+}
+/****** END POPUP **********/
+
+/****** LOGIN FORM **********/
+.rb-login,.rb-id-compare,.rb-id-wishlist{
+	line-height: 35px;
+    margin: 0 10px;
+}
+.rb-login .rb-login-form{
+
+    width: 300px;
+	position: absolute;
+	z-index: 99;
+	display: none;
+	background: #fff;
+    padding: 20px;
+    box-shadow: 1px 1px 5px 1px #999;
+}
+.rb-login:hover .rb-login-form{
+	display: block;
+}
+.rb-login .rb-login-form .title-wrap{
+	margin-bottom: 20px;
+}
+.rb-login .rb-login-form .title-wrap h4{
+	display: inline-block;
+	padding-bottom: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.rb-login .rb-login-form .title-wrap h4.active{
+	border-bottom: 2px solid #666;
+}
+.rb-login .rb-login-form .rb-customer-form{
+	display: none;
+}
+.rb-login .rb-login-form .rb-customer-form.active{
+	display: block;
+}
+.rb-login .rb-login-form .form-wrap .material-icons{
+	display: none;
+}
+.rb-login .rb-login-form .form-control{
+	background: #fff;
+}
+.rb-login .rb-login-form .rb-customer-form .svgic.input-icon{
+	display: none;
+}
+.rb-login .rb-login-form .rb-customer-form .rb-check-box input,.rb-login .rb-login-form .rb-customer-form .rb-check-box label{
+	display: inline-block;
+	width: auto;
+	margin: 0;
+}
+.rb-login .rb-login-form .rb-customer-form .rb-check-box{
+	margin-bottom:0;
+}
+.rb-login .rb-login-form .rb-customer-form .register-button{
+	margin-top:10px;
+}
+.rb-login .rb-login-form .rb-logout,.rb-login .rb-login-form .rb-account{
+	display: block;
+}
+.rb-login .rb-login-form .rb-logout .material-icons,.rb-login .rb-login-form .rb-account .material-icons{
+	line-height: 35px;
+	vertical-align: top;
+}
+/****** END LOGIN FORM **********/
+
+/****** SEARCH BAR **********/
+.rb-resuilt-error {
+	display: none;
+	margin-top: 10px;
+}
+.rb-search-name .rb-resuilt {
+	margin-top: 10px;
+}
+.rb-search-name{
+	position: relative;
+	width: 500px;
+	margin: 0px auto 10px;
+	max-width: 100%;
+	display: block;
+}
+.rb_search {
+	width: 100%;
+}
+.rb-resuilt, .rb_item_price {
+	display: none;
+	overflow-y: scroll;
+	max-height: 400px;
+	background: white;
+}
+/****** END SEARCH BAR **********/

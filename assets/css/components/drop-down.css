@@ -1,0 +1,56 @@
+/***************************************************
+  Mixins Themes 
+/***************************************************/
+/* Mixin Normal*/
+/* Mixin Clear */
+/* Mixin Border */
+/*background RGBA
+============================================*/
+/**
+ *   Blocks Layout Selectors 
+ */
+/***********************************************************************/
+/* line 3, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/drop-down.scss */
+.dropdown {
+  color: #acaaa6;
+}
+
+/* line 5, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/drop-down.scss */
+.dropdown:hover .expand-more {
+  color: #2fb5d2;
+}
+
+/* line 8, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/drop-down.scss */
+.dropdown .expand-more {
+  color: #414141;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 15, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/drop-down.scss */
+.dropdown .active {
+  max-height: 200px;
+  overflow-y: hidden;
+  visibility: visible;
+}
+
+/* line 21, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/drop-down.scss */
+.dropdown select {
+  -moz-appearance: none;
+  border: 0 none;
+  outline: 0 none;
+  color: #414141;
+  background: white;
+}
+
+/* line 30, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/drop-down.scss */
+.dropdown-item:focus, .dropdown-item:hover {
+  background: none;
+  text-decoration: none;
+  color: #2fb5d2;
+}
+
+/*# sourceMappingURL=drop-down.css.map */
