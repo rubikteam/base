@@ -130,7 +130,6 @@
                 text-align: center;
                 padding: 0;
                 margin: 0 3px;
-                @include border-radius(100%);
                 @include transition(all 0.3s ease 0s);
                 &:hover {
                     color: $theme-color-default;
@@ -182,6 +181,14 @@
                 }
             }
         }
+    }
+
+    //rb-ajax-loading
+    .rb-ajax-loading{
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        @include transform(translate(-50%, 50%));
     }
 }
 

@@ -210,3 +210,64 @@ hr {
     overflow: visible;
   }
 }
+
+.color,
+.custom-checkbox input[type="checkbox"] + span.color {
+  position: relative;
+  display: inline-block;
+  margin: 2px;
+  cursor: pointer;
+  background-size: contain;
+  outline: 0;
+  @include size(15px, 15px);
+  @include border-radius(50px);
+  &.active,
+  &:hover {
+    @include box-shadow(0 0 0px 2px $gray-darker);
+  }
+  &[title="White"]{
+    border: 1px solid #e5e5e5;
+  }
+  .sr-only{
+    background: rgba(0, 0, 0, 0.8);
+    width: auto;
+    height: auto;
+    padding: 0 10px;
+    margin: 0;
+    clip: inherit;
+    color: $white;
+    font-size: 12px;
+    line-height: 23px;
+    overflow: inherit;
+    visibility: hidden;
+    left: 50%;
+    white-space: nowrap;
+    @include border-radius(3px);
+    @include opacity(0);
+    @include transform(translateX(-50%) translateY(-30px));
+    @include transition(all 0.3s ease 0s);
+    &:before{
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-top: 7px solid rgba(0, 0, 0, 0.8);
+      border-right: 6px solid transparent;
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+    }
+  }
+  &:hover{
+    @include box-shadow(none);
+    .sr-only{
+      @include transform(translateX(-50%) translateY(-40px));
+      visibility: visible;
+      @include opacity(1);
+    }
+  }
+}

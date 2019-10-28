@@ -23,9 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 {block name='product_miniature_item'}
-  <article class="product-miniature js-product-miniature" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemscope itemtype="http://schema.org/Product">
-    {include file='catalog/rb-ajax-load.tpl'}
-
+  <article class="product-miniature js-product-miniature col-xl-3" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemscope itemtype="http://schema.org/Product">
     <div class="thumbnail-container 123">
         <div class="product-image">
             {block name='product_thumbnail'}
@@ -56,6 +54,8 @@
                 
               </ul>
             {/block}
+
+            {include file='catalog/rb-ajax-load.tpl'}
 
             <div class="functional-buttons clearfix">
                 {block name='quick_view'}
