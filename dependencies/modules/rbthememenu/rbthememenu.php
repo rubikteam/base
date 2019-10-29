@@ -3049,7 +3049,6 @@ class Rbthememenu extends Module
     public function hookActionAdminControllerSetMedia()
     {
         if (Tools::getValue('module_name') == $this->name) {
-            $this->context->controller->addCSS($this->_path.'views/css/font-awesome.css');
             $this->context->controller->addCSS($this->_path.'views/css/megamenu-admin.css');
 
             $this->context->controller->addJS($this->_path.'views/js/jquery.countdown.min.js');
@@ -3060,7 +3059,6 @@ class Rbthememenu extends Module
     public function hookDisplayHeader()
     {
         $this->addGoogleFonts();
-        $this->context->controller->addCSS($this->_path.'views/css/font-awesome.css');
         $this->addCss17('megamenu','main');
         $this->addCss17('fix17','fix17');
         $this->context->controller->addCSS($this->_path.'views/css/animate.css');
