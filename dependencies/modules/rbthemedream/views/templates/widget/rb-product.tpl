@@ -31,9 +31,9 @@
 
     {foreach from=$products.products item="product"}
     	{if $products.view == 'list'}
-        	{include file="catalog/_partials/miniatures/product.tpl" product=$product}
+        	{include file="catalog/_partials/miniatures/product.tpl" product=$product config=Configuration::get('RBTHEMEDREAM_COL_PRODUCT')}
         {else}
-        	{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product}
+        	{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=Configuration::get('RBTHEMEDREAM_COL_PRODUCT')}
         {/if}
     {/foreach}
     </div>
