@@ -529,7 +529,10 @@ function addWishlist()
 		rb_this.toggleClass('rb_added').addClass('active');
 
 		if (!isLogged) {
-			rbPopup(rb_text, 0);
+			setTimeout(function() {
+	        	rbPopup(rb_text, 0, rb_this);
+		    }, 800);
+
 			return false;
 		}
 
@@ -651,7 +654,7 @@ function addReview()
 	});
 }
 
-function rbPopup(msg, autoclose)
+function rbPopup(msg, autoclose, obj = '')
 {
     $.magnificPopup.open({
       	removalDelay: 500,
@@ -667,6 +670,10 @@ function rbPopup(msg, autoclose)
 	        		setTimeout(function(){
 	        			persist.close();
 		            }, autoclose*2000);
+		        }
+
+		      	if (obj != '') {
+	        		showHideLoading(obj, 0);
 		        }
 	        }
       	},
