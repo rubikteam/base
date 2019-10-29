@@ -59,7 +59,6 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
         $this->addCSS(array(
             __PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/css/admin-theme.css',
             __PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/public/theme.css',
-            _MODULE_DIR_.'rbthemedream/views/css/lib/rb-font-awesome.css',
             _MODULE_DIR_.'rbthemedream/views/css/lib/rb-select2.css',
             _MODULE_DIR_.'rbthemedream/views/css/home.css',
             _MODULE_DIR_.'rbthemedream/views/css/view.css',
