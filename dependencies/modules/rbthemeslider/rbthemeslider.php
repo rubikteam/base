@@ -1184,8 +1184,6 @@ class Rbthemeslider extends Module implements WidgetInterface
            
             $ctl->addCSS($css_url.'css/jui/new/jquery-ui-1.10.3.custom.min.css');
             $ctl->addCSS($css_url.'css/admin.css');
-            $ctl->addCSS($css_url.'rs-plugin/fonts/font-awesome/css/font-awesome.css');
-            $ctl->addCSS($css_url.'rs-plugin/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css');
             $ctl->addCSS($css_url.'css/tipsy.css');
             $ctl->addCSS($css_url.'css/load-styles.css');
             $ctl->addCSS($css_url.'css/farbtastic/farbtastic.css');
