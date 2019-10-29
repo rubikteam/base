@@ -560,12 +560,6 @@ module.exports = function ($) {
             $carousel.slick('getSlick').checkResponsive();
         });
     }
-
-    $(document).on('shown.bs.tab', $(this).find('a[data-toggle="tab"]'), function (e) {
-        prestashop.ddLazyLoad.update();
-    })
-
-
 };
 
 },{}],13:[function(require,module,exports){
