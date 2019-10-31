@@ -2279,7 +2279,7 @@ class Rbthememenu extends Module
             "SELECT b.*,bl.`title`,bl.`title_link`,bl.`content`,bl.`image_link`
             FROM "._DB_PREFIX_."rbthememenu_block b
             LEFT JOIN "._DB_PREFIX_."rbthememenu_block_lang bl
-            ON b.id_block=bl.id_block AND bl.id_lang=".(int)$this->context->language->id."
+            ON b.id_block = bl.id_block AND bl.id_lang=".(int)$this->context->language->id."
             WHERE b.id_block=".(int)$id_block
         );
     }
@@ -2287,13 +2287,11 @@ class Rbthememenu extends Module
     public function getManufacturers($orderBy = 'name asc', $addWhere = false)
     {
         $sql = "SELECT m.`id_manufacturer` as value,CONCAT('rb_manufacturer_',m.`id_manufacturer`) as id, name as label
-            FROM "._DB_PREFIX_."manufacturer m
-            INNER JOIN "._DB_PREFIX_."manufacturer_shop ms ON (m.id_manufacturer=ms.id_manufacturer AND ms.id_shop=".
-            (int)$this->context->shop->id.")            
-            WHERE active = 1 ".($addWhere ? pSQL($addWhere) : "")."
-            ORDER BY ".($orderBy ? $orderBy : 'name asc');
-
-        $sql = str_replace('\n', '', $sql);
+        FROM "._DB_PREFIX_."manufacturer m
+        INNER JOIN "._DB_PREFIX_."manufacturer_shop ms ON (m.id_manufacturer = ms.id_manufacturer AND ms.id_shop=".
+        (int)$this->context->shop->id.")            
+        WHERE active = 1 ".($addWhere ? pSQL($addWhere) : "")."
+        ORDER BY ".($orderBy ? pSQL($orderBy) : 'name asc');
 
         return Db::getInstance()->executeS($sql);
     }
@@ -2301,13 +2299,11 @@ class Rbthememenu extends Module
     public function getSuppliers($orderBy = 'name asc', $addWhere = false)
     {
         $sql = "SELECT s.`id_supplier` as value,CONCAT('rb_supplier_',s.`id_supplier`) as id, name as label
-            FROM "._DB_PREFIX_."supplier s
-            INNER JOIN "._DB_PREFIX_."supplier_shop ss ON (s.id_supplier=ss.id_supplier AND ss.id_shop=".
-            (int)$this->context->shop->id.")            
-            WHERE active=1 ".($addWhere ? pSQL($addWhere) : "")."
-            ORDER BY ".($orderBy ? $orderBy : 'name asc');
-
-        $sql = str_replace('\n', '', $sql);
+        FROM "._DB_PREFIX_."supplier s
+        INNER JOIN "._DB_PREFIX_."supplier_shop ss ON (s.id_supplier = ss.id_supplier AND ss.id_shop=".
+        (int)$this->context->shop->id.")            
+        WHERE active = 1 ".($addWhere ? pSQL($addWhere) : "")."
+        ORDER BY ".($orderBy ? pSQL($orderBy) : 'name asc');
 
         return Db::getInstance()->executeS($sql);
     }
@@ -2315,13 +2311,11 @@ class Rbthememenu extends Module
     public function getCMSs($orderBy = 'cl.meta_title asc', $addWhere = false)
     {
         $sql = "SELECT c.`id_cms` as value,CONCAT('rb_cms_',c.`id_cms`) as id, cl.`meta_title` as label            
-            FROM "._DB_PREFIX_."cms c
-            INNER JOIN "._DB_PREFIX_."cms_shop cs ON (c.id_cms= cs.id_cms AND cs.id_shop=".(int)$this->context->shop->id.")
-            LEFT JOIN "._DB_PREFIX_."cms_lang cl ON c.id_cms=cl.id_cms AND cl.id_lang=".(int)$this->context->language->id."
-            WHERE c.active=1 ".($addWhere ? pSQL($addWhere) : "")."
-            GROUP BY c.id_cms ORDER BY ".($orderBy ? $orderBy : 'cl.meta_title asc') . "";
-
-        $sql = str_replace('\n', '', $sql);
+        FROM "._DB_PREFIX_."cms c
+        INNER JOIN "._DB_PREFIX_."cms_shop cs ON (c.id_cms = cs.id_cms AND cs.id_shop=".(int)$this->context->shop->id.")
+        LEFT JOIN "._DB_PREFIX_."cms_lang cl ON c.id_cms = cl.id_cms AND cl.id_lang=".(int)$this->context->language->id."
+        WHERE c.active = 1 ".($addWhere ? pSQL($addWhere) : "")."
+        GROUP BY c.id_cms ORDER BY ".($orderBy ? pSQL($orderBy) : 'cl.meta_title asc') . "";
 
         return Db::getInstance()->executeS($sql);
     }
@@ -2794,9 +2788,12 @@ class Rbthememenu extends Module
             $block['id_manufacturers'] &&
             ($ids = $this->strToIds($block['id_manufacturers']))
         ) {
-            if ($manufacturers = $this->getManufacturers($block['order_by_manufacturers'],'
-                AND m.id_manufacturer IN('.implode(',',$ids).')')
-            ) {
+            $manufacturers = $this->getManufacturers(
+                $block['order_by_manufacturers'],
+                'AND m.id_manufacturer IN('.implode(',',$ids).')'
+            );
+
+            if (!empty($manufacturers)) {
                 foreach ($manufacturers as &$manufacturer) {
                     if ((int)Configuration::get('PS_REWRITING_SETTINGS'))
                         $link_rewrite = Tools::link_rewrite($manufacturer['label']);
@@ -2820,7 +2817,12 @@ class Rbthememenu extends Module
             $block['id_suppliers'] &&
             ($ids = $this->strToIds($block['id_suppliers']))
         ) {
-            if ($suppliers = $this->getSuppliers($block['order_by_suppliers'],' AND s.id_supplier IN('.implode(',',$ids).')')) {
+            $suppliers = $this->getSuppliers(
+                $block['order_by_suppliers'],
+                'AND s.id_supplier IN('.implode(',',$ids).')'
+            );
+
+            if (!empty($suppliers)) {
                 foreach ($suppliers as &$supplier) {
                     $supplier['link'] = $this->context->link->getSupplierLink((int)$supplier['value']);
 
@@ -2838,7 +2840,12 @@ class Rbthememenu extends Module
             $block['id_cmss'] &&
             ($ids = $this->strToIds($block['id_cmss']))
         ) {
-            if ($cmss = $this->getCMSs(false,' AND c.id_cms IN('.implode(',',$ids).')')) {
+            $cmss = $this->getCMSs(
+                false,
+                'AND c.id_cms IN('.implode(',',$ids).')'
+            );
+
+            if (!empty($cmss)) {
                 foreach ($cmss as &$c) {
                     $c['link'] = $this->context->link->getCMSLink((int)$c['value']);
                 }
