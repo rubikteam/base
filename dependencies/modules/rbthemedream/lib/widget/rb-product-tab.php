@@ -171,15 +171,12 @@ class RbProductTab extends RbControl
                         'name' => 'view',
                         'label' => $module->l('View'),
                         'type' => 'select',
-                        'default' => 'grid',
+                        'default' => 'carousel',
                         'condition' => array(
                             'view!' => 'default',
                         ),
                         'options' => array(
                             'carousel' => $module->l('Carousel - big images'),
-                            'grid' => $module->l('Grid - big images'),
-                            'carousel_s' => $module->l('Carousel - small images'),
-                            'grid_s' => $module->l('Grid - small images'),
                             'list' => $module->l('List')
                         ),
                     ),

@@ -156,16 +156,13 @@ class RbProduct extends RbControl
             'view' => array(
                 'label' => $module->l('View'),
                 'type' => 'select',
-                'default' => 'grid',
+                'default' => 'carousel',
                 'condition' => array(
                     'view!' => 'default',
                 ),
                 'section' => 'section_pswidget_options',
                 'options' => array(
-                    'carousel' => $module->l('Carousel - big images'),
-                    'grid' => $module->l('Grid - big images'),
-                    'carousel_s' => $module->l('Carousel - small images'),
-                    'grid_s' => $module->l('Grid - small images'),
+                    'carousel' => $module->l('Carousel'),
                     'list' => $module->l('List')
                 ),
             ),
