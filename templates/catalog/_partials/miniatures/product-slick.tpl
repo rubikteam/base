@@ -102,6 +102,10 @@
           {/if}
         {/block}
 
+        {block name='product-brand'}
+          {hook h='displayRbBrandProduct' product=$product}
+        {/block}
+
         {block name='product_price_and_shipping'}
           {if $product.show_price}
             <div class="product-price-and-shipping">

@@ -955,12 +955,6 @@ class Rbthemefunction extends Module
             'link' => $this->context->link->getManufacturerLink($obj_brand),
         ));
 
-
-        $this->smarty->assign(array(
-            'name' => $wishlists_added,
-            'link' => $wishlists,
-        ));
-
         return $this->display(__FILE__, 'views/templates/hook/rb-brand.tpl'); 
     }
 

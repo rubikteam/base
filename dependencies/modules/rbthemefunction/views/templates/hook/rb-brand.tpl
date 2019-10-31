@@ -23,5 +23,6 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <h3 class="h3 product-brand" itemprop="brand">
+	{l s='Brand: ' mod='rbthemefunction'}
 	<a href="{$link}" tabindex="0">{$name}</a>
 </h3>
