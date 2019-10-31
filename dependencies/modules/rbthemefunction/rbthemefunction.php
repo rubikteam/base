@@ -107,6 +107,7 @@ class Rbthemefunction extends Module
             $this->registerHook('displayRbAddToCart') &&
             $this->registerHook('displayRbCompareProduct') &&
             $this->registerHook('displayRbWishListProduct') &&
+            $this->registerHook('displayRbBrandProduct') &&
             $this->registerHook('displayNav2') &&
             $this->registerHook('displayRbReviewProduct') &&
             $this->registerHook('displayFooterAfter') &&
@@ -937,6 +938,30 @@ class Rbthemefunction extends Module
         ));
 
         return $this->display(__FILE__, 'views/templates/hook/rb-compare.tpl');
+    }
+
+    public function hookdisplayRbBrandProduct($params)
+    {
+        $id_manufacturer = $params['product']['id_manufacturer'];
+
+        $obj_brand = new Manufacturer(
+            $id_manufacturer,
+            $this->context->language->id,
+            $this->context->shop->id
+        );
+
+        $this->smarty->assign(array(
+            'name' => $obj_brand->name,
+            'link' => $this->context->link->getManufacturerLink($obj_brand),
+        ));
+
+
+        $this->smarty->assign(array(
+            'name' => $wishlists_added,
+            'link' => $wishlists,
+        ));
+
+        return $this->display(__FILE__, 'views/templates/hook/rb-brand.tpl'); 
     }
 
     public function hookdisplayRbWishListProduct($params)

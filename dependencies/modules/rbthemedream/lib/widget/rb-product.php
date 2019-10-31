@@ -118,6 +118,15 @@ class RbProduct extends RbControl
                 'label' => $module->l('Limit'),
                 'type' => 'number',
                 'default' => '10',
+                'condition' => array(
+                    'product_source!' => array('ms'),
+                ),
+                'section' => 'section_pswidget_options',
+            ),
+            'products_col' => array(
+                'label' => $module->l('Col'),
+                'type' => 'text',
+                'default' => 'col-md-3',
                 'min' => '1',
                 'condition' => array(
                     'product_source!' => array('ms'),
@@ -466,6 +475,7 @@ class RbProduct extends RbControl
             $return = array(
                 'products' => $products,
                 'view' => $optionsSource['view'],
+                'products_col' => $optionsSource['products_col'],
             );
 
             if ($optionsSource['view'] == 'grid' || $optionsSource['view'] == 'grid_s'){

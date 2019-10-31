@@ -128,6 +128,15 @@ class RbProductTab extends RbControl
                         ),
                     ),
                     array(
+                        'name' => 'products_col',
+                        'label' => $module->l('Col'),
+                        'type' => 'text',
+                        'default' => 'col-md-3',
+                        'condition' => array(
+                            'product_source!' => array('ms'),
+                        ),
+                    ),
+                    array(
                         'name' =>  'brand_list',
                         'label' => $module->l('Select brand'),
                         'type' => 'select',
@@ -176,7 +185,7 @@ class RbProductTab extends RbControl
                             'view!' => 'default',
                         ),
                         'options' => array(
-                            'carousel' => $module->l('Carousel - big images'),
+                            'carousel' => $module->l('Carousel'),
                             'list' => $module->l('List')
                         ),
                     ),
@@ -543,6 +552,7 @@ class RbProductTab extends RbControl
                         'uid' => $uid,
                         'title' => $tab['tab_title'],
                         'view' => $tab['view'],
+                        'products_col' => $tab['products_col'],
                     );
 
                     if ($tab['view'] == 'grid' || $tab['view'] == 'grid_s'){

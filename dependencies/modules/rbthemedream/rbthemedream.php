@@ -394,12 +394,6 @@ class Rbthemedream extends Module
                         'name' => 'name'
                     ),
                 ),
-                array(
-                    'type' => 'text',
-                    'label' => $this->l('Col Product List'),
-                    'name' => 'RBTHEMEDREAM_COL_PRODUCT',
-                    'desc' => $this->l('col-md-3 col-lg-3'),
-                ),
             ),
             'submit' => array(
                 'title' => $this->l('Save'),
@@ -552,7 +546,6 @@ class Rbthemedream extends Module
         return array(
             'RBTHEMEDREAM_HEADER' => Configuration::get('RBTHEMEDREAM_HEADER'),
             'RBTHEMEDREAM_FOOTER' => Configuration::get('RBTHEMEDREAM_FOOTER'),
-            'RBTHEMEDREAM_COL_PRODUCT' => Configuration::get('RBTHEMEDREAM_COL_PRODUCT'),
             'RBTHEMEDREAM_SHOW_MAP' => Configuration::get('RBTHEMEDREAM_SHOW_MAP'),
             'RBTHEMEDREAM_MAP_LATITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LATITUDE'),
             'RBTHEMEDREAM_MAP_LONGITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LONGITUDE'),

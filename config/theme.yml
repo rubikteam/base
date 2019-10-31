@@ -87,6 +87,8 @@ global_settings:
         - rbthemefunction
       displayRbCompareProduct:
         - rbthemefunction
+      displayRbBrandProduct:
+        - rbthemefunction
       displayRbWishListProduct:
         - rbthemefunction
       displayRbReviewProduct:

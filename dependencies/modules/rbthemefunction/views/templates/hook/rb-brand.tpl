@@ -22,19 +22,6 @@
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-<section id="products" class="rb-products">
-	{if $products.view == 'carousel_s' || $products.view == 'carousel'}
-        <div class="products rb-products-carousel slick-products-carousel products-grid slick-arrows-{$products.arrows_position}"  data-slider_options='{$products.options|@json_encode nofilter}'>
-    {else}
-        <div class="products row {if $products.view == 'list'}products-list{else}products-grid{/if}">
-    {/if}
-
-    {foreach from=$products.products item="product"}
-    	{if $products.view == 'list'}
-        	{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$products.products_col}
-        {else}
-        	{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$products.products_col}
-        {/if}
-    {/foreach}
-    </div>
-</section>
+<h3 class="h3 product-brand" itemprop="brand">
+	<a href="{$link}" tabindex="0">{$name}</a>
+</h3>
