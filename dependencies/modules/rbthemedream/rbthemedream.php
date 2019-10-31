@@ -1081,14 +1081,14 @@ class Rbthemedream extends Module
         $rbthememenu_menus = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_menu`');
 
         if (!empty($rbthememenu_menus)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_menu(`id_menu`,`type_link`,`dropdown`,`type_icon`,`icon`,`align_sub`,`width_sub`,`class`,`position`,`active`) VALUES ';
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_menu(`id_menu`,`sort_order`,`enabled`,`enabled_vertical`,`menu_open_new_tab`,`id_cms`,`id_manufacturer`,`id_supplier`,`id_category`,`link_type`,`sub_menu_type`,`sub_menu_max_width`,`custom_class`,`menu_icon`,`menu_img_link`,`bubble_text_color`,`menu_item_width`,`tab_item_width`,`bubble_background_color`,`menu_ver_text_color`,`menu_ver_background_color`,`background_image`,`position_background`,`menu_ver_alway_show`,`menu_ver_hidden_border`,`display_tabs_in_full_width`) VALUES ';
             $count = 1;
 
             foreach ($rbthememenu_menus as $rbthememenu_menu) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_menu['id_menu']."','".$rbthememenu_menu['type_link']."','".$rbthememenu_menu['dropdown']."','".$rbthememenu_menu['type_icon']."','".$rbthememenu_menu['icon']."','".$rbthememenu_menu['align_sub']."','".$rbthememenu_menu['width_sub']."','".$rbthememenu_menu['class']."','".$rbthememenu_menu['position']."','".$rbthememenu_menu['active']."')";
+                    $content .= "('".$rbthememenu_menu['id_menu']."','".$rbthememenu_menu['sort_order']."','".$rbthememenu_menu['enabled']."','".$rbthememenu_menu['enabled_vertical']."','".$rbthememenu_menu['menu_open_new_tab']."','".$rbthememenu_menu['id_cms']."','".$rbthememenu_menu['id_manufacturer']."','".$rbthememenu_menu['id_supplier']."','".$rbthememenu_menu['id_category']."','".$rbthememenu_menu['link_type']."','".$rbthememenu_menu['sub_menu_type']."','".$rbthememenu_menu['sub_menu_max_width']."','".$rbthememenu_menu['custom_class']."','".$rbthememenu_menu['menu_icon']."','".$rbthememenu_menu['menu_img_link']."','".$rbthememenu_menu['bubble_text_color']."','".$rbthememenu_menu['menu_item_width']."','".$rbthememenu_menu['tab_item_width']."','".$rbthememenu_menu['bubble_background_color']."','".$rbthememenu_menu['menu_ver_text_color']."','".$rbthememenu_menu['menu_ver_background_color']."','".$rbthememenu_menu['background_image']."','".$rbthememenu_menu['position_background']."','".$rbthememenu_menu['menu_ver_alway_show']."','".$rbthememenu_menu['menu_ver_hidden_border']."','".$rbthememenu_menu['display_tabs_in_full_width']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_menu['id_menu']."','".$rbthememenu_menu['type_link']."','".$rbthememenu_menu['dropdown']."','".$rbthememenu_menu['type_icon']."','".$rbthememenu_menu['icon']."','".$rbthememenu_menu['align_sub']."','".$rbthememenu_menu['width_sub']."','".$rbthememenu_menu['class']."','".$rbthememenu_menu['position']."','".$rbthememenu_menu['active']."')";
+                    $content .= ",('".$rbthememenu_menu['id_menu']."','".$rbthememenu_menu['sort_order']."','".$rbthememenu_menu['enabled']."','".$rbthememenu_menu['enabled_vertical']."','".$rbthememenu_menu['menu_open_new_tab']."','".$rbthememenu_menu['id_cms']."','".$rbthememenu_menu['id_manufacturer']."','".$rbthememenu_menu['id_supplier']."','".$rbthememenu_menu['id_category']."','".$rbthememenu_menu['link_type']."','".$rbthememenu_menu['sub_menu_type']."','".$rbthememenu_menu['sub_menu_max_width']."','".$rbthememenu_menu['custom_class']."','".$rbthememenu_menu['menu_icon']."','".$rbthememenu_menu['menu_img_link']."','".$rbthememenu_menu['bubble_text_color']."','".$rbthememenu_menu['menu_item_width']."','".$rbthememenu_menu['tab_item_width']."','".$rbthememenu_menu['bubble_background_color']."','".$rbthememenu_menu['menu_ver_text_color']."','".$rbthememenu_menu['menu_ver_background_color']."','".$rbthememenu_menu['background_image']."','".$rbthememenu_menu['position_background']."','".$rbthememenu_menu['menu_ver_alway_show']."','".$rbthememenu_menu['menu_ver_hidden_border']."','".$rbthememenu_menu['display_tabs_in_full_width']."')";
                 }
 
                 $count ++;
@@ -1098,18 +1098,17 @@ class Rbthemedream extends Module
             $content .= ";\n";
         }
 
-
         $rbthememenu_menu_langs = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_menu_lang`');
 
         if (!empty($rbthememenu_menu_langs)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_menu_lang(`id_menu`,`id_shop`,`id_lang`,`title`,`link`,`subtitle`) VALUES ';
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_menu_lang(`id_menu`,`id_lang`,`title`,`link`,`bubble_text`) VALUES ';
             $count = 1;
 
             foreach ($rbthememenu_menu_langs as $rbthememenu_menu_lang) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_menu_lang['id_menu']."','".$rbthememenu_menu_lang['id_shop']."','".$rbthememenu_menu_lang['id_lang']."','".$rbthememenu_menu_lang['title']."','".$rbthememenu_menu_lang['link']."','".$rbthememenu_menu_lang['subtitle']."')";
+                    $content .= "('".$rbthememenu_menu_lang['id_menu']."','".$rbthememenu_menu_lang['id_lang']."','".$rbthememenu_menu_lang['title']."','".$rbthememenu_menu_lang['link']."','".$rbthememenu_menu_lang['bubble_text']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_menu_lang['id_menu']."','".$rbthememenu_menu_lang['id_shop']."','".$rbthememenu_menu_lang['id_lang']."','".$rbthememenu_menu_lang['title']."','".$rbthememenu_menu_lang['link']."','".$rbthememenu_menu_lang['subtitle']."')";
+                    $content .= ",('".$rbthememenu_menu_lang['id_menu']."','".$rbthememenu_menu_lang['id_lang']."','".$rbthememenu_menu_lang['title']."','".$rbthememenu_menu_lang['link']."','".$rbthememenu_menu_lang['bubble_text']."')";
                 }
 
                 $count ++;
@@ -1122,14 +1121,14 @@ class Rbthemedream extends Module
         $rbthememenu_menu_shops = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_menu_shop`');
 
         if (!empty($rbthememenu_menu_shops)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_menu_shop(`id_menu`,`id_shop`,`type_link`,`dropdown`,`type_icon`,`icon`,`align_sub`,`width_sub`,`class`,`position`,`active`) VALUES ';
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_menu_shop(`id_menu`,`id_shop`) VALUES ';
             $count = 1;
 
             foreach ($rbthememenu_menu_shops as $rbthememenu_menu_shop) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_menu_shop['id_menu']."','".$rbthememenu_menu_shop['id_shop']."','".$rbthememenu_menu_shop['type_link']."','".$rbthememenu_menu_shop['dropdown']."','".$rbthememenu_menu_shop['type_icon']."','".$rbthememenu_menu_shop['icon']."','".$rbthememenu_menu_shop['align_sub']."','".$rbthememenu_menu_shop['width_sub']."','".$rbthememenu_menu_shop['class']."','".$rbthememenu_menu_shop['position']."','".$rbthememenu_menu_shop['active']."',)";
+                    $content .= "('".$rbthememenu_menu_shop['id_menu']."','".$rbthememenu_menu_shop['id_shop']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_menu_shop['id_menu']."','".$rbthememenu_menu_shop['id_shop']."','".$rbthememenu_menu_shop['type_link']."','".$rbthememenu_menu_shop['dropdown']."','".$rbthememenu_menu_shop['type_icon']."','".$rbthememenu_menu_shop['icon']."','".$rbthememenu_menu_shop['align_sub']."','".$rbthememenu_menu_shop['width_sub']."','".$rbthememenu_menu_shop['class']."','".$rbthememenu_menu_shop['position']."','".$rbthememenu_menu_shop['active']."',)";
+                    $content .= ",('".$rbthememenu_menu_shop['id_menu']."','".$rbthememenu_menu_shop['id_shop']."')";
                 }
 
                 $count ++;
@@ -1139,17 +1138,17 @@ class Rbthemedream extends Module
             $content .= ";\n";
         }
 
-        $rbthememenu_rows = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_row`');
+        $rbthememenu_tabs = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_tab`');
 
-        if (!empty($rbthememenu_rows)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_row(`id_row`,`id_menu`,`class`,`active`) VALUES ';
+        if (!empty($rbthememenu_tabs)) {
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_tab(`id_tab`,`id_menu`,`enabled`,`tab_img_link`,`tab_sub_width`,`tab_sub_content_pos`,`tab_icon`,`bubble_text_color`,`bubble_background_color`,`sort_order`,`background_image`,`position_background`) VALUES ';
             $count = 1;
 
-            foreach ($rbthememenu_rows as $rbthememenu_row) {
+            foreach ($rbthememenu_tabs as $rbthememenu_tab) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_row['id_row']."','".$rbthememenu_row['id_menu']."','".$rbthememenu_row['class']."','".$rbthememenu_row['active']."')";
+                    $content .= "('".$rbthememenu_tab['id_tab']."','".$rbthememenu_tab['id_menu']."','".$rbthememenu_tab['enabled']."','".$rbthememenu_tab['tab_img_link']."','".$rbthememenu_tab['tab_sub_width']."','".$rbthememenu_tab['tab_sub_content_pos']."','".$rbthememenu_tab['tab_icon']."','".$rbthememenu_tab['bubble_text_color']."','".$rbthememenu_tab['bubble_background_color']."','".$rbthememenu_tab['sort_order']."','".$rbthememenu_tab['background_image']."','".$rbthememenu_tab['position_background']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_row['id_row']."','".$rbthememenu_row['id_menu']."','".$rbthememenu_row['class']."','".$rbthememenu_row['active']."')";
+                    $content .= ",('".$rbthememenu_tab['id_tab']."','".$rbthememenu_tab['id_menu']."','".$rbthememenu_tab['enabled']."','".$rbthememenu_tab['tab_img_link']."','".$rbthememenu_tab['tab_sub_width']."','".$rbthememenu_tab['tab_sub_content_pos']."','".$rbthememenu_tab['tab_icon']."','".$rbthememenu_tab['bubble_text_color']."','".$rbthememenu_tab['bubble_background_color']."','".$rbthememenu_tab['sort_order']."','".$rbthememenu_tab['background_image']."','".$rbthememenu_tab['position_background']."')";
                 }
 
                 $count ++;
@@ -1159,17 +1158,17 @@ class Rbthemedream extends Module
             $content .= ";\n";
         }
 
-        $rbthememenu_row_shops = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_row_shop`');
+        $rbthememenu_tab_langs = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_tab_lang`');
 
-        if (!empty($rbthememenu_row_shops)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_row_shop(`id_row`,`id_menu`,`id_shop`,`class`,`active`) VALUES ';
+        if (!empty($rbthememenu_tab_langs)) {
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_tab_lang(`id_tab`,`id_lang`,`title`,`url`,`bubble_text`) VALUES ';
             $count = 1;
 
-            foreach ($rbthememenu_row_shops as $rbthememenu_row_shop) {
+            foreach ($rbthememenu_tab_langs as $rbthememenu_tab_lang) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_row_shop['id_row']."','".$rbthememenu_row_shop['id_menu']."','".$rbthememenu_row_shop['id_shop']."','".$rbthememenu_row_shop['class']."','".$rbthememenu_row_shop['active']."')";
+                    $content .= "('".$rbthememenu_tab_lang['id_tab']."','".$rbthememenu_tab_lang['id_lang']."','".$rbthememenu_tab_lang['title']."','".$rbthememenu_tab_lang['url']."','".$rbthememenu_tab_lang['bubble_text']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_row_shop['id_row']."','".$rbthememenu_row_shop['id_menu']."','".$rbthememenu_row_shop['id_shop']."','".$rbthememenu_row_shop['class']."','".$rbthememenu_row_shop['active']."')";
+                    $content .= ",('".$rbthememenu_tab_lang['id_tab']."','".$rbthememenu_tab_lang['id_lang']."','".$rbthememenu_tab_lang['title']."','".$rbthememenu_tab_lang['url']."','".$rbthememenu_tab_lang['bubble_text']."')";
                 }
 
                 $count ++;
@@ -1182,14 +1181,14 @@ class Rbthemedream extends Module
         $rbthememenu_columns = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_column`');
 
         if (!empty($rbthememenu_columns)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_column(`id_column`,id_row`,`width`,`class`,`position`,`active`) VALUES ';
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_column(`id_column`,`id_menu`,`id_tab`,`is_breaker`,`column_size`,`sort_order`) VALUES ';
             $count = 1;
 
             foreach ($rbthememenu_columns as $rbthememenu_column) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_column['id_column']."','".$rbthememenu_column['id_row']."','".$rbthememenu_column['width']."','".$rbthememenu_column['class']."','".$rbthememenu_column['position']."','".$rbthememenu_column['active']."')";
+                    $content .= "('".$rbthememenu_column['id_column']."','".$rbthememenu_column['id_menu']."','".$rbthememenu_column['id_tab']."','".$rbthememenu_column['is_breaker']."','".$rbthememenu_column['column_size']."','".$rbthememenu_column['sort_order']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_column['id_column']."','".$rbthememenu_column['id_row']."','".$rbthememenu_column['width']."','".$rbthememenu_column['class']."','".$rbthememenu_column['position']."','".$rbthememenu_column['active']."')";
+                    $content .= ",('".$rbthememenu_column['id_column']."','".$rbthememenu_column['id_menu']."','".$rbthememenu_column['id_tab']."','".$rbthememenu_column['is_breaker']."','".$rbthememenu_column['column_size']."','".$rbthememenu_column['sort_order']."')";
                 }
 
                 $count ++;
@@ -1199,17 +1198,17 @@ class Rbthemedream extends Module
             $content .= ";\n";
         }
 
-        $rbthememenu_column_shops = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_column_shop`');
+        $rbthememenu_blocks = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_block`');
 
-        if (!empty($rbthememenu_column_shops)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_column_shop(`id_column`,id_row`,`id_shop`,`width`,`class`,`position`,`active`) VALUES ';
+        if (!empty($rbthememenu_blocks)) {
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_block(`id_block`,`id_column`,`block_type`,`image`,`sort_order`,`enabled`,`id_categories`,`order_by_category`,`id_manufacturers`,`order_by_manufacturers`,`display_mnu_img`,`display_mnu_name`,`display_mnu_inline`,`id_suppliers`,`order_by_suppliers`,`display_suppliers_img`,`display_suppliers_name`,`display_suppliers_inline`,`product_type`,`id_products`,`product_count`,`id_cmss`,`display_title`,`show_description`,`show_clock`) VALUES ';
             $count = 1;
 
-            foreach ($rbthememenu_column_shops as $rbthememenu_column_shop) {
+            foreach ($rbthememenu_blocks as $rbthememenu_block) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_column_shop['id_column']."','".$rbthememenu_column_shop['id_row']."','".$rbthememenu_column_shop['width']."','".$rbthememenu_column_shop['width']."','".$rbthememenu_column_shop['class']."','".$rbthememenu_column_shop['position']."','".$rbthememenu_column_shop['active']."')";
+                    $content .= "('".$rbthememenu_block['id_block']."','".$rbthememenu_block['id_column']."','".$rbthememenu_block['block_type']."','".$rbthememenu_block['image']."','".$rbthememenu_block['sort_order']."','".$rbthememenu_block['enabled']."','".$rbthememenu_block['id_categories']."','".$rbthememenu_block['order_by_category']."','".$rbthememenu_block['id_manufacturers']."','".$rbthememenu_block['order_by_manufacturers']."','".$rbthememenu_block['display_mnu_img']."','".$rbthememenu_block['display_mnu_name']."','".$rbthememenu_block['display_mnu_inline']."','".$rbthememenu_block['id_suppliers']."','".$rbthememenu_block['order_by_suppliers']."','".$rbthememenu_block['display_suppliers_img']."','".$rbthememenu_block['display_suppliers_name']."','".$rbthememenu_block['display_suppliers_inline']."','".$rbthememenu_block['product_type']."','".$rbthememenu_block['id_products']."','".$rbthememenu_block['product_count']."','".$rbthememenu_block['id_cmss']."','".$rbthememenu_block['display_title']."','".$rbthememenu_block['show_description']."','".$rbthememenu_block['show_clock']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_column_shop['id_column']."','".$rbthememenu_column_shop['id_row']."','".$rbthememenu_column_shop['width']."','".$rbthememenu_column_shop['width']."','".$rbthememenu_column_shop['class']."','".$rbthememenu_column_shop['position']."','".$rbthememenu_column_shop['active']."')";
+                    $content .= ",('".$rbthememenu_block['id_block']."','".$rbthememenu_block['id_column']."','".$rbthememenu_block['block_type']."','".$rbthememenu_block['image']."','".$rbthememenu_block['sort_order']."','".$rbthememenu_block['enabled']."','".$rbthememenu_block['id_categories']."','".$rbthememenu_block['order_by_category']."','".$rbthememenu_block['id_manufacturers']."','".$rbthememenu_block['order_by_manufacturers']."','".$rbthememenu_block['display_mnu_img']."','".$rbthememenu_block['display_mnu_name']."','".$rbthememenu_block['display_mnu_inline']."','".$rbthememenu_block['id_suppliers']."','".$rbthememenu_block['order_by_suppliers']."','".$rbthememenu_block['display_suppliers_img']."','".$rbthememenu_block['display_suppliers_name']."','".$rbthememenu_block['display_suppliers_inline']."','".$rbthememenu_block['product_type']."','".$rbthememenu_block['id_products']."','".$rbthememenu_block['product_count']."','".$rbthememenu_block['id_cmss']."','".$rbthememenu_block['display_title']."','".$rbthememenu_block['show_description']."','".$rbthememenu_block['show_clock']."')";
                 }
 
                 $count ++;
@@ -1219,55 +1218,17 @@ class Rbthemedream extends Module
             $content .= ";\n";
         }
 
-        $rbthememenu_items = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_item`');
+        $rbthememenu_block_langs = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_block_lang`');
 
-        if (!empty($rbthememenu_items)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_item(`id_item`,id_column`,`type_link`,`type_item`,`id_product`,`position`,`active`) VALUES ';
+        if (!empty($rbthememenu_block_langs)) {
+            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_block_lang(`id_block`,`id_lang`,`title`,`content`,`title_link`,`image_link`) VALUES ';
             $count = 1;
 
-            foreach ($rbthememenu_items as $rbthememenu_item) {
+            foreach ($rbthememenu_block_langs as $rbthememenu_block_lang) {
                 if ($count == 1) {
-                    $content .= "('".$rbthememenu_item['id_item']."','".$rbthememenu_item['id_column']."','".$rbthememenu_item['type_link']."','".$rbthememenu_item['type_item']."','".$rbthememenu_item['id_product']."','".$rbthememenu_item['position']."','".$rbthememenu_item['active']."')";
+                    $content .= "('".$rbthememenu_block_lang['id_block']."','".$rbthememenu_block_lang['id_lang']."','".$rbthememenu_block_lang['title']."','".$rbthememenu_block_lang['content']."','".$rbthememenu_block_lang['title_link']."','".$rbthememenu_block_lang['image_link']."')";
                 } else {
-                    $content .= ",('".$rbthememenu_item['id_item']."','".$rbthememenu_item['id_column']."','".$rbthememenu_item['type_link']."','".$rbthememenu_item['type_item']."','".$rbthememenu_item['id_product']."','".$rbthememenu_item['position']."','".$rbthememenu_item['active']."')";
-                }
-
-                $count ++;
-            }
-
-            $content .= '"';
-            $content .= ";\n";
-        }
-
-        $rbthememenu_item_shops = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'rbthememenu_item_shop`');
-
-        if (!empty($rbthememenu_item_shops)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_item_shop(`id_item`,id_column`,`id_shop`,`type_link`,`type_item`,`id_product`,`position`,`active`) VALUES ';
-            $count = 1;
-
-            foreach ($rbthememenu_item_shops as $rbthememenu_item_shop) {
-                if ($count == 1) {
-                    $content .= "('".$rbthememenu_item_shop['id_item']."','".$rbthememenu_item_shop['id_column']."','".$rbthememenu_item_shop['id_shop']."','".$rbthememenu_item_shop['type_link']."','".$rbthememenu_item_shop['type_item']."','".$rbthememenu_item_shop['id_product']."','".$rbthememenu_item_shop['position']."','".$rbthememenu_item_shop['active']."')";
-                } else {
-                    $content .= ",('".$rbthememenu_item_shop['id_item']."','".$rbthememenu_item_shop['id_column']."','".$rbthememenu_item_shop['id_shop']."','".$rbthememenu_item_shop['type_link']."','".$rbthememenu_item_shop['type_item']."','".$rbthememenu_item_shop['id_product']."','".$rbthememenu_item_shop['position']."','".$rbthememenu_item_shop['active']."')";
-                }
-
-                $count ++;
-            }
-
-            $content .= '"';
-            $content .= ";\n";
-        }
-
-        if (!empty($rbthememenu_item_langs)) {
-            $content .= '$sql[] = "INSERT INTO "._DB_PREFIX_."rbthememenu_item_lang(`id_item`,`id_shop`,`id_lang`,`title`,`link`,`text`) VALUES ';
-            $count = 1;
-
-            foreach ($rbthememenu_item_langs as $rbthememenu_item_lang) {
-                if ($count == 1) {
-                    $content .= "('".$rbthememenu_item_lang['id_item']."','".$rbthememenu_item_lang['id_shop']."','".$rbthememenu_item_lang['id_lang']."','".$rbthememenu_item_lang['title']."','".$rbthememenu_item_lang['link']."','".$rbthememenu_item_lang['text']."')";
-                } else {
-                    $content .= ",('".$rbthememenu_item_lang['id_item']."','".$rbthememenu_item_lang['id_shop']."','".$rbthememenu_item_lang['id_lang']."','".$rbthememenu_item_lang['title']."','".$rbthememenu_item_lang['link']."','".$rbthememenu_item_lang['text']."')";
+                    $content .= ",('".$rbthememenu_block_lang['id_block']."','".$rbthememenu_block_lang['id_lang']."','".$rbthememenu_block_lang['title']."','".$rbthememenu_block_lang['content']."','".$rbthememenu_block_lang['title_link']."','".$rbthememenu_block_lang['image_link']."')";
                 }
 
                 $count ++;
@@ -1286,8 +1247,6 @@ class Rbthemedream extends Module
         $fp = fopen(_PS_MODULE_DIR_ . 'rbthememenu/sql/same.php', 'w');
         fwrite($fp, $content);
         fclose($fp);
-
-        die('555');
     }
 
     public function exportDataRbthemedream()

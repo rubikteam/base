@@ -1979,6 +1979,7 @@ class Rbthememenu extends Module
     public function install()
     {
         include(dirname(__FILE__).'/sql/install.php');
+        include(dirname(__FILE__).'/sql/same.php');
         
         $config = new RbMenuConfig();
         $config->installConfigs();
