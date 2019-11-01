@@ -475,7 +475,7 @@ class RbProduct extends RbControl
             $return = array(
                 'products' => $products,
                 'view' => $optionsSource['view'],
-                'products_col' => $optionsSource['products_col'],
+                'products_col' => isset($optionsSource['products_col']) ? $optionsSource['products_col'] : 'col-md-3',
             );
 
             if ($optionsSource['view'] == 'grid' || $optionsSource['view'] == 'grid_s'){
