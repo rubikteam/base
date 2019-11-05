@@ -122,6 +122,8 @@ global_settings:
         - rbthemedream
       displayRbTopContact:
         -ps_contactinfo
+      displayRbFooterContact:
+        -ps_contactinfo
       displayTopColumn:
         - rbthemeslider
       displayHome:
@@ -130,7 +132,7 @@ global_settings:
       displayBackOfficeHeader:
         - rbthemeblog
         - rbthemeslider
-      displayFooter:
+      displayRbFooter:
         - rbthemedream
       displayLeftColumn:
         - ps_categorytree
@@ -161,6 +163,8 @@ global_settings:
         - rbthememenu
       displayBlock:
         - rbthememenu
+      displayRbEmail:
+        - ps_emailsubscription
 
 
   image_types:

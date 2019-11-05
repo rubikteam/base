@@ -37,6 +37,7 @@
             {hook h='displayNav1'}
           </div>
           <div class="col-md-7 right-nav">
+            <!-- New Hook -->
               {hook h='displayRbLanguage'}
               {hook h='displayRbCurrency'}
               {hook h='displayRbTopLogin'}
@@ -44,6 +45,8 @@
               {hook h='displayRbTopWishlist'}
               {hook h='displayRbTopCart'}
               {hook h='displayRbTopContact'}
+            <!-- End -->  
+
               {hook h='displayNav2'}
           </div>
         </div>
@@ -79,10 +82,12 @@
             {/if}
         </div>
         <div class="col-md-10 col-sm-12 position-static megamenu">
+          <!-- New Hook -->
           {hook h='displayRbMenu'}
           {hook h='displayRbSearch'}
           {hook h='displayRbText'}
           {hook h='displayRbSocial'}
+          <!-- End -->
           {hook h='displayTop'}
           <div class="clearfix"></div>
         </div>

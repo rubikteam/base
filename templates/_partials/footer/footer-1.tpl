@@ -32,6 +32,11 @@
 <div class="footer-container">
   <div class="container">
     <div class="row">
+      <!-- New Hook -->
+        {hook h='displayRbFooter'}
+        {hook h='displayRbEmail'}
+        {hook h='displayRbFooterContact'}
+      <!-- End -->
       {block name='hook_footer'}
         {hook h='displayFooter'}
       {/block}

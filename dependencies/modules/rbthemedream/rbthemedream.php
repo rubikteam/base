@@ -86,34 +86,36 @@ class Rbthemedream extends Module
 
             include(dirname(__FILE__).'/sql/install.php');
             include(dirname(__FILE__).'/sql/same.php');
-
-            require_once _PS_MODULE_DIR_ . 'ps_languageselector/ps_languageselector.php';
-            require_once _PS_MODULE_DIR_ . 'ps_currencyselector/ps_currencyselector.php';
-            require_once _PS_MODULE_DIR_ . 'ps_shoppingcart/ps_shoppingcart.php';
-            require_once _PS_MODULE_DIR_ . 'ps_searchbar/ps_searchbar.php';
-            require_once _PS_MODULE_DIR_ . 'ps_customtext/ps_customtext.php';
-            require_once _PS_MODULE_DIR_ . 'ps_socialfollow/ps_socialfollow.php';
-            require_once _PS_MODULE_DIR_ . 'ps_contactinfo/ps_contactinfo.php';
             
-            $ps_languageselector = new Ps_Languageselector();
+            $ps_languageselector = Module::getInstanceByName('ps_languageselector');
             $ps_languageselector->registerHook('displayRbLanguage');
             $ps_languageselector->unregisterHook('displayNav2');
 
-            $ps_currencyselector = new Ps_Currencyselector();
+            $ps_currencyselector = Module::getInstanceByName('ps_currencyselector');
             $ps_currencyselector->registerHook('displayRbCurrency');
             $ps_currencyselector->unregisterHook('displayNav2');
 
-            $ps_shoppingcart = new Ps_Shoppingcart();
+            $ps_shoppingcart = Module::getInstanceByName('ps_shoppingcart');
             $ps_shoppingcart->registerHook('displayRbTopCart');
             $ps_shoppingcart->unregisterHook('displayNav2');
-
-            $ps_contactinfo = new Ps_Contactinfo();
+            
+            $ps_contactinfo = Module::getInstanceByName('ps_contactinfo');
             $ps_contactinfo->registerHook('displayRbTopContact');
-            $ps_contactinfo->unregisterHook('displayNav2');
+            $ps_contactinfo->registerHook('displayRbFooterContact');
+            $ps_contactinfo->unregisterHook('displayNav1');
+            $ps_contactinfo->unregisterHook('displayFooter');
 
-            $ps_searchbar = new Ps_Searchbar();
+            $ps_searchbar = Module::getInstanceByName('ps_searchbar');
             $ps_searchbar->registerHook('displayRbSearch');
             $ps_searchbar->unregisterHook('displayTop');
+
+            $ps_customtext = Module::getInstanceByName('ps_customtext');
+            $ps_customtext->registerHook('displayRbText');
+            $ps_customtext->unregisterHook('displayHome');
+
+            $ps_emailsubscription = Module::getInstanceByName('ps_emailsubscription');
+            $ps_emailsubscription->registerHook('displayRbEmail');
+            $ps_emailsubscription->unregisterHook('displayFooterBefore');
 
             return (bool)$res;
         }
@@ -158,7 +160,7 @@ class Rbthemedream extends Module
 
         $res &= $this->registerHook('header');
         $res &= $this->registerHook('displayHome');
-        $res &= $this->registerHook('displayFooter');
+        $res &= $this->registerHook('displayRbFooter');
         $res &= $this->registerHook('displayRbSocial');
         $res &= $this->registerHook('moduleRoutes');
         $res &= $this->registerHook('actionAdminControllerSetMedia');
@@ -1501,21 +1503,23 @@ class Rbthemedream extends Module
 
     public function hookdisplayRbSocial()
     {
-        $this->smarty->assign((
-            'facebook' = Configuration::get('RBTHEMEDREAM_FACEBOOK');
-            'twitter' = Configuration::get('RBTHEMEDREAM_TWITTER');
-            'instagram' = Configuration::get('RBTHEMEDREAM_INSTAGRAM');
-            'pinterest' = Configuration::get('RBTHEMEDREAM_PINTEREST');
-            'youtube' = Configuration::get('RBTHEMEDREAM_YOUTUBE');
-            'vimeo' = Configuration::get('RBTHEMEDREAM_VIMEO');
-        ));
+        $var = array();
+
+        $var['facebook'] = Configuration::get('RBTHEMEDREAM_FACEBOOK');
+        $var['twitter'] = Configuration::get('RBTHEMEDREAM_TWITTER');
+        $var['instagram'] = Configuration::get('RBTHEMEDREAM_INSTAGRAM');
+        $var['pinterest'] = Configuration::get('RBTHEMEDREAM_PINTEREST');
+        $var['youtube'] = Configuration::get('RBTHEMEDREAM_YOUTUBE');
+        $var['vimeo'] = Configuration::get('RBTHEMEDREAM_VIMEO');
+
+        $this->smarty->assign($var);
 
         return $this->display(__FILE__, 'views/templates/hook/rb-social.tpl');
     }
 
-    public function hookdisplayFooter()
+    public function hookdisplayRbFooter()
     {
-        return $this->renderByHookName('displayFooter');
+        return $this->renderByHookName('displayRbFooter');
     }
 
     public function renderByHookName($hook_name)
@@ -1533,7 +1537,7 @@ class Rbthemedream extends Module
             'rb_links' => $rb_links,
         );
 
-        if ($hook_name == 'displayFooter') {
+        if ($hook_name == 'displayRbFooter') {
             $var['type'] = 'contact';
             $var['company'] = Configuration::get('RBTHEMEDREAM_COMPANY_NAME');
             $var['address'] = Configuration::get('RBTHEMEDREAM_ADDRESS');
