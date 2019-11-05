@@ -93,7 +93,8 @@ class Rbthemedream extends Module
             require_once _PS_MODULE_DIR_ . 'ps_searchbar/ps_searchbar.php';
             require_once _PS_MODULE_DIR_ . 'ps_customtext/ps_customtext.php';
             require_once _PS_MODULE_DIR_ . 'ps_socialfollow/ps_socialfollow.php';
-
+            require_once _PS_MODULE_DIR_ . 'ps_contactinfo/ps_contactinfo.php';
+            
             $ps_languageselector = new Ps_Languageselector();
             $ps_languageselector->registerHook('displayRbLanguage');
             $ps_languageselector->unregisterHook('displayNav2');
@@ -106,12 +107,13 @@ class Rbthemedream extends Module
             $ps_shoppingcart->registerHook('displayRbTopCart');
             $ps_shoppingcart->unregisterHook('displayNav2');
 
+            $ps_contactinfo = new Ps_Contactinfo();
+            $ps_contactinfo->registerHook('displayRbTopContact');
+            $ps_contactinfo->unregisterHook('displayNav2');
+
             $ps_searchbar = new Ps_Searchbar();
             $ps_searchbar->registerHook('displayRbSearch');
             $ps_searchbar->unregisterHook('displayTop');
-
-            $ps_socialfollow = new Ps_Socialfollow();
-            $ps_socialfollow->registerHook('displayRbSocial');
 
             return (bool)$res;
         }
@@ -157,6 +159,7 @@ class Rbthemedream extends Module
         $res &= $this->registerHook('header');
         $res &= $this->registerHook('displayHome');
         $res &= $this->registerHook('displayFooter');
+        $res &= $this->registerHook('displayRbSocial');
         $res &= $this->registerHook('moduleRoutes');
         $res &= $this->registerHook('actionAdminControllerSetMedia');
 
@@ -1494,6 +1497,20 @@ class Rbthemedream extends Module
             'content' => $content,
             'options' => $options,
         );
+    }
+
+    public function hookdisplayRbSocial()
+    {
+        $this->smarty->assign((
+            'facebook' = Configuration::get('RBTHEMEDREAM_FACEBOOK');
+            'twitter' = Configuration::get('RBTHEMEDREAM_TWITTER');
+            'instagram' = Configuration::get('RBTHEMEDREAM_INSTAGRAM');
+            'pinterest' = Configuration::get('RBTHEMEDREAM_PINTEREST');
+            'youtube' = Configuration::get('RBTHEMEDREAM_YOUTUBE');
+            'vimeo' = Configuration::get('RBTHEMEDREAM_VIMEO');
+        ));
+
+        return $this->display(__FILE__, 'views/templates/hook/rb-social.tpl');
     }
 
     public function hookdisplayFooter()

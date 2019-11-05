@@ -64,7 +64,6 @@ global_settings:
      - ps_contactinfo
      - ps_shoppingcart
      - ps_customtext
-     - ps_socialfollow
    to_disable:
      - ps_linklist
      - ps_mainmenu
@@ -74,6 +73,7 @@ global_settings:
      - blockreassurance
      - ps_banner
      - ps_customersignin
+     - ps_socialfollow
   hooks:
     modules_to_hook:
       displayHeader:
@@ -119,7 +119,9 @@ global_settings:
       displayRbText:
         - ps_customtext
       displayRbSocial:
-        - ps_socialfollow
+        - rbthemedream
+      displayRbTopContact:
+        -ps_contactinfo
       displayTopColumn:
         - rbthemeslider
       displayHome:

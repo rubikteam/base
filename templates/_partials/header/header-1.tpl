@@ -43,6 +43,7 @@
               {hook h='displayRbTopCompare'}
               {hook h='displayRbTopWishlist'}
               {hook h='displayRbTopCart'}
+              {hook h='displayRbTopContact'}
               {hook h='displayNav2'}
           </div>
         </div>
