@@ -552,7 +552,7 @@ class RbProductTab extends RbControl
                         'uid' => $uid,
                         'title' => $tab['tab_title'],
                         'view' => $tab['view'],
-                        'products_col' => $tab['products_col'],
+                        'products_col' => isset($tab['products_col']) ? $tab['products_col'] : 'col-md-3',
                     );
 
                     if ($tab['view'] == 'grid' || $tab['view'] == 'grid_s'){
