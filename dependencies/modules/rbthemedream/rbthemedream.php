@@ -89,6 +89,10 @@ class Rbthemedream extends Module
 
             require_once _PS_MODULE_DIR_ . 'ps_languageselector/ps_languageselector.php';
             require_once _PS_MODULE_DIR_ . 'ps_currencyselector/ps_currencyselector.php';
+            require_once _PS_MODULE_DIR_ . 'ps_shoppingcart/ps_shoppingcart.php';
+            require_once _PS_MODULE_DIR_ . 'ps_searchbar/ps_searchbar.php';
+            require_once _PS_MODULE_DIR_ . 'ps_customtext/ps_customtext.php';
+            require_once _PS_MODULE_DIR_ . 'ps_socialfollow/ps_socialfollow.php';
 
             $ps_languageselector = new Ps_Languageselector();
             $ps_languageselector->registerHook('displayRbLanguage');
@@ -97,6 +101,17 @@ class Rbthemedream extends Module
             $ps_currencyselector = new Ps_Currencyselector();
             $ps_currencyselector->registerHook('displayRbCurrency');
             $ps_currencyselector->unregisterHook('displayNav2');
+
+            $ps_shoppingcart = new Ps_Shoppingcart();
+            $ps_shoppingcart->registerHook('displayRbTopCart');
+            $ps_shoppingcart->unregisterHook('displayNav2');
+
+            $ps_searchbar = new Ps_Searchbar();
+            $ps_searchbar->registerHook('displayRbSearch');
+            $ps_searchbar->unregisterHook('displayTop');
+
+            $ps_socialfollow = new Ps_Socialfollow();
+            $ps_socialfollow->registerHook('displayRbSocial');
 
             return (bool)$res;
         }

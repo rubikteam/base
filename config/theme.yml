@@ -63,16 +63,16 @@ global_settings:
      - ps_searchbar
      - ps_contactinfo
      - ps_shoppingcart
+     - ps_customtext
+     - ps_socialfollow
    to_disable:
      - ps_linklist
      - ps_mainmenu
      - ps_categorytree
      - ps_featuredproducts
      - ps_imageslider
-     - ps_customtext
      - blockreassurance
      - ps_banner
-     - ps_socialfollow
   hooks:
     modules_to_hook:
       displayHeader:
@@ -101,13 +101,24 @@ global_settings:
         - rbthemefunction
       displayFacebookLogin:
         - rbthemefunction
-      displayNav1:
-         - rbthemedream
-      displayNav2:
+      displayRbTopLogin:
         - rbthemefunction
+      displayRbTopCompare:
+        - rbthemefunction
+      displayRbTopWishlist:
+        - rbthemefunction
+      displayRbTopCart:
         - ps_shoppingcart
-      displayTop:
+      displayRbLanguage:
+        - ps_languageselector
+      displayRbCurrency:
+        - ps_currencyselector
+      displayRbSearch:
         - ps_searchbar
+      displayRbText:
+        - ps_customtext
+      displayRbSocial:
+        - ps_socialfollow
       displayTopColumn:
         - rbthemeslider
       displayHome:
@@ -147,10 +158,6 @@ global_settings:
         - rbthememenu
       displayBlock:
         - rbthememenu
-      displayRbLanguage:
-        - ps_languageselector
-      displayRbCurrency:
-        - ps_currencyselector
 
 
   image_types:

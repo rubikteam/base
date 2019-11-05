@@ -108,7 +108,9 @@ class Rbthemefunction extends Module
             $this->registerHook('displayRbCompareProduct') &&
             $this->registerHook('displayRbWishListProduct') &&
             $this->registerHook('displayRbBrandProduct') &&
-            $this->registerHook('displayNav2') &&
+            $this->registerHook('displayRbTopLogin') &&
+            $this->registerHook('displayRbTopCompare') &&
+            $this->registerHook('displayRbTopWishlist') &&
             $this->registerHook('displayRbReviewProduct') &&
             $this->registerHook('displayFooterAfter') &&
             $this->registerHook('moduleRoutes') &&
@@ -1008,23 +1010,8 @@ class Rbthemefunction extends Module
         return $this->display(__FILE__, 'views/templates/hook/rb-wishlist.tpl');
     }
 
-    public function hookdisplayNav2()
+    public function hookdisplayRbTopLogin()
     {
-        if (Configuration::get('RBTHEMEFUNCTION_COMPARE') != 1) {
-            return;
-        }
-
-        if (Configuration::get('RBTHEMEFUNCTION_WISHLIST') != 1) {
-            return;
-        }
-
-        $arr = array();
-        $obj_wishlist = new RbthemefunctionWishList();
-
-        if (isset($this->context->cookie->rb_compare) && $this->context->cookie->rb_compare) {
-            $arr = explode(',', $this->context->cookie->rb_compare);
-        }
-
         $this->smarty->assign(array(
             'rb_login' => $this->context->customer->id ? 1 : 0,
             'logout_url' => $this->context->customer->id ? 
@@ -1033,10 +1020,46 @@ class Rbthemefunction extends Module
             $this->context->customer->firstname . ' ' . $this->context->customer->lastname : '',
             'my_account_url' => $this->context->customer->id ?
             $this->context->link->getPageLink('my-account', true) : '#',
+            'top' => 'login',
+        ));
+
+        return $this->display(__FILE__, 'views/templates/hook/rb-top-compare.tpl');
+    }
+
+    public function hookdisplayRbTopCompare()
+    {
+        if (Configuration::get('RBTHEMEFUNCTION_COMPARE') != 1) {
+            return;
+        }
+
+        $arr = array();
+
+        if (isset($this->context->cookie->rb_compare) && $this->context->cookie->rb_compare) {
+            $arr = explode(',', $this->context->cookie->rb_compare);
+        }
+
+        $this->smarty->assign(array(
             'rb_compare' => $this->context->link->getModuleLink('rbthemefunction', 'compare'),
             'rb_number_compare' => count($arr),
+            'top' => 'compare',
+        ));
+
+        return $this->display(__FILE__, 'views/templates/hook/rb-top-compare.tpl');
+    }
+
+    public function hookdisplayRbTopWishlist()
+    {
+        if (Configuration::get('RBTHEMEFUNCTION_WISHLIST') != 1) {
+            return;
+        }
+
+        $obj_wishlist = new RbthemefunctionWishList();
+
+        $this->smarty->assign(array(
             'rb_wishlist' => $this->context->link->getModuleLink('rbthemefunction', 'wishlist'),
-            'rb_number_wishlist' => $this->context->customer->id ? $obj_wishlist->getToTalByCustomer($this->context->customer->id) : 0,
+            'rb_number_wishlist' => $this->context->customer->id ?
+            $obj_wishlist->getToTalByCustomer($this->context->customer->id) : 0,
+            'top' => 'wishlist',
         ));
 
         return $this->display(__FILE__, 'views/templates/hook/rb-top-compare.tpl');
