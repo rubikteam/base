@@ -73,6 +73,7 @@ global_settings:
      - ps_imageslider
      - blockreassurance
      - ps_banner
+     - ps_customersignin
   hooks:
     modules_to_hook:
       displayHeader:

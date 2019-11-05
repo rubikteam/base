@@ -39,6 +39,10 @@
           <div class="col-md-7 right-nav">
               {hook h='displayRbLanguage'}
               {hook h='displayRbCurrency'}
+              {hook h='displayRbTopLogin'}
+              {hook h='displayRbTopCompare'}
+              {hook h='displayRbTopWishlist'}
+              {hook h='displayRbTopCart'}
               {hook h='displayNav2'}
           </div>
         </div>
@@ -75,6 +79,9 @@
         </div>
         <div class="col-md-10 col-sm-12 position-static megamenu">
           {hook h='displayRbMenu'}
+          {hook h='displayRbSearch'}
+          {hook h='displayRbText'}
+          {hook h='displayRbSocial'}
           {hook h='displayTop'}
           <div class="clearfix"></div>
         </div>
