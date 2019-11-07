@@ -197,7 +197,7 @@ class RbProductTab extends RbControl
                         'label_block' => true,
                         'options' => $slidesToShow,
                         'condition' => array(
-                            'view' => array('carousel', 'grid', 'carousel_s', 'grid_s'),
+                            'view' => array('carousel', 'grid'),
                         ),
                     ),
                     array(
@@ -208,7 +208,7 @@ class RbProductTab extends RbControl
                         'label_block' => true,
                         'options' => $slidesToShow,
                         'condition' => array(
-                            'view' => array('carousel', 'grid', 'carousel_s', 'grid_s'),
+                            'view' => array('carousel', 'grid'),
                         ),
                     ),
                     array(
@@ -219,8 +219,17 @@ class RbProductTab extends RbControl
                         'label_block' => true,
                         'options' => $slidesToShow,
                         'condition' => array(
-                            'view' => array('carousel', 'grid', 'carousel_s', 'grid_s'),
+                            'view' => array('carousel', 'grid'),
                         ),
+                    ),
+                    array(
+                        'name' => 'products_display',
+                        'label' => $module->l('Products On Row (992-4,768-3)'),
+                        'type' => 'text',
+                        'condition' => array(
+                            'view' => 'carousel',
+                        ),
+                        'options' => $itemsPerColumn,
                     ),
                     array(
                     	'name' => 'items_per_column',
@@ -555,7 +564,7 @@ class RbProductTab extends RbControl
                         'products_col' => isset($tab['products_col']) ? $tab['products_col'] : 'col-md-3',
                     );
 
-                    if ($tab['view'] == 'grid' || $tab['view'] == 'grid_s'){
+                    if ($tab['view'] == 'grid') {
                         $tab['slides_to_show'] = $this->calculateGrid($tab['slides_to_show']);
                         $tab['slides_to_show_tablet'] = $this->calculateGrid($tab['slides_to_show_tablet']);
                         $tab['slides_to_show_mobile'] = $this->calculateGrid($tab['slides_to_show_mobile']);
@@ -566,17 +575,52 @@ class RbProductTab extends RbControl
                             'mobile' => $tab['slides_to_show_mobile'],
                         );
 
-                    } else if ($tab['view'] == 'carousel' || $tab['view'] == 'carousel_s') {
+                    } else if ($tab['view'] == 'carousel') {
                         $parsedTab['arrows_position'] = $optionsSource['arrows_position'];
-                        $show_dots = ( in_array( $tab['navigation'], [ 'dots', 'both' ] ) );
-                        $show_arrows = ( in_array( $tab['navigation'], [ 'arrows', 'both' ] ) );
+                        $show_dots = (in_array($tab['navigation'], ['dots', 'both' ]));
+                        $show_arrows = (in_array($tab['navigation'], ['arrows', 'both']));
+                        $config_obj = array();
+
+                        if (isset($tab['products_display']) && $tab['products_display'] != '') {
+                            $configs = explode(',', $tab['products_display']);
+
+                            foreach ($configs as $key_cf => $config) {
+                                $config = explode('-', $config);
+
+                                $config_obj[] = array(
+                                    'breakpoint' => abs($config[0]),
+                                    'settings' => array(
+                                        'slidesToShow' => abs($config[1]),
+                                        'slidesToScroll' => abs($config[1]),
+                                    )
+                                );
+                            }
+                        } else {
+                            $config_obj = array(
+                                array(
+                                    'breakpoint' => 992,
+                                    'settings' => array(
+                                        'slidesToShow' => abs($tab['slides_to_show_tablet']),
+                                        'slidesToScroll' => abs($tab['slides_to_show_tablet']),
+                                    ),
+                                ),
+                                array(
+                                    'breakpoint' => 576,
+                                    'settings' => array(
+                                        'slidesToShow' => abs($tab['slides_to_show_mobile']),
+                                        'slidesToScroll' => abs($tab['slides_to_show_mobile']),
+                                    ),
+                                ),
+                            );
+                        }
 
                         $parsedTab['options'] = array(
+                            'responsive' => $config_obj,
+                            'dots' => true,
+                            'infinite' => false,
                             'slidesToShow' => abs($tab['slides_to_show']),
                             'slidesToScroll' => abs($tab['slides_to_show']),
-                            'slidesToShowTablet' => abs($tab['slides_to_show_tablet']),
-                            'slidesToShowMobile' => abs($tab['slides_to_show_mobile']),
-                            'itemsPerColumn' => abs($tab['items_per_column']),
+                            'rows' => abs($tab['items_per_column']),
                             'autoplay' => ('yes' === $tab['autoplay']),
                             'infinite' => ('yes' === $tab['infinite']),
                             'arrows' => $show_arrows,

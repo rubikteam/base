@@ -459,6 +459,7 @@ module.exports = function ($) {
 },{}],11:[function(require,module,exports){
 module.exports = function ($) {
     var $carousel = $(this).find('.rb-products-carousel');
+
     if (!$carousel.length) {
         if (rbFrontendConfig.isEditMode) {
             $(this).find('img[data-src]').each(function() {
@@ -468,39 +469,8 @@ module.exports = function ($) {
         return;
     }
 
-    var respondTo = 'window';
-
-    if (rbFrontendConfig.isEditMode) {
-        respondTo = 'iframe-window';
-    }
-
-    var savedOptions = $carousel.data('slider_options'),
-        defaultOptions = {
-            respondTo: respondTo,
-            infinite: false,
-            autoplaySpeed: 4500,
-            rows: savedOptions.itemsPerColumn,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowTablet,
-                        slidesToScroll: savedOptions.slidesToShowTablet
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowMobile,
-                        slidesToScroll: savedOptions.slidesToShowMobile
-                    }
-                }
-            ]
-        },
-
-        slickOptions = $.extend({}, defaultOptions, $carousel.data('slider_options'));
-
-    $carousel.slick(slickOptions);
+    var savedOptions = $carousel.data('slider_options');
+    $carousel.slick(savedOptions);
 
     if (rbFrontendConfig.isEditMode) {
         $(window).on('changedDeviceMode', function () {
@@ -512,6 +482,7 @@ module.exports = function ($) {
 },{}],12:[function(require,module,exports){
 module.exports = function ($) {
     var $carousel = $(this).find('.rb-products-carousel');
+
     if (!$carousel.length) {
         if (rbFrontendConfig.isEditMode) {
             $(this).find('img[data-src]').each(function() {
@@ -521,39 +492,8 @@ module.exports = function ($) {
         return;
     }
 
-    var respondTo = 'window';
-
-    if (rbFrontendConfig.isEditMode) {
-        respondTo = 'iframe-window';
-    }
-
-    var savedOptions = $carousel.data('slider_options'),
-        defaultOptions = {
-            respondTo: respondTo,
-            infinite: false,
-            autoplaySpeed: 4500,
-            rows: savedOptions.itemsPerColumn,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowTablet,
-                        slidesToScroll: savedOptions.slidesToShowTablet
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowMobile,
-                        slidesToScroll: savedOptions.slidesToShowMobile
-                    }
-                }
-            ]
-        },
-
-        slickOptions = $.extend({}, defaultOptions, $carousel.data('slider_options'));
-
-    $carousel.slick(slickOptions);
+    var savedOptions = $carousel.data('slider_options');
+    $carousel.slick(savedOptions);
 
     if (rbFrontendConfig.isEditMode) {
         $(window).on('changedDeviceMode', function () {

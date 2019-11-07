@@ -24,7 +24,9 @@
 *}
 <section id="products" class="rb-products">
 	{if $products.view == 'carousel_s' || $products.view == 'carousel'}
-        <div class="products rb-products-carousel slick-products-carousel products-grid slick-arrows-{$products.arrows_position}"  data-slider_options='{$products.options|@json_encode nofilter}'>
+        <div
+            class="products rb-products-carousel slick-products-carousel products-grid slick-arrows-{$products.arrows_position}"  data-slider_options='{$products.options|@json_encode nofilter}'
+        >
     {else}
         <div class="products row {if $products.view == 'list'}products-list{else}products-grid{/if}">
     {/if}

@@ -95,7 +95,7 @@ class RbProduct extends RbControl
             ),
             'products_ids' => array(
                 'label' => $module->l('Search for products'),
-                'placeholder' => $module->l( 'Product name, id, ref'),
+                'placeholder' => $module->l('Product name, id, ref'),
                 'type' => 'autocomplete_products',
                 'label_block' => true,
                 'condition' => array(
@@ -184,15 +184,23 @@ class RbProduct extends RbControl
                 'section' => 'section_pswidget_options',
                 'options' => $slidesToShow,
                 'condition' => array(
-                    'view' => array('carousel', 'grid', 'carousel_s', 'grid_s'),
+                    'view' => array('carousel', 'grid'),
                 ),
+            ),
+            'products_display' => array(
+                'label' => $module->l('Products On Row (992-4,768-3)'),
+                'type' => 'text',
+                'condition' => array(
+                    'view' => array('carousel'),
+                ),
+                'section' => 'section_pswidget_options',
             ),
             'items_per_column' => array(
                 'label' => $module->l('Items per column'),
                 'type' => 'select',
                 'default' => '1',
                 'condition' => array(
-                    'view' => array('carousel', 'carousel_s'),
+                    'view' => array('carousel'),
                 ),
                 'section' => 'section_pswidget_options',
                 'options' => $itemsPerColumn,
@@ -230,7 +238,7 @@ class RbProduct extends RbControl
                 'type' => 'select',
                 'default' => 'yes',
                 'condition' => array(
-                    'view' => array('carousel', 'carousel_s'),
+                    'view' => array('carousel'),
                 ),
                 'section' => 'section_pswidget_options',
                 'options' => array(
@@ -249,7 +257,7 @@ class RbProduct extends RbControl
                 'default' => 'middle',
                 'tab' => 'style',
                 'condition' => array(
-                    'view' => array('carousel', 'carousel_s'),
+                    'view' => array('carousel'),
                     'navigation' => array('both', 'arrows'),
                 ),
                 'section' => 'section_style_navigation',
@@ -493,12 +501,50 @@ class RbProduct extends RbControl
                 $return['arrows_position'] = $optionsSource['arrows_position'];
                 $show_dots = (in_array($optionsSource['navigation'], array('dots', 'both')));
                 $show_arrows = (in_array($optionsSource['navigation'], array('arrows', 'both')));
+                $config_obj = array();
+
+                if (isset($optionsSource['products_display']) &&
+                    $optionsSource['products_display'] != ''
+                ) {
+                    $configs = explode(',', $optionsSource['products_display']);
+
+                    foreach ($configs as $key_cf => $config) {
+                        $config = explode('-', $config);
+
+                        $config_obj[] = array(
+                            'breakpoint' => abs($config[0]),
+                            'settings' => array(
+                                'slidesToShow' => abs($config[1]),
+                                'slidesToScroll' => abs($config[1]),
+                            )
+                        );
+                    }
+                } else {
+                    $config_obj = array(
+                        array(
+                            'breakpoint' => 992,
+                            'settings' => array(
+                                'slidesToShow' => abs($optionsSource['slides_to_show_tablet']),
+                                'slidesToScroll' => abs($optionsSource['slides_to_show_tablet']),
+                            ),
+                        ),
+                        array(
+                            'breakpoint' => 576,
+                            'settings' => array(
+                                'slidesToShow' => abs($optionsSource['slides_to_show_mobile']),
+                                'slidesToScroll' => abs($optionsSource['slides_to_show_mobile']),
+                            ),
+                        ),
+                    );
+                }
 
                 $return['options'] = array(
-                    'slidesToShow' => abs( $optionsSource['slides_to_show'] ),
+                    'responsive' => $config_obj,
+                    'dots' => true,
+                    'infinite' => false,
+                    'rows' => abs( $optionsSource['items_per_column']),
+                    'slidesToShow' => abs($optionsSource['slides_to_show']),
                     'slidesToScroll' => abs($optionsSource['slides_to_show']),
-                    'slidesToShowMobile' => abs($optionsSource['slides_to_show_mobile']),
-                    'itemsPerColumn' => abs( $optionsSource['items_per_column']),
                     'autoplay' => ('yes' === $optionsSource['autoplay']),
                     'infinite' => ('yes' === $optionsSource['infinite']),
                     'arrows' => $show_arrows,
