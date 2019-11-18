@@ -1,3 +1,5 @@
+@import url('//fonts.googleapis.com/css?family=Hind:400,700&display=swap');
+
 @import "partials/_bootstrap-flex";
 @import "partials/_bootstrap-grid";
 @import "partials/_bootstrap-reboot";
@@ -6,6 +8,7 @@
 @import "partials/_variables";
 @import "partials/_animations";
 @import "partials/_fonts";
+@import "partials/_font-awesome.min.scss";
 @import "partials/_commons";
 @import "partials/_slick";
 @import "app/animations";
@@ -1010,3 +1013,111 @@ border: none !important;
     left:100%
   }
 }
+
+main{
+  overflow: hidden;
+}
+
+
+/*Header 1*/
+.header-1{
+  &.header-top{
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(space-between);
+    padding: 37px 47px 0;
+  }
+
+  .top-right-nav{
+    @include display(flex);
+    @include align-items(center);
+  }
+
+  .rb-search-name,
+  #language_selector,
+  #currency_selector,
+  #blockcart{
+    margin: 0 10px !important;
+  }
+
+  .rb-search-name{
+    width: auto !important;
+    .rb-search{
+      height: 36px;
+      max-width: 205px;
+      border: 1px #ffffff solid;
+      border-radius: 20px;
+      background: transparent;
+      padding: 0 50px 0 15px;
+      color: #ffffff;
+      &:focus{
+        outline: none;
+      }
+    }
+
+    .rb-search-btn{
+      cursor: pointer;
+      background: transparent;
+      color: #ffffff;
+      font-size: 14px;
+      position: absolute;
+      height: 36px;
+      padding: 0 15px;
+      top: 0;
+      right: 0;
+      line-height: 37px;
+      border: none;
+    }
+  }
+
+  #language_selector,
+  #currency_selector{
+    .expand-more{
+      height: 36px;
+      border: 1px #ffffff solid;
+      border-radius: 20px;
+      line-height: 36px;
+      padding: 0 15px;
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+  }
+
+  #language_selector .lang-flag{
+    margin: 0 5px;
+  }
+
+  .rb-login > a i{
+    font-size: 18px;
+  }
+
+  #blockcart{
+    .cart-products-count-btn{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: $link-hover-color;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #ffffff;
+      font-weight: 700;
+      border-radius: 100%;
+      top: -17px;
+      right: -12px;
+      font-family: $font-family-base;
+    }
+    .info-wrapper{
+      display: none;
+    }
+  }
+
+  #cart-toogle i{
+    font-size: 18px;
+    color: #ffffff;
+    position: relative;
+  }
+}
+
