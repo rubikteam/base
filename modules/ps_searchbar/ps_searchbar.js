@@ -25,49 +25,46 @@
 * Don't forget to prefix your containers with your own identifier
 * to avoid any conflicts with others containers.
 */
-$(document).ready(function() {
-	$('.rb-search').keyup(function(e) {
-		e.preventDefault();
-		var val = $(this).val();
+$(document).ready(function () {
+    $.widget('prestashop.psBlockSearchAutocomplete', $.ui.autocomplete, {
+    });
 
-		if (val.length >= 3) {
-			$('.rb-search-name .rb-ajax-loading').show();
-			$('.rb-resuilt').html('');
-			$('.rb-resuilt-error').hide();
+    $('.rb-search').psBlockSearchAutocomplete({
+        source: function (query, response) {
+            $('.rb-search-name .rb-ajax-loading').show();
+            $.post(url_ajax, {
+                token: token,
+                action1: 'findProductByName',
+                name: query.term,
+                ajax: 1
+            }, null, 'json')
+            .then(function (data) {
+              $('.rb-search-name .rb-ajax-loading').hide();
+              
+              if (data.success == 1) {
+                $('.rb-resuilt').html(data.message);
+                $('.rb-resuilt').show();
+                $('.rb-resuilt-error').hide();
 
-			$.ajax({
-				type: "POST",
-				headers: { "cache-control": "no-cache" },
-				async: false,
-				url: url_ajax,
-				dataType: "json",
-				data: {
-					ajax: 1,
-					token: token,
-					action1: 'findProductByName',
-					name: val,
-				},
-				success: function (data)
-				{
-					$('.rb-search-name .rb-ajax-loading').hide();
+                $('body').click(function() {
+                  $('.rb-resuilt').html('');
+                  $('.rb-resuilt').hide();
+                  $('.rb-resuilt-error').hide();
+                });
+              }
 
-					if (data.success == 1) {
-						$('.rb-resuilt').html(data.message);
-						$('.rb-resuilt').show();
-
-						$('body').click(function() {
-							$('.rb-resuilt').html('');
-							$('.rb-resuilt').hide();
-							$('.rb-resuilt-error').hide();
-						});
-					}
-
-					if (data.success == 0){
-						$('.rb-resuilt-error').html(data.message);
-						$('.rb-resuilt-error').show();
-					}			
-				}
-			});
-		}
-	});
+              if (data.success == 0){
+                $('.rb-resuilt').html('');
+                $('.rb-resuilt').hide();
+                $('.rb-resuilt-error').html(data.message);
+                $('.rb-resuilt-error').show();
+              } 
+            })
+            .fail(response);
+        },
+        select: function (event, ui) {
+            var url = ui.item.url;
+            window.location.href = url;
+        },
+    });
 });

@@ -22,23 +22,11 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<!-- Block search module TOP -->
-<!-- <div id="search_widget" class="search-widget" data-search-controller-url="{$search_controller_url}">
-	<form method="get" action="{$search_controller_url}">
-		<input type="hidden" name="controller" value="search">
-		<input class="rb-input-search" type="text" name="s" value="{$search_string}" placeholder="{l s='Search our catalog' d='Shop.Theme.Catalog'}" aria-label="{l s='Search' d='Shop.Theme.Catalog'}">
-		<button type="submit">
-			<i class="material-icons search">&#xE8B6;</i>
-      <span class="hidden-xl-down">{l s='Search' d='Shop.Theme.Catalog'}</span>
-		</button>
-	</form>
-</div> -->
-<!-- /Block search module TOP -->
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="rb-search-name search-widget">
 			<label>{l s='Search By Name' mod='apsearch'}</label>
+			
 			<div class="rb-search-widget">
 				<form method="get" action="{$search_controller_url}">
 					<input type="text" name="s" aria-label="{l s='Search' mod='apsearch'}" class="rb-search" autocomplete="off">
@@ -48,6 +36,7 @@
 					</button>
 				</form>
 			</div>
+
 			<div class="cssload-container rb-ajax-loading">
 				<div class="cssload-double-torus"></div>
 			</div>
@@ -55,7 +44,7 @@
 				<div class="rb-resuilt row"></div>
 			</div>
 
-	        <p class="rb-resuilt-error alert alert-danger"></p>
+	        <p class="rb-resuilt-error"></p>
 		</div>
 	</div>
 </div>
