@@ -54,7 +54,7 @@
 
       <section id="wrapper">
         {hook h="displayWrapperTop"}
-        <div class="container">
+        <div class="{if isset($rb_layout) && $rb_layout == 1}{else}container{/if}">
           {block name='breadcrumb'}
             {include file='_partials/breadcrumb.tpl'}
           {/block}

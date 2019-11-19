@@ -436,6 +436,11 @@ class Rbthemedream extends Module
                         'name' => 'name'
                     ),
                 ),
+                array(
+                    'type' => 'html',
+                    'name' => 'html_data',
+                    'html_content' => $this->htmlFormLayout(),
+                ),
             ),
             'submit' => array(
                 'title' => $this->l('Save'),
@@ -568,6 +573,27 @@ class Rbthemedream extends Module
         return $fields_form;
     }
 
+    public function htmlFormLayout()
+    {
+        $obj_home = new RbthemedreamHome();
+        $rbthemedreams = $obj_home->getAllHome();
+
+        if (!empty($rbthemedreams)) {
+            foreach ($rbthemedreams as $key_rb => $rbthemedream) {
+                $page = 'RBTHEMEDREAM_PAGE_'.$rbthemedream['id_rbthemedream_home'];
+                $home = 'RBTHEMEDREAM_HOME_'.$rbthemedream['id_rbthemedream_home'];
+                $rbthemedreams[$key_rb]['page'] = Configuration::get($page);
+                $rbthemedreams[$key_rb]['home'] = Configuration::get($home);
+            }
+        }
+
+        $this->context->smarty->assign(array(
+            'rbthemedreams' => $rbthemedreams,
+        ));
+
+        return $this->display(__FILE__, 'views/templates/rb-home.tpl');
+    }
+
     public function htmlFormExport()
     {
         $this->context->smarty->assign(array(
@@ -612,6 +638,19 @@ class Rbthemedream extends Module
     {
         $form_values = $this->getConfigFormValues();
         $this->exportDataSame();
+
+        $obj_home = new RbthemedreamHome();
+        $rbthemedreams = $obj_home->getAllHome();
+
+        if (!empty($rbthemedreams)) {
+            foreach ($rbthemedreams as $rbthemedream) {
+                $page = 'RBTHEMEDREAM_PAGE_'.$rbthemedream['id_rbthemedream_home'];
+                $home = 'RBTHEMEDREAM_HOME_'.$rbthemedream['id_rbthemedream_home'];
+
+                Configuration::updateValue($page, Tools::getValue($page));
+                Configuration::updateValue($home, Tools::getValue($home));
+            }
+        }
 
         foreach (array_keys($form_values) as $key) {
             if ($key == 'RBTHEMEDREAM_CONTENT_PAGE') {
@@ -1470,6 +1509,30 @@ class Rbthemedream extends Module
                 'stretchedSectionContainer' =>'',
                 'is_rtl' => '',
         )));
+
+        $obj_home = new RbthemedreamHome();
+        $layout = 0;
+        $id = $obj_home->getHomeActive();
+
+        if (Tools::getValue('controller') == 'index') {
+            if (Configuration::get('RBTHEMEDREAM_HOME_' . (int)$id) == 1) {
+                $layout = 1;
+            }
+        } else if (Tools::getIsset('module') && Tools::getValue('module') == 'rbthemedream') {
+            $id = Tools::getValue('id');
+
+            if (Configuration::get('RBTHEMEDREAM_HOME_' . (int)$id) == 1) {
+                $layout = 1;
+            }
+        } else {
+            if (Configuration::get('RBTHEMEDREAM_PAGE_' . (int)$id) == 1) {
+                $layout = 1;
+            }
+        }
+
+        $this->context->smarty->assign(array(
+            'rb_layout' => $layout,
+        ));
     }
 
     public function hookActionAdminControllerSetMedia()
