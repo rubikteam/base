@@ -67,8 +67,17 @@ class RbthemedreamHome extends ObjectModel
         $sql = 'SELECT `id_rbthemedream_home`
         FROM `'._DB_PREFIX_.'rbthemedream_home_shop`
         WHERE `active` = 1
-        AND id_shop = ' . $this->context->shop->id;
+        AND id_shop = ' . (int)$this->context->shop->id;
 
         return Db::getInstance()->getValue($sql);
+    }
+
+    public function getAllHome()
+    {
+        $sql = 'SELECT `id_rbthemedream_home`, `name`
+        FROM `'._DB_PREFIX_.'rbthemedream_home_lang`
+        WHERE id_lang = ' . (int)$this->context->language->id;
+
+        return Db::getInstance()->executeS($sql);
     }
 }
