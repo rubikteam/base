@@ -78,4 +78,13 @@
     		</p>
     	</h3>
 	</div>
+
+	<a
+		class="btn btn-default"
+		onclick="javascript:return confirm('{l s='Are you sure you want Update Module. Please backup all things before?' mod='rbthemedream'}')"
+		href="{$module_link}&submitUpdateModule=1"
+	>
+        <i class="icon-AdminParentPreferences"></i>
+    	{l s='Update and Correct Module' mod='rbthemedream'}
+    </a>
 </div>

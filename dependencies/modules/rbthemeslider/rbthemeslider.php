@@ -1073,14 +1073,19 @@ class Rbthemeslider extends Module implements WidgetInterface
         RbSliderAdmin::sdsCaptionCssInit($res);
 
         $this->clearStaticStyles();
+        $this->rbRegisterHook();
 
         include(dirname(__FILE__).'/sql/same.php');
 
-        return parent::install() &&
-            $this->registerHook('header') &&
-            $this->registerHook('displayRbSlider') &&
-            $this->registerHook('actionShopDataDuplication') &&
-            $this->registerHook('displayBackOfficeHeader');
+        return parent::install();
+    }
+
+    public function rbRegisterHook()
+    {
+        $this->registerHook('header');
+        $this->registerHook('displayRbSlider');
+        $this->registerHook('actionShopDataDuplication');
+        $this->registerHook('displayBackOfficeHeader');
     }
 
     public function installModuleTab($title, $class_sfx = '', $parent = '')

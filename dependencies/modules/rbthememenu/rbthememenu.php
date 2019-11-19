@@ -2000,6 +2000,7 @@ class Rbthememenu extends Module
         }
 
         $tab1->add(true, false);
+        $this->rbRegisterHook();
 
         Db::getInstance()->execute(
             'UPDATE `'._DB_PREFIX_.'tab`
@@ -2007,17 +2008,21 @@ class Rbthememenu extends Module
             WHERE `id_tab` = "'.(int)$tab1->id.'"'
         );
 
-        return parent::install() &&
-            $this->registerHook('header') &&
-            $this->registerHook('displayRbMenu') &&
-            $this->registerHook('displayRbItemMenu') &&
-            $this->registerHook('displayRbItemColumn') &&
-            $this->registerHook('displayRbItemBlock') &&
-            $this->registerHook('displayRbItemTab') &&
-            $this->registerHook('displayRbProductList') &&
-            $this->registerHook('displayRbProductListItem') &&
-            $this->registerHook('displayBlock') &&
-            $this->registerHook('ActionAdminControllerSetMedia');
+        return parent::install();
+    }
+
+    public function rbRegisterHook()
+    {
+        $this->registerHook('header');
+        $this->registerHook('displayRbMenu');
+        $this->registerHook('displayRbItemMenu');
+        $this->registerHook('displayRbItemColumn');
+        $this->registerHook('displayRbItemBlock');
+        $this->registerHook('displayRbItemTab');
+        $this->registerHook('displayRbProductList');
+        $this->registerHook('displayRbProductListItem');
+        $this->registerHook('displayBlock');
+        $this->registerHook('ActionAdminControllerSetMedia');
     }
 
     public function uninstall()

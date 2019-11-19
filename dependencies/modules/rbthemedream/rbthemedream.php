@@ -86,36 +86,6 @@ class Rbthemedream extends Module
 
             include(dirname(__FILE__).'/sql/install.php');
             include(dirname(__FILE__).'/sql/same.php');
-            
-            $ps_languageselector = Module::getInstanceByName('ps_languageselector');
-            $ps_languageselector->registerHook('displayRbLanguage');
-            $ps_languageselector->unregisterHook('displayNav2');
-
-            $ps_currencyselector = Module::getInstanceByName('ps_currencyselector');
-            $ps_currencyselector->registerHook('displayRbCurrency');
-            $ps_currencyselector->unregisterHook('displayNav2');
-
-            $ps_shoppingcart = Module::getInstanceByName('ps_shoppingcart');
-            $ps_shoppingcart->registerHook('displayRbTopCart');
-            $ps_shoppingcart->unregisterHook('displayNav2');
-            
-            $ps_contactinfo = Module::getInstanceByName('ps_contactinfo');
-            $ps_contactinfo->registerHook('displayRbTopContact');
-            $ps_contactinfo->registerHook('displayRbFooterContact');
-            $ps_contactinfo->unregisterHook('displayNav1');
-            $ps_contactinfo->unregisterHook('displayFooter');
-
-            $ps_searchbar = Module::getInstanceByName('ps_searchbar');
-            $ps_searchbar->registerHook('displayRbSearch');
-            $ps_searchbar->unregisterHook('displayTop');
-
-            $ps_customtext = Module::getInstanceByName('ps_customtext');
-            $ps_customtext->registerHook('displayRbText');
-            $ps_customtext->unregisterHook('displayHome');
-
-            $ps_emailsubscription = Module::getInstanceByName('ps_emailsubscription');
-            $ps_emailsubscription->registerHook('displayRbEmail');
-            $ps_emailsubscription->unregisterHook('displayFooterBefore');
 
             return (bool)$res;
         }
@@ -156,6 +126,36 @@ class Rbthemedream extends Module
 
     public function rbRegisterHook()
     {
+        $ps_languageselector = Module::getInstanceByName('ps_languageselector');
+        $ps_languageselector->registerHook('displayRbLanguage');
+        $ps_languageselector->unregisterHook('displayNav2');
+
+        $ps_currencyselector = Module::getInstanceByName('ps_currencyselector');
+        $ps_currencyselector->registerHook('displayRbCurrency');
+        $ps_currencyselector->unregisterHook('displayNav2');
+
+        $ps_shoppingcart = Module::getInstanceByName('ps_shoppingcart');
+        $ps_shoppingcart->registerHook('displayRbTopCart');
+        $ps_shoppingcart->unregisterHook('displayNav2');
+            
+        $ps_contactinfo = Module::getInstanceByName('ps_contactinfo');
+        $ps_contactinfo->registerHook('displayRbTopContact');
+        $ps_contactinfo->registerHook('displayRbFooterContact');
+        $ps_contactinfo->unregisterHook('displayNav1');
+        $ps_contactinfo->unregisterHook('displayFooter');
+
+        $ps_searchbar = Module::getInstanceByName('ps_searchbar');
+        $ps_searchbar->registerHook('displayRbSearch');
+        $ps_searchbar->unregisterHook('displayTop');
+
+        $ps_customtext = Module::getInstanceByName('ps_customtext');
+        $ps_customtext->registerHook('displayRbText');
+        $ps_customtext->unregisterHook('displayHome');
+
+        $ps_emailsubscription = Module::getInstanceByName('ps_emailsubscription');
+        $ps_emailsubscription->registerHook('displayRbEmail');
+        $ps_emailsubscription->unregisterHook('displayFooterBefore');
+
         $res = true;
 
         $res &= $this->registerHook('header');
@@ -278,6 +278,28 @@ class Rbthemedream extends Module
                     );
                 }
             }
+        }  else if (((bool)Tools::isSubmit('submitUpdateModule')) == 1) {
+            $this->rbRegisterHook();
+
+            $rbthemeblog = Module::getInstanceByName('rbthemeblog');
+            $rbthemeblog->rbRegisterHook();
+
+            $rbthemefunction = Module::getInstanceByName('rbthemefunction');
+            $rbthemefunction->rbRegisterHook();
+
+            $rbthememenu = Module::getInstanceByName('rbthememenu');
+            $rbthememenu->rbRegisterHook();
+
+            $rbthemeslider = Module::getInstanceByName('rbthemeslider');
+            $rbthemeslider->rbRegisterHook();
+
+            $output .= $this->displayConfirmation(
+                $this->trans(
+                    'Update Module Success',
+                    array(),
+                    'Admin.Notifications.Success'
+                )
+            );
         }
 
         $this->context->smarty->assign('module_dir', $this->_path);
@@ -549,7 +571,10 @@ class Rbthemedream extends Module
     public function htmlFormExport()
     {
         $this->context->smarty->assign(array(
-            'rb_dir' => _PS_MODULE_DIR_
+            'rb_dir' => _PS_MODULE_DIR_,
+            'module_link' => $this->context->link->getAdminLink('AdminModules', false)
+            .'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='
+            .$this->name.'&token='.Tools::getAdminTokenLite('AdminModules'),
         ));
 
         return $this->display(__FILE__, 'views/templates/rb-export.tpl');

@@ -130,15 +130,19 @@ class Rbthemeblog extends Module
         $video_post_type->slug = 'video';
         $video_post_type->add();
 
-        return parent::install()
-            && $this->registerHook('moduleRoutes')
-            && $this->registerHook('displayRbBlogPosts')
-            && $this->registerHook('displayRbBlogCategories')
-            && $this->registerHook('displayHeader')
-            && $this->registerHook('displayTop')
-            && $this->registerHook('displayBackOfficeHeader')
-            && $this->registerHook('displayPrestaHomeBlogAfterPostContent')
-            && $this->registerHook('displayLeftColumn');
+        return parent::install();
+    }
+
+    public function rbRegisterHook()
+    {
+        $this->registerHook('moduleRoutes');
+        $this->registerHook('displayRbBlogPosts');
+        $this->registerHook('displayRbBlogCategories');
+        $this->registerHook('displayHeader');
+        $this->registerHook('displayTop');
+        $this->registerHook('displayBackOfficeHeader');
+        $this->registerHook('displayPrestaHomeBlogAfterPostContent');
+        $this->registerHook('displayLeftColumn');
     }
 
     private function installModuleTab($title, $class_sfx = '', $parent = '')

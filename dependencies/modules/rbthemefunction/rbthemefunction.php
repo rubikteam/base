@@ -99,26 +99,32 @@ class Rbthemefunction extends Module
 
         $this->installModuleTab('Setting', 'setting', 'AdminRbThemeFunctionManagement');
         $this->installModuleTab('Review', 'review', 'AdminRbThemeFunctionManagement');
+        $this->rbRegisterHook();
+
         include(dirname(__FILE__).'/sql/install.php');
 
-        return parent::install() &&
-            $this->registerHook('header') &&
-            $this->registerHook('displayAfterBodyOpeningTag') &&
-            $this->registerHook('displayRbAddToCart') &&
-            $this->registerHook('displayRbCompareProduct') &&
-            $this->registerHook('displayRbWishListProduct') &&
-            $this->registerHook('displayRbBrandProduct') &&
-            $this->registerHook('displayRbTopLogin') &&
-            $this->registerHook('displayRbTopCompare') &&
-            $this->registerHook('displayRbTopWishlist') &&
-            $this->registerHook('displayRbReviewProduct') &&
-            $this->registerHook('displayFooterAfter') &&
-            $this->registerHook('moduleRoutes') &&
-            $this->registerHook('displayFooterProduct') &&
-            $this->registerHook('displayProductExtraContent') &&
-            $this->registerHook('displayFacebookLogin') &&
-            $this->registerHook('displayNextPrevProduct') &&
-            $this->registerHook('ActionAdminControllerSetMedia');
+        return parent::install();
+    }
+
+    public function rbRegisterHook()
+    {
+        $this->registerHook('header');
+        $this->registerHook('displayAfterBodyOpeningTag');
+        $this->registerHook('displayRbAddToCart');
+        $this->registerHook('displayRbCompareProduct');
+        $this->registerHook('displayRbWishListProduct');
+        $this->registerHook('displayRbBrandProduct');
+        $this->registerHook('displayRbTopLogin');
+        $this->registerHook('displayRbTopCompare');
+        $this->registerHook('displayRbTopWishlist');
+        $this->registerHook('displayRbReviewProduct');
+        $this->registerHook('displayFooterAfter');
+        $this->registerHook('moduleRoutes');
+        $this->registerHook('displayFooterProduct');
+        $this->registerHook('displayProductExtraContent');
+        $this->registerHook('displayFacebookLogin');
+        $this->registerHook('displayNextPrevProduct');
+        $this->registerHook('ActionAdminControllerSetMedia');
     }
 
     public function uninstall()
