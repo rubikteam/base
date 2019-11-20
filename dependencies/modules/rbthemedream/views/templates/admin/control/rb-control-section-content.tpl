@@ -22,11 +22,13 @@
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-<div class="rb-control-content">
-	<div class="rb-panel-heading">
-		<div class="rb-panel-heading-toggle rb-section-toggle" data-collapse_id="{{ data.name }}">
-			<i class="fa"></i>
+<# if ( data.label == 'Layout' ) { #>
+	<div class="rb-control-content">
+		<div class="rb-panel-heading">
+			<div class="rb-panel-heading-toggle rb-section-toggle" data-collapse_id="{{ data.name }}">
+				<i class="fa"></i>
+			</div>
+			<div class="rb-panel-heading-title rb-section-title">{{{ data.label }}}</div>
 		</div>
-		<div class="rb-panel-heading-title rb-section-title">{{{ data.label }}}</div>
 	</div>
-</div>
+<# } #>
