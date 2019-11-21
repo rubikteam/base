@@ -29,17 +29,17 @@ require_once(_PS_MODULE_DIR_.'rbthemedream/classes/RbthemedreamHome.php');
 
 class AdminRbthemedreamLinkController extends ModuleAdminController
 {
-	public function __construct()
+    public function __construct()
     {
-    	$this->context = Context::getContext();
-    	$this->bootstrap = true;
-    	$this->display = 'view';
-    	$this->lang = true;
-    	$this->name = 'AdminRbthemedreamLink';
-    	$this->className = 'RbthemedreamLink';
+        $this->context = Context::getContext();
+        $this->bootstrap = true;
+        $this->display = 'view';
+        $this->lang = true;
+        $this->name = 'AdminRbthemedreamLink';
+        $this->className = 'RbthemedreamLink';
         $this->table = 'rbthemedream_link';
 
-    	parent::__construct();
+        parent::__construct();
     }
 
     public function init()
@@ -55,23 +55,21 @@ class AdminRbthemedreamLinkController extends ModuleAdminController
 
     public function setMedia($isNewTheme = false)
     {
-    	parent::setMedia($isNewTheme);
+        parent::setMedia($isNewTheme);
+        $this->addJqueryPlugin('tablednd');
 
-    	$this->addJqueryPlugin('tablednd');
+        $this->addCSS(array(
+            _MODULE_DIR_.'rbthemedream/views/css/link.css',
+        ));
 
-    	$this->addCSS(array(
-    		_MODULE_DIR_.'rbthemedream/views/css/link.css',
-    	));
-
-    	$this->addJS(_MODULE_DIR_.'rbthemedream/views/js/link.js');
-    	
-    	$this->addJS(_PS_JS_DIR_ . 'admin/dnd.js');
-   	}
+        $this->addJS(_MODULE_DIR_.'rbthemedream/views/js/link.js');
+        $this->addJS(_PS_JS_DIR_ . 'admin/dnd.js');
+    }
 
     public function postProcess()
     {
         if (Tools::isSubmit('submitRbthemedreamLink')) {
-        	$this->addNameArrayToPost();
+            $this->addNameArrayToPost();
 
             if (!$this->processSave()) {
                 return false;
@@ -84,7 +82,6 @@ class AdminRbthemedreamLinkController extends ModuleAdminController
             }
 
             Tools::redirectAdmin($this->context->link->getAdminLink('AdminRbthemedreamLink'));
-
         } elseif (Tools::isSubmit('delete' . $this->className)) {
             $obj_link = new RbthemedreamLink(Tools::getValue('id_rbthemedream_link'));
             $obj_link->delete();
@@ -140,9 +137,9 @@ class AdminRbthemedreamLinkController extends ModuleAdminController
 
     public function renderForm()
     {
-    	$obj = new RbthemedreamLink((int)Tools::getValue('id_rbthemedream_link'));
+        $obj = new RbthemedreamLink((int)Tools::getValue('id_rbthemedream_link'));
 
-    	$this->fields_form[0]['form'] = array(
+        $this->fields_form[0]['form'] = array(
             'tinymce' => true,
             'legend' => array(
                 'title' => isset($obj->id_rbthemedream_link) ? $this->l('Edit Link') : $this->l('New Link'),
@@ -210,11 +207,11 @@ class AdminRbthemedreamLinkController extends ModuleAdminController
         }
 
         $obj->id_shop = (int) $this->context->shop->id;
-
-    	$helper = $this->renderFormHelper();
+        $helper = $this->renderFormHelper();
 
         if (isset($obj->id_rbthemedream_link)) {
-            $helper->currentIndex = AdminController::$currentIndex . '&id_rbthemedream_link=' . $obj->id_rbthemedream_link;
+            $helper->currentIndex = AdminController::$currentIndex .
+            '&id_rbthemedream_link=' . $obj->id_rbthemedream_link;
             $helper->submit_action = 'submitEdit' . $this->className;
         } else {
             $helper->submit_action = 'submitAdd' . $this->className;
@@ -222,13 +219,11 @@ class AdminRbthemedreamLinkController extends ModuleAdminController
 
         $data = array();
 
-    	if (empty($obj->data)) {
-    		$data = $obj->data;
-    	} else {
-    		$data = Tools::jsonDecode($obj->data, true);
-    	}
-
-
+        if (empty($obj->data)) {
+            $data = $obj->data;
+        } else {
+            $data = Tools::jsonDecode($obj->data, true);
+        }
 
         $helper->fields_value = (array) $obj;
 
@@ -277,8 +272,8 @@ class AdminRbthemedreamLinkController extends ModuleAdminController
 
     public function ajaxProcessUpdatePositions()
     {
-    	$way = (int) (Tools::getValue('way'));
+        $way = (int)(Tools::getValue('way'));
 
-    	die();
+        die();
     }
 }

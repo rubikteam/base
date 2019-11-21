@@ -38,11 +38,6 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
         $this->name = 'AdminRbthemedreamLive';
     }
 
-    public function renderView()
-    {
-
-    }
-
     public function initContent()
     {
         $this->setMedia();
@@ -132,7 +127,8 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
                 $id_rbthemedream_home = Tools::getValue('id_rbthemedream_home');
                 $home = new RbthemedreamHome($id_rbthemedream_home, $this->id_lang);
                 $data = Tools::jsonDecode($home->data, true);
-            break;
+
+                break;
         }
 
         $colors = new SchemeColor();
@@ -297,9 +293,9 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
                 'introduction' => array(
                     'active' => true,
                     'title' => '<div id="rb-introduction-title">' .
-                    $this->l( 'Two Minute Tour') .
+                    $this->l('Two Minute Tour') .
                     '</div><div id="rb-introduction-subtitle">' .
-                    $this->l( 'Watch this quick tour that gives you a basic understanding of how to use module') .
+                    $this->l('Watch this quick tour that gives you a basic understanding of how to use module') .
                     '</div>',
                     'content' => '<div class="rb-video-wrapper"><iframe src="" frameborder="0" allowfullscreen></iframe></div>',
                     'delay' => 2500,
@@ -507,7 +503,6 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
     public function ajaxProcessSaveLive()
     {
         header('Content-Type: application/json');
-
         $pageId = (int) Tools::getValue('page_id');
         $pageType = Tools::getValue('page_type');
         $data =  $this->getJsonValue('data');
@@ -518,48 +513,16 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
                 $home = new RbthemedreamHome($pageId, $idLang);
                 $home->data = $data;
                 $home->update();
-                // $this->module->clearHomeCache();
+
                 break;
             case 'cms':
-                if ($data == '[]'){
+                if ($data == '[]') {
                     $data = '';
                 }
                 $cms = new CMS($pageId);
                 $cms->content[$idLang] = $data;
                 $cms->update();
-                break;
-            case 'blog':
-                $blogPost = new SimpleBlogPost($pageId);
-                $blogPost->content[$idLang] = $data;
-                $blogPost->update();
-                break;
-            case 'category':
-                $id = IqitElementorCategory::getIdByCategory($pageId);
-                if ($id){
-                    $category = new IqitElementorCategory($id, $idLang);
-                    $category->data = $data;
-                    $category->update();
-                } else {
-                    $category = new IqitElementorCategory(null, $idLang);
-                    $category->data = $data;
-                    $category->id_category = (int) $pageId;
-                    $category->add();
-                }
-                $this->module->clearCategoryCache($pageId);
-                break;
-            case 'product':
-                $id = IqitElementorProduct::getIdByProduct($pageId);
-                if ($id){
-                    $product = new IqitElementorProduct($id, $idLang);
-                    $product->data = $data;
-                    $product->update();
-                } else {
-                    $product = new IqitElementorProduct(null, $idLang);
-                    $product->data = $data;
-                    $product->id_product = (int) $pageId;
-                    $product->add();
-                }
-                $this->module->clearProductCache($pageId);
+
                 break;
         }
 
@@ -638,8 +601,8 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
             $value = '';
 
             if (Tools::getIsset($key)) {
-               $value = Tools::getValue($key);
-            }  else {
+                $value = Tools::getValue($key);
+            } else {
                 $value = $default_value;
             }
         }

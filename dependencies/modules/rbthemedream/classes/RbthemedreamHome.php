@@ -26,7 +26,7 @@
 
 class RbthemedreamHome extends ObjectModel
 {
-	public $id_rbthemedream_home;
+    public $id_rbthemedream_home;
     public $name;
     public $data;
     public $active;
@@ -37,12 +37,12 @@ class RbthemedreamHome extends ObjectModel
         'multilang' => true,
         'multilang_shop' => true,
         'fields' => array(
-        	'name' =>     array(
-        		'type' => self::TYPE_STRING,
-        		'lang' => true,
-        		'validate' => 'isCleanHtml',
-        		'size' => 255
-        	),
+            'name' =>     array(
+                'type' => self::TYPE_STRING,
+                'lang' => true,
+                'validate' => 'isCleanHtml',
+                'size' => 255
+            ),
             'data' =>     array('type' => self::TYPE_HTML, 'lang' => true, 'validate' => 'isJson'),
             'active' => array('type' => self::TYPE_BOOL, 'shop' => true, 'validate' => 'isBool'),
         ),

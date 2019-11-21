@@ -27,7 +27,7 @@
 </div>
 
 <div class="rb-template-library-blank-excerpt">
-	{l s='Import .json Design File From Your PC'}
+	{l s='Import .json Design File From Your PC' mod='rbthemedream'}
 </div>
 
 <form id="rb-template-library-load-template-form">

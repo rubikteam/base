@@ -165,7 +165,7 @@ class Rbthemedream extends Module
         $res &= $this->registerHook('moduleRoutes');
         $res &= $this->registerHook('actionAdminControllerSetMedia');
 
-        return $res;  
+        return $res;
     }
 
     public function uninstall()
@@ -278,7 +278,7 @@ class Rbthemedream extends Module
                     );
                 }
             }
-        }  else if (((bool)Tools::isSubmit('submitUpdateModule')) == 1) {
+        } else if (((bool)Tools::isSubmit('submitUpdateModule')) == 1) {
             $this->rbRegisterHook();
 
             $rbthemeblog = Module::getInstanceByName('rbthemeblog');
@@ -664,7 +664,6 @@ class Rbthemedream extends Module
             } else {
                 Configuration::updateValue($key, Tools::getValue($key));
             }
-
         }
     }
 
@@ -1508,7 +1507,8 @@ class Rbthemedream extends Module
                 'isEditMode' => '',
                 'stretchedSectionContainer' =>'',
                 'is_rtl' => '',
-        )));
+            ))
+        );
 
         $obj_home = new RbthemedreamHome();
         $layout = 0;
@@ -1554,7 +1554,7 @@ class Rbthemedream extends Module
             $cacheId = 'rbthemedream|'.$hookName;
         }
 
-        if (!$this->isCached('module:' . $this->name . '/views/templates/hook/' .$templateFile, $this->getCacheId($cacheId))){
+        if (!$this->isCached('module:' . $this->name . '/views/templates/hook/' .$templateFile, $this->getCacheId($cacheId))) {
             $this->smarty->assign($this->getWidgetVariables($hookName, array()));
         }
 
@@ -1618,7 +1618,7 @@ class Rbthemedream extends Module
         $rb_links = array();
 
         foreach ($links as $link) {
-           $rb_links = $obj->present($link);
+            $rb_links = $obj->present($link);
         }
 
         $var = array(

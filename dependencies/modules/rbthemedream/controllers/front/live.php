@@ -29,9 +29,9 @@ require_once(_PS_MODULE_DIR_.'rbthemedream/lib/rb-front.php');
 
 class RbthemedreamliveModuleFrontController extends ModuleFrontController
 {
-	public function __construct()
+    public function __construct()
     {
-    	$this->context = Context::getContext();
+        $this->context = Context::getContext();
         $this->id_lang = $this->context->language->id;
         $this->id_shop = $this->context->shop->id;
 
@@ -45,25 +45,26 @@ class RbthemedreamliveModuleFrontController extends ModuleFrontController
 
     public function initContent()
     {
-    	$content = ''; 
+        $content = '';
 
-    	if (Tools::getIsset('controller') &&
-    		Tools::getValue('controller') == 'live' &&
-    		Tools::getValue('id') != ''
-    	) {
-    		$id_rbthemedream_home = Tools::getValue('id');
-    		$home = new RbthemedreamHome($id_rbthemedream_home, $this->id_lang);
+        if (Tools::getIsset('controller') &&
+            Tools::getValue('controller') == 'live' &&
+            Tools::getValue('id') != ''
+        ) {
+            $id_rbthemedream_home = Tools::getValue('id');
+            $home = new RbthemedreamHome($id_rbthemedream_home, $this->id_lang);
+
             if ($home->data != '') {
                 $front = new RbFront(Tools::jsonDecode($home->data, true));
                 $content = $front->applyBuilderInContent();
             }
-    	}
+        }
 
-    	$this->context->smarty->assign(array(
-    		'content' => $content,
+        $this->context->smarty->assign(array(
+            'content' => $content,
         ));
 
-    	$this->setTemplate('module:rbthemedream/views/templates/front/view.tpl');
-    	parent::initContent();
+        $this->setTemplate('module:rbthemedream/views/templates/front/view.tpl');
+        parent::initContent();
     }
 }

@@ -31,7 +31,7 @@
 			class="rb-button">{l s='Add New Section' mod='rbthemedream'}</button>
 			<button id="rb-add-template-button"
 			class="rb-button">{l s='Add Template' mod='rbthemedream'}</button>
-			<div id="rb-add-section-drag-title">{l s='Or drag widget here' mod='rb'}</div>
+			<div id="rb-add-section-drag-title">{l s='Or drag widget here' mod='rbthemedream'}</div>
 		</div>
 		<div id="rb-select-preset">
 			<div id="rb-select-preset-close">

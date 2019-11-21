@@ -26,7 +26,7 @@
 
 class RbthemedreamLink extends ObjectModel
 {
-	public $id_rbthemedream_link;
+    public $id_rbthemedream_link;
     public $name;
     public $id_hook;
     public $position;
@@ -95,8 +95,8 @@ class RbthemedreamLink extends ObjectModel
             if (preg_match('/admin/i', $hook['name'])
                 || preg_match('/backoffice/i', $hook['name'])) {
                     unset($hooks[$key]);
-            } else{
-                if (!in_array($hook['name'], $usableHooks)){
+            } else {
+                if (!in_array($hook['name'], $usableHooks)) {
                     unset($hooks[$key]);
                 }
             }
@@ -158,7 +158,7 @@ class RbthemedreamLink extends ObjectModel
         $order_link = array();
 
         foreach ($links as $link) {
-            if (!isset($orderedlinks[$link['id_hook']])) {
+            if (!isset($order_link[$link['id_hook']])) {
                 $id_hook = ($link['id_hook']) ?: 'not_hooked';
 
                 $order_link[$id_hook] = array(
