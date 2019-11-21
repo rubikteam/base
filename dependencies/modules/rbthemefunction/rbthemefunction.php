@@ -367,14 +367,14 @@ class Rbthemefunction extends Module
                     'label' => $this->l('App ID'),
                     'name' => 'RBTHEMEFUNCTION_APP_ID',
                     'is_bool' => true,
-                    'desc' => $this->l('Create Facebook App: ') . 
+                    'desc' => $this->l('Create Facebook App: ') .
                     '<a href="https://developers.facebook.com/apps/">'.'https://developers.facebook.com/apps/'.'</a>',
                 ),
                 array(
                     'type' => 'text',
                     'label' => $this->l('Page ID'),
                     'name' => 'RBTHEMEFUNCTION_PAGE_ID',
-                    'desc' => $this->l('Necessary for Facebook Chat. Find in page: ') . 
+                    'desc' => $this->l('Necessary for Facebook Chat. Find in page: ') .
                     '<a href="https://www.facebook.com/help/1503421039731588">'.'https://www.facebook.com/help/1503421039731588'.'</a>',
                 ),
                 array(
@@ -488,8 +488,9 @@ class Rbthemefunction extends Module
             )
         );
 
-        if (file_exists(dirname(__FILE__).'/views/img/imgbg_'.$this->context->shop->id.'.jpg'))
+        if (file_exists(dirname(__FILE__).'/views/img/imgbg_'.$this->context->shop->id.'.jpg')) {
             $url_img = $this->_path."/views/img/imgbg_".$this->context->shop->id.".jpg";
+        }
 
         $fields_form[2]['form'] = array(
             'input' => array(
@@ -618,7 +619,7 @@ class Rbthemefunction extends Module
                                 'name' => $this->l('Zoom Constrain Round'),
                             ),
                         ),
-                        'id' => 'id_option', 
+                        'id' => 'id_option',
                         'name' => 'name'
                     ),
                 ),
@@ -711,7 +712,7 @@ class Rbthemefunction extends Module
         $config['comments_width'] = Configuration::get('RBTHEMEFUNCTION_COMMENTS_WIDTH');
         $config['comments_number'] = Configuration::get('RBTHEMEFUNCTION_COMMENTS_NUMBER');
         $config['comments_admins'] = Configuration::get('RBTHEMEFUNCTION_COMMENTS_ADMIN');
-        $config['product_page_url'] = 'https://'.trim(strtok($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?'));;
+        $config['product_page_url'] = 'https://'.trim(strtok($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?'));
         $config['login_destination'] = $this->context->link->getPageLink('my-account', true);
         $config['phrases']['login'] = $this->l('Log in');
 
@@ -758,20 +759,23 @@ class Rbthemefunction extends Module
         ) {
             $img = dirname(__FILE__).'/views/img/imgbg_'.$this->context->shop->id.'.jpg';
 
-            if (file_exists($img))
+            if (file_exists($img)) {
                 unlink($img);
+            }
 
-            if ($error = ImageManager::validateUpload($_FILES['image']))
+            if ($error = ImageManager::validateUpload($_FILES['image'])) {
                 Tools::displayError($error);
-            elseif (!($tmp_name = tempnam(_PS_TMP_IMG_DIR_, 'PS')) ||
+            } else if (!($tmp_name = tempnam(_PS_TMP_IMG_DIR_, 'PS')) ||
                 !move_uploaded_file($_FILES['image']['tmp_name'], $tmp_name)
-            )
+            ) {
                 return false;
-            elseif (!ImageManager::resize($tmp_name, $img , $width, $height))
+            } else if (!ImageManager::resize($tmp_name, $img, $width, $height)) {
                 Tools::displayError(($this->l('An error occurred while attempting to upload the image')));
+            }
 
-            if (isset($tmp_name))
+            if (isset($tmp_name)) {
                 unlink($tmp_name);
+            }
         }
     }
 
@@ -963,7 +967,7 @@ class Rbthemefunction extends Module
             'link' => $this->context->link->getManufacturerLink($obj_brand),
         ));
 
-        return $this->display(__FILE__, 'views/templates/hook/rb-brand.tpl'); 
+        return $this->display(__FILE__, 'views/templates/hook/rb-brand.tpl');
     }
 
     public function hookdisplayRbWishListProduct($params)
@@ -1020,7 +1024,7 @@ class Rbthemefunction extends Module
     {
         $this->smarty->assign(array(
             'rb_login' => $this->context->customer->id ? 1 : 0,
-            'logout_url' => $this->context->customer->id ? 
+            'logout_url' => $this->context->customer->id ?
             $this->context->link->getPageLink('index', true, null, 'mylogout') : '#',
             'customerName' => $this->context->customer->id ?
             $this->context->customer->firstname . ' ' . $this->context->customer->lastname : '',
@@ -1109,6 +1113,8 @@ class Rbthemefunction extends Module
             @$config['comments_tab'] == 1 &&
             @$config['comments_state'] == 1
         ) {
+            $tabs = array();
+
             $title = $this->l('Facebook Comments');
             $content = '<div id="fcbc"><fb:comments href="'.$config['product_page_url'].
             '" colorscheme="light" width="'.$config["comments_width"].'"></fb:comments></div>';

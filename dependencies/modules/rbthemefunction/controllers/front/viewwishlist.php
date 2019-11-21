@@ -34,9 +34,9 @@ require_once _PS_MODULE_DIR_ . 'rbthemefunction/classes/RbthemefunctionProduct.p
 
 class RbthemefunctionviewwishlistModuleFrontController extends ModuleFrontController
 {
-	public function __construct()
+    public function __construct()
     {
-    	$this->context = Context::getContext();
+        $this->context = Context::getContext();
         $this->id_lang = $this->context->language->id;
         $this->id_shop = $this->context->shop->id;
         $this->obj_wishlist = new RbthemefunctionWishList();
@@ -47,17 +47,17 @@ class RbthemefunctionviewwishlistModuleFrontController extends ModuleFrontContro
     }
 
     public function initContent()
-	{
-		parent::initContent();
+    {
+        parent::initContent();
 
-		if (Configuration::get('RBTHEMEFUNCTION_WISHLIST') != 1) {
+        if (Configuration::get('RBTHEMEFUNCTION_WISHLIST') != 1) {
             return Tools::redirect('index.php?controller=404');
         }
 
         $token = Tools::getValue('token');
 
         if ($token) {
-        	$wishlist = $this->obj_wishlist->getByToken($token);
+            $wishlist = $this->obj_wishlist->getByToken($token);
             $wishlists = $this->obj_wishlist->getByIdCustomer((int)$wishlist['id_customer']);
 
             if (count($wishlists) > 1) {
@@ -71,18 +71,21 @@ class RbthemefunctionviewwishlistModuleFrontController extends ModuleFrontContro
             }
 
             $products = array();
+
             $wishlist_product = $this->obj_wishlist->getSimpleProductByIdWishlist(
-            	(int)$wishlist['id_rbthemefunction_wishlist']
+                (int)$wishlist['id_rbthemefunction_wishlist']
             );
 
             if (count($wishlist_product) > 0) {
                 foreach ($wishlist_product as $wishlist_product_item) {
                     $list_product_tmp = array();
                     $list_product_tmp['wishlist_info'] = $wishlist_product_item;
+
                     $list_product_tmp['product_info'] =  $this->obj_product->getTemplateVarProduct2(
-                    	$wishlist_product_item['id_product'],
-                    	$wishlist_product_item['id_product_attribute']
+                        $wishlist_product_item['id_product'],
+                        $wishlist_product_item['id_product_attribute']
                     );
+
                     $list_product_tmp['product_info']['wishlist_quantity'] = $wishlist_product_item['quantity'];
                     $products[] = $list_product_tmp;
                 }
@@ -99,6 +102,6 @@ class RbthemefunctionviewwishlistModuleFrontController extends ModuleFrontContro
             );
         }
 
-		$this->setTemplate('module:rbthemefunction/views/templates/front/rb-wishlist-view.tpl');
-	}
+        $this->setTemplate('module:rbthemefunction/views/templates/front/rb-wishlist-view.tpl');
+    }
 }

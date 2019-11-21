@@ -33,17 +33,17 @@ use PrestaShop\PrestaShop\Core\Addon\Module\ModuleManagerBuilder;
 
 class RbthemefunctionProduct extends ProductControllerCore
 {
-	public $php_self = '';
+    public $php_self = '';
     public $quantity_discounts;
     
-	public function getTemplateVarProduct2($id_product, $id_product_attribute)
+    public function getTemplateVarProduct2($id_product, $id_product_attribute)
     {
         if ($id_product) {
             $this->product = new Product(
-            	$id_product,
-            	true,
-            	$this->context->language->id,
-            	$this->context->shop->id
+                $id_product,
+                true,
+                $this->context->language->id,
+                $this->context->shop->id
             );
         }
 

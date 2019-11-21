@@ -33,9 +33,9 @@ require_once _PS_MODULE_DIR_ . 'rbthemefunction/classes/RbthemefunctionReview.ph
 
 class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
 {
-	public function __construct()
+    public function __construct()
     {
-    	$this->context = Context::getContext();
+        $this->context = Context::getContext();
         $this->id_lang = $this->context->language->id;
         $this->id_shop = $this->context->shop->id;
 
@@ -43,28 +43,29 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
     }
 
     public function initContent()
-	{
-		parent::initContent();
-		$action = Tools::getValue('action');
+    {
+        parent::initContent();
+        $action = Tools::getValue('action');
 
-		if (!Tools::isSubmit('ajax'))
-			$this->rbDisplayList();
-		elseif (!empty($action) && method_exists($this, 'ajaxProcess'.Tools::toCamelCase($action)))
-			$this->{'ajaxProcess'.Tools::toCamelCase($action)}();
-		else
-			die(Tools::jsonEncode(array(
-				'error' => $this->trans(
-					'Method doesn\'t exist',
-					array(),
-					'Shop.Theme.Catalog'
-				)
-			)));
-	}
+        if (!Tools::isSubmit('ajax')) {
+            $this->rbDisplayList();
+        } else if (!empty($action) && method_exists($this, 'ajaxProcess'.Tools::toCamelCase($action))) {
+            $this->{'ajaxProcess'.Tools::toCamelCase($action)}();
+        } else {
+            die(Tools::jsonEncode(array(
+                'error' => $this->trans(
+                    'Method doesn\'t exist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
+        }
+    }
 
-	public function rbDisplayList()
-	{
-		$errors = array();
-		$products = array();
+    public function rbDisplayList()
+    {
+        $errors = array();
+        $products = array();
         $arr = array();
 
         if (isset($this->context->cookie->rb_compare) && $this->context->cookie->rb_compare) {
@@ -74,7 +75,7 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         $arr = array_unique($arr);
 
         if (count($arr)) {
-        	$assembler = new ProductAssembler($this->context);
+            $assembler = new ProductAssembler($this->context);
             $presenterFactory = new ProductPresenterFactory($this->context);
             $presentationSettings = $presenterFactory->getPresentationSettings();
 
@@ -91,7 +92,7 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
             $listProducts = array();
             $listFeatures = array();
 
-            foreach($arr as $k => $id) {
+            foreach ($arr as $k => $id) {
                 $obj_p = new Product((int)$id);
 
                 if (!Validate::isLoadedObject($obj_p)) {
@@ -122,10 +123,10 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
             ));
         }
 
-		$this->setTemplate('module:rbthemefunction/views/templates/front/rb-list.tpl');
-	}
+        $this->setTemplate('module:rbthemefunction/views/templates/front/rb-list.tpl');
+    }
 
-	public static function getFeaturesForCompare($list_ids_product, $id_lang)
+    public static function getFeaturesForCompare($list_ids_product, $id_lang)
     {
         if (!Feature::isFeatureActive()) {
             return false;
@@ -164,8 +165,8 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if (!$id_product) {
             die(Tools::jsonEncode(array(
                 'success' => 0,
-                'message' => $this->trans('Failed, product ID is empty', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('Failed, product ID is empty', array(), 'Shop.Theme.Catalog')
+            )));
         }
 
         $arr = array();
@@ -178,19 +179,27 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         $arr = array_unique($arr);
         $this->context->cookie->__set('rb_compare', trim(implode(',', $arr), ','));
 
-        die(Tools::jsonEncode(array('success' => 1,
-            'action' => 1, 
-            'message' => $this->trans('Added to %1%compare list%2%', array('%1%'=>'<a href="'.$this->context->link->getModuleLink('rbthemefunction', 'compare').'" class="rbcompare-link-in-popup">','%2%'=>'</a>'), 'Shop.Theme.Catalog'),
+        die(Tools::jsonEncode(array(
+            'success' => 1,
+            'action' => 1,
+            'message' => $this->trans(
+                'Added to %1%compare list%2%',
+                array(
+                    '%1%'=>'<a href="'.$this->context->link->getModuleLink('rbthemefunction', 'compare')
+                    .'" class="rbcompare-link-in-popup">',
+                    '%2%'=>'</a>'
+                ),
+                'Shop.Theme.Catalog'
+            ),
             'total' => count($arr),
-            ))
-        );
+        )));
     }
 
     public function ajaxProcessDeleteCompareProduct()
     {
         $id_product = (int)Tools::getValue('id_product');
 
-        if(!$id_product) {
+        if (!$id_product) {
             die(Tools::jsonEncode(array(
                 'success' => 0,
                 'message' => $this->trans('Failed, product ID is empty', array(), 'Shop.Theme.Catalog')
@@ -208,7 +217,14 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         die(Tools::jsonEncode(array(
             'success' => 1,
             'action' => 0,
-            'message' => $this->trans('Removed from %1%compare list%2%', array('%1%'=>'<a href="'.$this->context->link->getModuleLink('rbthemefunction', 'compare').'" class="rb-link-in-popup">','%2%'=>'</a>'), 'Shop.Theme.Catalog'),
+            'message' => $this->trans(
+                'Removed from %1%compare list%2%',
+                array('%1%'=>'<a href="'.$this->context->link->getModuleLink('rbthemefunction', 'compare').
+                    '" class="rb-link-in-popup">',
+                    '%2%'=>'</a>'
+                ),
+                'Shop.Theme.Catalog'
+            ),
             'total' => count($arr),
         )));
     }
@@ -220,8 +236,8 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if (!Validate::isInt($id_product)) {
             die(Tools::jsonEncode(array(
                 'success' => 0,
-                'message' => $this->trans('Failed, product ID is empty', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('Failed, product ID is empty', array(), 'Shop.Theme.Catalog')
+            )));
         }
 
         $title = Tools::getValue('title');
@@ -229,8 +245,8 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if (!$title || !Validate::isGenericName($title)) {
             die(Tools::jsonEncode(array(
                 'success' => 0,
-                'message' => $this->trans('Title Is Incorrect', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('Title Is Incorrect', array(), 'Shop.Theme.Catalog')
+            )));
         }
 
         $cmt = Tools::getValue('cmt');
@@ -238,8 +254,8 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if (!$cmt || !Validate::isMessage($cmt)) {
             die(Tools::jsonEncode(array(
                 'success' => 0,
-                'message' => $this->trans('Comment Is Incorrect', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('Comment Is Incorrect', array(), 'Shop.Theme.Catalog')
+            )));
         }
 
         $rate = Tools::getValue('rate');
@@ -247,8 +263,8 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if ($rate == '') {
             die(Tools::jsonEncode(array(
                 'success' => 0,
-                'message' => $this->trans('You Must Give A Rating', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('You Must Give A Rating', array(), 'Shop.Theme.Catalog')
+            )));
         }
 
         $obj_product = new Product($id_product);
@@ -256,8 +272,8 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if (!$obj_product->id) {
             die(Tools::jsonEncode(array(
                 'success' => 0,
-                'message' => $this->trans('Product Not Found', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('Product Not Found', array(), 'Shop.Theme.Catalog')
+            )));
         }
 
         $obj_review = new RbthemefunctionReview();
@@ -274,13 +290,13 @@ class RbthemefunctioncompareModuleFrontController extends ModuleFrontController
         if ($obj_review->add()) {
             die(Tools::jsonEncode(array(
                 'success' => 1,
-                'message' => $this->trans('You Added Review Success', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('You Added Review Success', array(), 'Shop.Theme.Catalog')
+            )));
         } else {
             die(Tools::jsonEncode(array(
                 'success' => 1,
-                'message' => $this->trans('You Can Not Add Review', array(), 'Shop.Theme.Catalog'))
-            ));
+                'message' => $this->trans('You Can Not Add Review', array(), 'Shop.Theme.Catalog')
+            )));
         }
     }
 }

@@ -46,7 +46,7 @@ class RbthemefunctionReview extends ObjectModel
         'primary' => 'id_review',
         'multilang_shop' => false,
         'fields' => array(
-        	'id_product' =>     array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
+            'id_product' =>     array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
             'id_customer' =>    array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
             'id_guest' =>       array('type' => self::TYPE_INT),
             'customer_name' =>  array('type' => self::TYPE_STRING),
@@ -127,10 +127,11 @@ class RbthemefunctionReview extends ObjectModel
         $success = (Db::getInstance()->execute(
             'UPDATE `'._DB_PREFIX_.'rbthemefunction_review` SET
             `validate` = '.(int)$validate.'
-            WHERE `id_review` = '.(int)$this->id)
-        );
+            WHERE `id_review` = '.(int)$this->id
+        ));
 
         Hook::exec('actionObjectProductReviewValidateAfter', array('object' => $this));
+        
         return $success;
     }
 }

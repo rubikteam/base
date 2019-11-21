@@ -90,7 +90,7 @@
 							</div>
 
 							<a href="{$urls.pages.password}" rel="nofollow">
-								{l s='Forgot your password?' mod='rb'}
+								{l s='Forgot your password?' mod='rbthemefunction'}
 							</a>
 						</form>
 
@@ -138,7 +138,7 @@
 								<div class="relative form-group rb-check-box">
 									<input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1">
 									<label for="optin">
-										{l s='Sign up for our newsletter'}
+										{l s='Sign up for our newsletter' mod='rbthemefunction'}
 									</label>
 								</div>
 								<button class="btn btn-primary form-control-submit register-button" type="submit" data-back="{$urls.pages.identity}">

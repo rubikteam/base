@@ -70,7 +70,7 @@
 											<strong>{$review.title}</strong>
 										</p>
 
-										<p itemprop="reviewBody">{$review.content|escape:'html':'UTF-8'|nl2br nofilter}</p>
+										<p itemprop="reviewBody">{$review.content nofilter}</p>
 									</div>
 								</div>
 							</div>

@@ -29,9 +29,9 @@ require_once _PS_MODULE_DIR_ . 'rbthemefunction/classes/RbthemefunctionFacebook.
 
 class RbthemefunctionajaxModuleFrontController extends ModuleFrontController
 {
-	public function __construct()
+    public function __construct()
     {
-    	$this->context = Context::getContext();
+        $this->context = Context::getContext();
         $this->id_lang = $this->context->language->id;
         $this->id_shop = $this->context->shop->id;
         $this->obj_emailsubscription = new RbEmailSubscription();
@@ -40,23 +40,24 @@ class RbthemefunctionajaxModuleFrontController extends ModuleFrontController
     }
 
     public function initContent()
-	{
-		parent::initContent();
-		$action = Tools::getValue('action1');
+    {
+        parent::initContent();
+        $action = Tools::getValue('action1');
 
-		if (!Tools::isSubmit('ajax'))
-			return;
-		elseif (!empty($action) && method_exists($this, 'ajaxProcess'.Tools::toCamelCase($action)))
-			$this->{'ajaxProcess'.Tools::toCamelCase($action)}();
-		else
-			die(Tools::jsonEncode(array(
-				'error' => $this->trans(
-					'Method doesn\'t exist',
-					array(),
-					'Shop.Theme.Catalog'
-				)
-			)));
-	}
+        if (!Tools::isSubmit('ajax')) {
+            return;
+        } else if (!empty($action) && method_exists($this, 'ajaxProcess'.Tools::toCamelCase($action))) {
+            $this->{'ajaxProcess'.Tools::toCamelCase($action)}();
+        } else {
+            die(Tools::jsonEncode(array(
+                'error' => $this->trans(
+                    'Method doesn\'t exist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
+        }
+    }
 
     public function ajaxProcessFindProductByName()
     {
@@ -83,12 +84,6 @@ class RbthemefunctionajaxModuleFrontController extends ModuleFrontController
                     $image['id_image'],
                     ImageType::getFormattedName('home')
                 );
-
-                // if (Tools::usingSecureMode() == false) {
-                //     $imagePath = 'http://' . $imagePath;
-                // } else {
-                //     $imagePath = 'https://' . $imagePath;
-                // }
 
                 $products[$key_p]['image'] = $imagePath;
                 $products[$key_p]['image'] = $imagePath;
@@ -156,7 +151,7 @@ class RbthemefunctionajaxModuleFrontController extends ModuleFrontController
             CartRule::autoRemoveFromCart($this->context);
             CartRule::autoAddToCart($this->context);
         } else {
-            $db_user_id = strval(Tools::getValue('id'));
+            $db_user_id = (int)Tools::getValue('id');
 
             $result = Db::getInstance()->ExecuteS(
                 'SELECT *
@@ -183,12 +178,13 @@ class RbthemefunctionajaxModuleFrontController extends ModuleFrontController
                 $password = Tools::passwdGen();
                 $customer->passwd = md5(pSQL(_COOKIE_KEY_.$password));
 
-                if (Tools::getValue('gender') == 'male')
+                if (Tools::getValue('gender') == 'male') {
                     $id_gender = 1;
-                elseif (Tools::getValue('gender') == 'female')
+                } else if (Tools::getValue('gender') == 'female') {
                     $id_gender = 2;
-                else
+                } else {
                     $id_gender = null;
+                }
 
                 $customer->id_gender = $id_gender;
                 $customer->is_guest = 0;

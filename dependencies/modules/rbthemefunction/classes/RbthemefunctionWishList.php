@@ -122,15 +122,16 @@ class RbthemefunctionWishList extends ObjectModel
                     `quantity` = '.(int)($quantity + $result['quantity']).'
                     WHERE `id_rbthemefunction_wishlist` = '.(int)($id_wishlist).'
                     AND `id_product` = '.(int)($id_product).'
-                    AND `id_product_attribute` = '.(int)($id_product_attribute)));
+                    AND `id_product_attribute` = '.(int)($id_product_attribute)
+                ));
             }
         } else {
             return (Db::getInstance()->execute(
                 'INSERT INTO `'._DB_PREFIX_.'rbthemefunction_wishlist_product`
                 (`id_rbthemefunction_wishlist`, `id_product`, `id_product_attribute`, `quantity`, `priority`)
                 VALUES('.(int)($id_wishlist).', '.(int)($id_product).','.(int)($id_product_attribute).',
-                '.(int)($quantity).', 1)')
-            );
+                '.(int)($quantity).', 1)'
+            ));
         }
     }
 
@@ -326,8 +327,8 @@ class RbthemefunctionWishList extends ObjectModel
             c.`firstname`, c.`lastname`
             FROM `'._DB_PREFIX_.'rbthemefunction_wishlist` w
             INNER JOIN `'._DB_PREFIX_.'customer` c ON c.`id_customer` = w.`id_customer`
-            WHERE `token` = \''.pSQL($token).'\'')
-        );
+            WHERE `token` = \''.pSQL($token).'\''
+        ));
     }
 
     public function incCounter($id_wishlist)

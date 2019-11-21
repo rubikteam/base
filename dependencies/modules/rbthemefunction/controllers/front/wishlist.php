@@ -34,9 +34,9 @@ require_once _PS_MODULE_DIR_ . 'rbthemefunction/classes/RbthemefunctionProduct.p
 
 class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
 {
-	public function __construct()
+    public function __construct()
     {
-    	$this->context = Context::getContext();
+        $this->context = Context::getContext();
         $this->id_lang = $this->context->language->id;
         $this->id_shop = $this->context->shop->id;
         $this->obj_wishlist = new RbthemefunctionWishList();
@@ -46,34 +46,34 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
         parent::__construct();
     }
 
-   	public function initContent()
-	{
-		parent::initContent();
-		$action = Tools::getValue('action');
+    public function initContent()
+    {
+        parent::initContent();
+        $action = Tools::getValue('action');
 
-		if (Tools::isSubmit('rb_add_wishlist')) {
-			$this->createWishList();
-		}
+        if (Tools::isSubmit('rb_add_wishlist')) {
+            $this->createWishList();
+        }
 
-		if (!Tools::isSubmit('ajax')) {
-			$this->rbDisplayList();
-		} else if (!empty($action) && method_exists($this, 'ajaxProcess'.Tools::toCamelCase($action))) {
-			$this->{'ajaxProcess'.Tools::toCamelCase($action)}();
-		} else {
-			die(Tools::jsonEncode(array(
-				'error' => $this->trans(
-					'Method doesn\'t exist',
-					array(),
-					'Shop.Theme.Catalog'
-				)
-			)));
-		}	
-	}
+        if (!Tools::isSubmit('ajax')) {
+            $this->rbDisplayList();
+        } else if (!empty($action) && method_exists($this, 'ajaxProcess'.Tools::toCamelCase($action))) {
+            $this->{'ajaxProcess'.Tools::toCamelCase($action)}();
+        } else {
+            die(Tools::jsonEncode(array(
+                'error' => $this->trans(
+                    'Method doesn\'t exist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
+        }
+    }
 
-	public function createWishList()
-	{
-		$obj_wishlist = new RbthemefunctionWishList();
-       	$obj_wishlist->id_shop = $this->context->shop->id;
+    public function createWishList()
+    {
+        $obj_wishlist = new RbthemefunctionWishList();
+        $obj_wishlist->id_shop = $this->context->shop->id;
         $obj_wishlist->id_shop_group = $this->context->shop->id_shop_group;
         $obj_wishlist->default = 0;
         $obj_wishlist->name = Tools::getValue('rb_wishlist_name');
@@ -82,7 +82,7 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
         srand($s * $us);
 
         $obj_wishlist->token = Tools::strtoupper(Tools::substr(
-           	sha1(uniqid(rand(), true)._COOKIE_KEY_.$this->context->customer->id),
+            sha1(uniqid(rand(), true)._COOKIE_KEY_.$this->context->customer->id),
             0,
             16
         ));
@@ -90,11 +90,11 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
         $obj_wishlist->add();
 
         Tools::redirect($this->context->link->getModuleLink('rbthemefunction', 'wishlist'));
-	}
+    }
 
-	public function rbDisplayList()
-	{
-	    if (Configuration::get('RBTHEMEFUNCTION_WISHLIST') != 1) {
+    public function rbDisplayList()
+    {
+        if (Configuration::get('RBTHEMEFUNCTION_WISHLIST') != 1) {
             return Tools::redirect('index.php?controller=404');
         }
 
@@ -104,8 +104,8 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
             if (count($wishlists)>0) {
                 foreach ($wishlists as $key => $wishlist) {
                     $wishlist_product = $this->obj_wishlist->getInfosByIdCustomer(
-                    	$this->context->customer->id,
-                    	$wishlist['id_rbthemefunction_wishlist']
+                        $this->context->customer->id,
+                        $wishlist['id_rbthemefunction_wishlist']
                     );
 
                     $wishlists[$key]['number_product'] = $wishlist_product['nbProducts'];
@@ -120,18 +120,18 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
             Tools::redirect($this->context->link->getPageLink('authentication'));
         }
 
-		$this->setTemplate('module:rbthemefunction/views/templates/front/rb-list-wishlist.tpl');
-	}
+        $this->setTemplate('module:rbthemefunction/views/templates/front/rb-list-wishlist.tpl');
+    }
 
     public function ajaxProcessAddWishListProduct()
     {
         if (!$this->isTokenValid() || !Tools::getValue('action')) {
-           	die(Tools::jsonEncode(array(
+            die(Tools::jsonEncode(array(
                 'success' => 0,
                 'message' => $this->trans(
-                	'An error while processing. Please try again',
-                	array(),
-                	'Shop.Theme.Catalog'
+                    'An error while processing. Please try again',
+                    array(),
+                    'Shop.Theme.Catalog'
                 )
             )));
         };
@@ -143,70 +143,70 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
         $id_product_attribute = (int)Tools::getValue('id_product_attribute');
 
         if ($id_wishlist == '') {
-        	$obj_wishlist = new RbthemefunctionWishList();
-        	$obj_wishlist->id_shop = $this->context->shop->id;
+            $obj_wishlist = new RbthemefunctionWishList();
+            $obj_wishlist->id_shop = $this->context->shop->id;
             $obj_wishlist->id_shop_group = $this->context->shop->id_shop_group;
-           	$obj_wishlist->default = 1;
-           	$obj_wishlist->name = $this->l('My wishlist', 'mywishlist');
+            $obj_wishlist->default = 1;
+            $obj_wishlist->name = $this->l('My wishlist', 'mywishlist');
             $obj_wishlist->id_customer = (int)$this->context->customer->id;
             list($us, $s) = explode(' ', microtime());
             srand($s * $us);
 
             $obj_wishlist->token = Tools::strtoupper(Tools::substr(
-            	sha1(uniqid(rand(), true)._COOKIE_KEY_.$this->context->customer->id),
-            	0,
-            	16
+                sha1(uniqid(rand(), true)._COOKIE_KEY_.$this->context->customer->id),
+                0,
+                16
             ));
 
             $obj_wishlist->add();
 
             $obj_wishlist->addProduct(
-            	$obj_wishlist->id,
-            	$this->context->customer->id,
-            	$id_product,
-            	$id_product_attribute,
-            	$quantity
+                $obj_wishlist->id,
+                $this->context->customer->id,
+                $id_product,
+                $id_product_attribute,
+                $quantity
             );
         } else {
-        	$this->obj_wishlist->addProduct(
-            	$id_wishlist,
-            	$this->context->customer->id,
-            	$id_product,
-            	$id_product_attribute,
-            	$quantity
+            $this->obj_wishlist->addProduct(
+                $id_wishlist,
+                $this->context->customer->id,
+                $id_product,
+                $id_product_attribute,
+                $quantity
             );
         }
 
-        die(Tools::jsonEncode(array('success' => 1,
-            'action' => 1, 
+        die(Tools::jsonEncode(array(
+            'success' => 1,
+            'action' => 1,
             'message' => $this->trans(
-            	'Added to %1%wishlist list%2%',
-            	array(
-            		'%1%'=>'<a href="'.$this->context->link->getModuleLink('rbthemefunction', 'wishlist').
-            		'" class="rbwishlist-link-in-popup">',
-            		'%2%'=>'</a>'
-            	),
-            	'Shop.Theme.Catalog'
-        	),
+                'Added to %1%wishlist list%2%',
+                array(
+                    '%1%'=>'<a href="'.$this->context->link->getModuleLink('rbthemefunction', 'wishlist').
+                    '" class="rbwishlist-link-in-popup">',
+                    '%2%'=>'</a>'
+                ),
+                'Shop.Theme.Catalog'
+            ),
             'total' => $this->obj_wishlist->getToTalByCustomer($this->context->customer->id),
-            ))
-        );
+        )));
     }
 
     public function ajaxProcessviewWishListProduct()
     {
-    	$id_wishlist = (int)Tools::getValue('id_wishlist');
-    	$obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
+        $id_wishlist = (int)Tools::getValue('id_wishlist');
+        $obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
 
-    	if ($this->context->customer->id != $obj_wishlist->id_customer ||
-    		!Validate::isLoadedObject($obj_wishlist)
-    	) {
-    		die(Tools::jsonEncode(array(
+        if ($this->context->customer->id != $obj_wishlist->id_customer ||
+            !Validate::isLoadedObject($obj_wishlist)
+        ) {
+            die(Tools::jsonEncode(array(
                 'success' => 0,
                 'message' => $this->trans(
-                	'Cannot show the product(s) of this wishlist',
-                	array(),
-                	'Shop.Theme.Catalog'
+                    'Cannot show the product(s) of this wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
                 )
             )));
         }
@@ -216,40 +216,42 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
         $wishlist_products = $this->obj_wishlist->getSimpleProductByIdWishlist($id_wishlist);
 
         if (!empty($wishlist_products)) {
-        	foreach ($wishlist_products as $wishlist_product) {
+            foreach ($wishlist_products as $wishlist_product) {
                 $list_product_tmp = array();
                 $list_product_tmp['wishlist_info'] = $wishlist_product;
+
                 $list_product_tmp['product_info'] = $this->obj_product->getTemplateVarProduct2(
-                	$wishlist_product['id_product'],
-                	$wishlist_product['id_product_attribute']
+                    $wishlist_product['id_product'],
+                    $wishlist_product['id_product_attribute']
                 );
+
                 $products[] = $list_product_tmp;
             }
 
             $wishlists = $this->obj_wishlist->getByIdCustomer($this->context->customer->id);
 
             foreach ($wishlists as $key => $wishlists_item) {
-            	if ($wishlists_item['id_rbthemefunction_wishlist'] == $id_wishlist) {
-            		unset($wishlists[$key]);
-            	}
+                if ($wishlists_item['id_rbthemefunction_wishlist'] == $id_wishlist) {
+                    unset($wishlists[$key]);
+                }
             }
 
-           	$this->context->smarty->assign(array(
+            $this->context->smarty->assign(array(
                 'products' => $products,
                 'wishlists' => $wishlists,
-           	));
+            ));
 
-           	die(Tools::jsonEncode(array(
+            die(Tools::jsonEncode(array(
                 'success' => 1,
                 'message' => $this->module->fetch('module:rbthemefunction/views/templates/front/rb-wishlist-product.tpl')
             )));
         } else {
-        	die(Tools::jsonEncode(array(
+            die(Tools::jsonEncode(array(
                 'success' => 0,
                 'message' => $this->trans(
-                	'No product(s) of this wishlist',
-                	array(),
-                	'Shop.Theme.Catalog'
+                    'No product(s) of this wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
                 )
             )));
         }
@@ -257,18 +259,18 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
 
     public function ajaxProcesssendWishListEmail()
     {
-    	$id_wishlist = (int)Tools::getValue('id_wishlist');
-    	$obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
+        $id_wishlist = (int)Tools::getValue('id_wishlist');
+        $obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
 
         if ($this->context->customer->id != $obj_wishlist->id_customer ||
-        	!Validate::isLoadedObject($obj_wishlist)
+            !Validate::isLoadedObject($obj_wishlist)
         ) {
-        	die(Tools::jsonEncode(array(
+            die(Tools::jsonEncode(array(
                 'success' => 0,
                 'message' => $this->trans(
-                	'Invalid wishlist',
-                	array(),
-                	'Shop.Theme.Catalog'
+                    'Invalid wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
                 )
             )));
         }
@@ -278,153 +280,152 @@ class RbthemefunctionwishlistModuleFrontController extends ModuleFrontController
         $customer = $this->context->customer;
 
         if (!Validate::isLoadedObject($customer)) {
-        	die(Tools::jsonEncode(array(
+            die(Tools::jsonEncode(array(
                 'success' => 0,
                 'message' => $this->trans(
-                	'Invalid Customer',
-                	array(),
-                	'Shop.Theme.Catalog'
+                    'Invalid Customer',
+                    array(),
+                    'Shop.Theme.Catalog'
                 )
             )));
         } else {
-        	if (Mail::Send(
-	        		$this->context->language->id,
-	        		'wishlist',
-	        		$this->module->l('Message From') . ' ' . $customer->lastname . $customer->firstname,
-	        		array(
-	                    '{lastname}' => $customer->lastname,
-	                    '{firstname}' => $customer->firstname,
-	                    '{wishlist}' => $obj_wishlist->name,
-	                   	'{message}' => $this->context->link->getModuleLink(
-	                   		'rbthemefunction',
-	                   		'viewwishlist',
-	                   		array('token' => $obj_wishlist->token)
-	                   	)
-	                ),
-	                $to,
-	                $toName,
-	                $customer->email,
-	                $customer->firstname.' '.$customer->lastname,
-	                null,
-	                null,
-	                $this->module->module_path.'/mails/'
-            	)
-        	) {
+            if (Mail::Send(
+                $this->context->language->id,
+                'wishlist',
+                $this->module->l('Message From') . ' ' . $customer->lastname . $customer->firstname,
+                array(
+                '{lastname}' => $customer->lastname,
+                    '{firstname}' => $customer->firstname,
+                    '{wishlist}' => $obj_wishlist->name,
+                    '{message}' => $this->context->link->getModuleLink(
+                        'rbthemefunction',
+                        'viewwishlist',
+                        array('token' => $obj_wishlist->token)
+                    )
+                ),
+                $to,
+                $toName,
+                $customer->email,
+                $customer->firstname.' '.$customer->lastname,
+                null,
+                null,
+                $this->module->module_path.'/mails/'
+            )) {
                 die(Tools::jsonEncode(array(
-	                'success' => 1,
-	                'message' => $this->trans(
-	                	'The Wishlist Was Successfully Sent',
-	                	array(),
-	                	'Shop.Theme.Catalog'
-	                )
-            	)));
+                    'success' => 1,
+                    'message' => $this->trans(
+                        'The Wishlist Was Successfully Sent',
+                        array(),
+                        'Shop.Theme.Catalog'
+                    )
+                )));
             } else {
-            	die(Tools::jsonEncode(array(
-	                'success' => 0,
-	                'message' => $this->trans(
-	                	'The Wishlist Sent Error',
-	                	array(),
-	                	'Shop.Theme.Catalog'
-	                )
-            	)));
+                die(Tools::jsonEncode(array(
+                    'success' => 0,
+                    'message' => $this->trans(
+                        'The Wishlist Sent Error',
+                        array(),
+                        'Shop.Theme.Catalog'
+                    )
+                )));
             }
         }
     }
 
     public function ajaxProcesssetDefaultWishList()
     {
-    	$id_wishlist = (int)Tools::getValue('id_wishlist');
-    	$obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
+        $id_wishlist = (int)Tools::getValue('id_wishlist');
+        $obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
 
-    	if ($this->context->customer->id != $obj_wishlist->id_customer ||
-    		!Validate::isLoadedObject($obj_wishlist)
-    	) {
-    		die(Tools::jsonEncode(array(
-    			'success' => 0,
-    			'message' => $this->trans(
-    				'Can Not Update This Wishlist',
-    				array(),
-    				'Shop.Theme.Catalog'
-    			)
-    		)));
-    	}
+        if ($this->context->customer->id != $obj_wishlist->id_customer ||
+            !Validate::isLoadedObject($obj_wishlist)
+        ) {
+            die(Tools::jsonEncode(array(
+                'success' => 0,
+                'message' => $this->trans(
+                    'Can Not Update This Wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
+        }
 
-    	if ($obj_wishlist->setDefault((int)$this->context->customer->id)) {
-    		die(Tools::jsonEncode(array(
-    			'success' => 1,
-    		)));
-    	} else {
-    		die(Tools::jsonEncode(array(
-    			'success' => 0,
-    			'message' => $this->trans(
-    				'Can Not Update This Wishlist',
-    				array(),
-    				'Shop.Theme.Catalog'
-    			)
-    		)));
-    	}
+        if ($obj_wishlist->setDefault((int)$this->context->customer->id)) {
+            die(Tools::jsonEncode(array(
+                'success' => 1,
+            )));
+        } else {
+            die(Tools::jsonEncode(array(
+                'success' => 0,
+                'message' => $this->trans(
+                    'Can Not Update This Wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
+        }
     }
 
     public function ajaxProcessdeleteWishList()
     {
-    	$id_wishlist = (int)Tools::getValue('id_wishlist');
-    	$obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
+        $id_wishlist = (int)Tools::getValue('id_wishlist');
+        $obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
 
-        if ($this->context->customer->id != $wishlist->id_customer ||
-        	!Validate::isLoadedObject($wishlist)
+        if ($this->context->customer->id != $obj_wishlist->id_customer ||
+            !Validate::isLoadedObject($obj_wishlist)
         ) {
-        	die(Tools::jsonEncode(array(
-    			'success' => 0,
-    			'message' => $this->trans(
-    				'Can Not Delete This Wishlist',
-    				array(),
-    				'Shop.Theme.Catalog'
-    			)
-    		)));
+            die(Tools::jsonEncode(array(
+                'success' => 0,
+                'message' => $this->trans(
+                    'Can Not Delete This Wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
         }
         
         $obj_wishlist->delete();
 
         die(Tools::jsonEncode(array(
-    		'success' => 1,
-    		'total' => $this->obj_wishlist->getToTalByCustomer($this->context->customer->id),
-    	)));
+            'success' => 1,
+            'total' => $this->obj_wishlist->getToTalByCustomer($this->context->customer->id),
+        )));
     }
 
     public function ajaxProcessdeleteWishListProduct()
     {
-    	$id_wishlist_product = Tools::getValue('id_wishlist_product');
-    	$id_wishlist = (int)Tools::getValue('id_wishlist');
-    	$obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
+        $id_wishlist_product = Tools::getValue('id_wishlist_product');
+        $id_wishlist = (int)Tools::getValue('id_wishlist');
+        $obj_wishlist = new RbthemefunctionWishList((int)$id_wishlist);
 
-    	if ($this->context->customer->id != $wishlist->id_customer ||
-    		!Validate::isLoadedObject($wishlist) ||
-    		!Validate::isUnsignedId($id_wishlist_product)
-    	) {
-    		die(Tools::jsonEncode(array(
-    			'success' => 0,
-    			'message' => $this->trans(
-    				'Invalid Wishlist',
-    				array(),
-    				'Shop.Theme.Catalog'
-    			)
-    		)));
+        if ($this->context->customer->id != $obj_wishlist->id_customer ||
+            !Validate::isLoadedObject($obj_wishlist) ||
+            !Validate::isUnsignedId($id_wishlist_product)
+        ) {
+            die(Tools::jsonEncode(array(
+                'success' => 0,
+                'message' => $this->trans(
+                    'Invalid Wishlist',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
         }
 
         if ($obj_wishlist->removeProductWishlist($id_wishlist, $id_wishlist_product)) {
-        	die(Tools::jsonEncode(array(
-    			'success' => 1,
-    			'total' => $this->obj_wishlist->getToTalByCustomer($this->context->customer->id),
-    		)));
+            die(Tools::jsonEncode(array(
+                'success' => 1,
+                'total' => $this->obj_wishlist->getToTalByCustomer($this->context->customer->id),
+            )));
         } else {
-        	die(Tools::jsonEncode(array(
-    			'success' => 0,
-    			'message' => $this->trans(
-    				'Can Not Delete',
-    				array(),
-    				'Shop.Theme.Catalog'
-    			)
-    		)));
+            die(Tools::jsonEncode(array(
+                'success' => 0,
+                'message' => $this->trans(
+                    'Can Not Delete',
+                    array(),
+                    'Shop.Theme.Catalog'
+                )
+            )));
         }
     }
 }

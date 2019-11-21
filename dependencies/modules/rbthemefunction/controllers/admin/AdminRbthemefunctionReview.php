@@ -28,7 +28,7 @@ require_once _PS_MODULE_DIR_ . 'rbthemefunction/classes/RbthemefunctionReview.ph
 
 class AdminRbthemefunctionReviewController extends ModuleAdminController
 {
-	public function __construct()
+    public function __construct()
     {
         $this->context = Context::getContext();
         $this->bootstrap = true;
@@ -88,7 +88,7 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
         return $helper->generateList($reviews, $fields_list);
     }
 
-   	public function displayApproveLink($token, $id, $name = null)
+    public function displayApproveLink($token, $id, $name = null)
     {
         unset($token);
         unset($name);
