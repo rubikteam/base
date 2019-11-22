@@ -43,8 +43,8 @@
               {hook h='displayRbTopLogin'}
               {hook h='displayRbTopCompare'}
               {hook h='displayRbTopWishlist'}
-              <!-- {hook h='displayRbTopCart'}
-              {hook h='displayRbTopContact'} -->
+              {hook h='displayRbTopCart'}
+              {hook h='displayRbTopContact'}
             <!-- End -->  
 
               {hook h='displayNav2'}
