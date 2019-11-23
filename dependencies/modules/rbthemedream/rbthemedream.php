@@ -1501,6 +1501,8 @@ class Rbthemedream extends Module
         $this->context->controller->addJS($this->_path.'views/js/rb-front.js');
         $this->context->controller->addCSS($this->_path.'views/css/front.css');
         $this->context->controller->addCSS($this->_path.'views/css/slick.css');
+        $this->context->controller->addCSS($this->_path.'views/css/header.css');
+        $this->context->controller->addCSS($this->_path.'views/css/footer.css');
 
         Media::addJsDef(
             array('rbFrontendConfig' => array(
