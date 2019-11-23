@@ -1496,9 +1496,12 @@ class Rbthemedream extends Module
 
     public function hookHeader()
     {
+        /***************** ADD JS *******************/
         $this->context->controller->addJS(_MODULE_DIR_.'rbthemedream/views/js/plugin/rb-instagram.js');
         $this->context->controller->addJS($this->_path.'views/js/plugin/rb-slick.js');
         $this->context->controller->addJS($this->_path.'views/js/rb-front.js');
+
+        /***************** ADD CSS *******************/
         $this->context->controller->addCSS($this->_path.'views/css/front.css');
         $this->context->controller->addCSS($this->_path.'views/css/slick.css');
         $this->context->controller->addCSS($this->_path.'views/css/header.css');
