@@ -385,6 +385,10 @@ class RbColumn extends RbControl
 		if ($instance['_column_size'] == 16) {
 			$col = 'col-md-2';
 		}
+		
+		if ($instance['_column_size'] == 25) {
+			$col = 'col-md-3';
+		}
 
 		$this->addRenderAttribute(
 			'wrapper',
