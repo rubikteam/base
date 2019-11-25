@@ -50,6 +50,16 @@ class RbSection extends RbControl
         );
 
         $this->addControl(
+            'rb_class',
+            array(
+                'label' => $module->l('Class'),
+                'type' => 'text',
+                'placeholder' => $module->l('Enter Class Name'),
+                'section' => 'section_class',
+            )
+        );
+
+        $this->addControl(
             'stretch_section',
             array(
                 'label' => $module->l('Stretch Section'),
@@ -689,16 +699,20 @@ class RbSection extends RbControl
     {
         $section_type = !empty($element_data['isInner']) ? 'inner' : 'top';
 
-        $this->addRenderAttribute(
-            'wrapper',
-            'class',
-            array(
-                'rb-section',
-                'rb-element',
-                'rb-element-' . $element_id,
-                'rb-' . $section_type . '-section',
-            )
+        $class_default = array(
+            'rb-section',
+            'rb-element',
+            'rb-element-' . $element_id,
+            'rb-' . $section_type . '-section',
         );
+
+        if (isset($instance['rb_class']) && $instance['rb_class'] != '') {
+            $rb_class = explode(' ', $instance['rb_class']);
+
+            $class_default = array_merge($rb_class,$class_default);
+        }
+
+        $this->addRenderAttribute('wrapper', 'class', $class_default);
 
         foreach ($this->getClassControls() as $control) {
             if (empty($instance[$control['name']]))

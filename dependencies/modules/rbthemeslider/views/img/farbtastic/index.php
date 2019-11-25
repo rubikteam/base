@@ -1,4 +1,5 @@
-{*
+<?php
+/**
 * 2007-2019 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -21,22 +22,13 @@
 *  @copyright 2007-2019 PrestaShop SA
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
-*}
-<section id="products" class="rb-products">
-	{if $products.view == 'carousel'}
-        <div
-            class="products rb-products-carousel slick-products-carousel products-grid slick-arrows-{$products.arrows_position}"  data-slider_options='{$products.options|@json_encode nofilter}'
-        >
-    {else}
-        <div class="products row {if $products.view == 'list'}products-list{else}products-grid{/if}">
-    {/if}
+*/
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 
-    {foreach from=$products.products item="product"}
-    	{if $products.view == 'list'}
-        	{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$products.products_col row=$products.row}
-        {else}
-        	{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$products.products_col row=$products.row}
-        {/if}
-    {/foreach}
-    </div>
-</section>
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
+
+header('Location: ../');
+exit;

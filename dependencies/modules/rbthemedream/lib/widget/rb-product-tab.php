@@ -562,6 +562,7 @@ class RbProductTab extends RbControl
                         'title' => $tab['tab_title'],
                         'view' => $tab['view'],
                         'products_col' => isset($tab['products_col']) ? $tab['products_col'] : 'col-md-3',
+                        'row' => isset($tab['items_per_column']) ? $tab['items_per_column'] : 1,
                     );
 
                     if ($tab['view'] == 'grid') {
@@ -616,6 +617,7 @@ class RbProductTab extends RbControl
 
                         $parsedTab['options'] = array(
                             'responsive' => $config_obj,
+                            'rows' => abs($tab['items_per_column']),
                             'dots' => true,
                             'infinite' => false,
                             'slidesToShow' => abs($tab['slides_to_show']),

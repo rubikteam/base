@@ -36,16 +36,16 @@
 	        {foreach from=$tabs.tabs item="tab" name=productTabs}
 	            <div class="tab-pane {if $smarty.foreach.productTabs.first} active{/if}" id="ie-{$tab.uid}-ptab-{$smarty.foreach.productTabs.iteration}">
 
-	                {if $tab.view == 'carousel_s' || $tab.view == 'carousel'}
+	                {if $tab.view == 'carousel'}
 	                    <div class="products rb-products-carousel slick-products-carousel products-grid slick-arrows-{$tab.arrows_position}"  data-slider_options='{$tab.options|@json_encode nofilter}'>
 	                {else}
 	                    <div class="products row {if $tab.view == 'list'}products-list{else}products-grid {/if}">
 	                {/if}
 	            			{foreach from=$tab.products item="product"}
 	                			{if $tab.view == 'list'}
-					        		{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$tab.products_col}
+					        		{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$tab.products_col row=$products.row}
 					        	{else}
-					        		{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$tab.products_col}
+					        		{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$tab.products_col row=$products.row}
 					        	{/if}
 	                		{/foreach}
 	                    </div>
