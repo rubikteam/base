@@ -62,12 +62,6 @@
 					<svg height="14px" viewBox="-30 0 512 512" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="m381.890625 21.214844 48.894531 48.894531h-48.894531zm-381.890625 490.785156v-432h201.890625v100.109375h100.109375v331.890625zm231.890625-410.785156 48.894531 48.894531h-48.894531zm100.109375 330.785156v-273.101562l-108.898438-108.898438h-74.101562v-50h202.890625v100.109375h100.109375v331.890625zm0 0"></path></svg>
 				</a>
 			</li>
-			<li class="rb-live-element-setting rb-live-element-save">
-				<a href="#" title="{l s='Save' mod='rbthemedream'}">
-					<span class="rb-screen-only">{l s='Save' mod='rbthemedream'}</span>
-					<i class="material-icons">save</i>
-				</a>
-			</li>
 			<li class="rb-live-element-setting rb-live-element-remove">
 				<a href="#" title="{l s='Remove' mod='rbthemedream'}">
 					<i class="material-icons">clear</i>
