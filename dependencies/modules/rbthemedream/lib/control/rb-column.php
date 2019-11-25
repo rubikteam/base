@@ -40,6 +40,26 @@ class RbColumn extends RbControl
     {
     	$module = new Rbthemedream();
 
+    	$this->startControlsSection(
+            'section_layout',
+            array(
+                'label' => $module->l('Layout'),
+                'tab' => 'layout',
+            )
+        );
+
+		$this->addControl(
+			'rb_class',
+			array(
+				'label' => $module->l('Class'),
+				'type' => 'text',
+				'placeholder' => $module->l('Enter Class Name'),
+				'section' => 'section_class',
+			)
+		);
+
+       	$this->endControlsSection();
+
     	$this->addControl(
     		'section_style',
     		array(
@@ -390,17 +410,21 @@ class RbColumn extends RbControl
 			$col = 'col-md-3';
 		}
 
-		$this->addRenderAttribute(
-			'wrapper',
-			'class',
-			array(
-				'rb-column',
-				'rb-element',
-				'rb-element-' . $element_id,
-				$col,
-				'rb-' . $column_type . '-column',
-			)
+		$class_default =  array(
+			'rb-column',
+			'rb-element',
+			'rb-element-' . $element_id,
+			$col,
+			'rb-' . $column_type . '-column',
 		);
+
+		if (isset($instance['rb_class']) && $instance['rb_class'] != '') {
+			$rb_class = explode(' ', $instance['rb_class']);
+
+			$class_default = array_merge($rb_class,$class_default);
+		}
+
+		$this->addRenderAttribute('wrapper', 'class', $class_default);
 
 		foreach ($this->getClassControls() as $control) {
 			if (empty($instance[ $control['name']]))
