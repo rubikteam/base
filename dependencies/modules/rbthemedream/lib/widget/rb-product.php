@@ -484,6 +484,7 @@ class RbProduct extends RbControl
                 'products' => $products,
                 'view' => $optionsSource['view'],
                 'products_col' => isset($optionsSource['products_col']) ? $optionsSource['products_col'] : 'col-md-3',
+                'row' => isset($optionsSource['items_per_column']) ? $optionsSource['items_per_column'] : 1,
             );
 
             if ($optionsSource['view'] == 'grid' || $optionsSource['view'] == 'grid_s'){
@@ -542,7 +543,7 @@ class RbProduct extends RbControl
                     'responsive' => $config_obj,
                     'dots' => true,
                     'infinite' => false,
-                    'rows' => abs( $optionsSource['items_per_column']),
+                    'rows' => abs($optionsSource['items_per_column']),
                     'slidesToShow' => abs($optionsSource['slides_to_show']),
                     'slidesToScroll' => abs($optionsSource['slides_to_show']),
                     'autoplay' => ('yes' === $optionsSource['autoplay']),

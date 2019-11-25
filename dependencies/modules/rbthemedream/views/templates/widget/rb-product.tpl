@@ -23,7 +23,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <section id="products" class="rb-products">
-	{if $products.view == 'carousel_s' || $products.view == 'carousel'}
+	{if $products.view == 'carousel'}
         <div
             class="products rb-products-carousel slick-products-carousel products-grid slick-arrows-{$products.arrows_position}"  data-slider_options='{$products.options|@json_encode nofilter}'
         >
@@ -33,9 +33,9 @@
 
     {foreach from=$products.products item="product"}
     	{if $products.view == 'list'}
-        	{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$products.products_col}
+        	{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$products.products_col row=$products.row}
         {else}
-        	{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$products.products_col}
+        	{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$products.products_col row=$products.row}
         {/if}
     {/foreach}
     </div>
