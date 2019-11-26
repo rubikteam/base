@@ -40,9 +40,6 @@
 		<div class="rb-background-overlay"></div>
 	{/if}
 
-	<div
-		class="{if isset($instance.layout) && $instance.layout != 'full_width'}container{/if}
-		rb-container
-		rb-column-gap-{Tools::safeOutput($instance.gap)}"
+	<div class="{if isset($instance.layout) && $instance.layout != 'full_width'}container {/if}{if isset($instance.rb_class_container) && $instance.rb_class_container != ''}{$instance.rb_class_container nofilter} {/if}rb-container rb-column-gap-{Tools::safeOutput($instance.gap)}"
 	>
         <div class="row">

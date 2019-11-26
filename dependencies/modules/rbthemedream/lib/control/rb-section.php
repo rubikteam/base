@@ -60,6 +60,16 @@ class RbSection extends RbControl
         );
 
         $this->addControl(
+            'rb_class_container',
+            array(
+                'label' => $module->l('Class Container'),
+                'type' => 'text',
+                'placeholder' => $module->l('Enter Class Name'),
+                'section' => 'section_class',
+            )
+        );
+
+        $this->addControl(
             'stretch_section',
             array(
                 'label' => $module->l('Stretch Section'),
