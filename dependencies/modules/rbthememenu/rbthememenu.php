@@ -3030,12 +3030,18 @@ class Rbthememenu extends Module
 
     public function productsForTemplate($products)
     {
-        if (!$products || !is_array($products))
+        if (!$products || !is_array($products)) {
             return array();
+        }
+
+        if (!isset($this->context->customer->id)) {
+            $this->context->customer = new Customer();
+        }
 
         $assembler = new ProductAssembler($this->context);
         $presenterFactory = new ProductPresenterFactory($this->context);
         $presentationSettings = $presenterFactory->getPresentationSettings();
+
         $presenter = new PrestaShop\PrestaShop\Core\Product\ProductListingPresenter(
             new PrestaShop\PrestaShop\Adapter\Image\ImageRetriever(
                 $this->context->link
