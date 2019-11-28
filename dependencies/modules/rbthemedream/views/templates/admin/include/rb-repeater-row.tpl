@@ -28,10 +28,12 @@
 	</div>
 	<div class="rb-repeater-row-item-title"></div>
 	<div class="rb-repeater-row-tool rb-repeater-tool-duplicate">
-		<i class="fa fa-copy"></i>
+		<svg width="14px" height="14px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 472 472" style="enable-background:new 0 0 472 472;" xml:space="preserve"><path d="M321,118.787V0H51v362h100v110h270V218.787L321,118.787z M321,161.213L369.787,210H321V161.213z M81,332V30h210v80H151v222H81z M181,442V140h110v100h100v202H181z"/><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
 	</div>
-	<div class="rb-repeater-row-tool rb-repeater-tool-remove">
-		<i class="fa fa-remove"></i>
-	</div>
+	{*
+		<div class="rb-repeater-row-tool rb-repeater-tool-remove">
+			<i class="fa fa-remove"></i>
+		</div>
+	*}
 </div>
 <div class="rb-repeater-row-controls"></div>

@@ -27,10 +27,8 @@
 <div id="rb-add-section" class="rb-visible-desktop">
 	<div id="rb-add-section-inner">
 		<div id="rb-add-new-section">
-			<button id="rb-add-section-button"
-			class="rb-button">{l s='Add New Section' mod='rbthemedream'}</button>
-			<button id="rb-add-template-button"
-			class="rb-button">{l s='Add Template' mod='rbthemedream'}</button>
+			<button id="rb-add-section-button" class="rb-button">{l s='Add New Section' mod='rbthemedream'}</button>
+
 			<div id="rb-add-section-drag-title">{l s='Or drag widget here' mod='rbthemedream'}</div>
 		</div>
 		<div id="rb-select-preset">
