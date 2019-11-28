@@ -87,11 +87,16 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
             _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-tipsy.js',
             _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-helper.js',
             _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-select2.js',
+            _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-clock.js',
             _MODULE_DIR_.'rbthemedream/views/js/rb-front.js',
             _MODULE_DIR_.'rbthemedream/views/js/home.js',
         ));
 
         Media::addJsDef(array(
+            'rb_days' => $this->module->l('Days'),
+            'rb_hours' => $this->module->l('Hours'),
+            'rb_minutes' => $this->module->l('Minutes'),
+            'rb_seconds' => $this->module->l('Seconds'),
             'show_new_orders' => Configuration::get('PS_SHOW_NEW_ORDERS'),
             'customer_name_msg' => $this->l('registered'),
             'rbFrontendConfig' => array(

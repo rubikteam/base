@@ -1507,15 +1507,19 @@ class Rbthemedream extends Module
         $this->context->controller->addCSS($this->_path.'views/css/slick.css');
         $this->context->controller->addCSS($this->_path.'views/css/header.css');
         $this->context->controller->addCSS($this->_path.'views/css/footer.css');
-        $this->context->controller->addCSS($this->_path.'views/css/clock.css');
 
-        Media::addJsDef(
-            array('rbFrontendConfig' => array(
+        Media::addJsDef(array(
+            'rbFrontendConfig' => array(
                 'isEditMode' => '',
                 'stretchedSectionContainer' =>'',
                 'is_rtl' => '',
-            ))
-        );
+                'rb_day' => $this->l('Days'),
+            ),
+            'rb_days' => $this->l('Days'),
+            'rb_hours' => $this->l('Hours'),
+            'rb_minutes' => $this->l('Minutes'),
+            'rb_seconds' => $this->l('Seconds'),
+        ));
 
         $obj_home = new RbthemedreamHome();
         $layout = 0;

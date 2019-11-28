@@ -59,9 +59,9 @@ class RbCountDown extends RbControl
 		$this->addControl(
 			'time',
 			array(
-                'label' => $module->l('Title coundown'),
+                'label' => $module->l('Time coundown'),
 				'type' => 'text',
-				'default' => '',
+				'default' => '12/30/2100 00:00:00',
 				'section' => 'section_countdown',
 				'label_block' => true,
 			)

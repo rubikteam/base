@@ -34,9 +34,9 @@
 	</div>
 
 	<div class="col-md-6">
-		<div
-			class="clock"
-			data-time="{if isset($instance.time) && $instance.time != ''}{$instance.time}{else}5000{/if}"
-		></div>
+		<ul
+			class="rb-clock"
+			data-time="{if isset($instance.time) && $instance.time != ''}{$instance.time}{else}12/30/2100 00:00:00{/if}"
+		></ul>
 	</div>
 </div>
