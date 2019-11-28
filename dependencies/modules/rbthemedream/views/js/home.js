@@ -7938,6 +7938,11 @@ WidgetView = BaseElementView.extend( {
 						self.$el.append(self.model.onHtml(video));
 						self.$el.append(html.replace('rb_change', 'video'));
 					}
+
+					if (self.model.getIcon() == 'countdown') {
+						self.$el.append(self.model.onHtml(countdown));
+						self.$el.append(html.replace('rb_change', 'countdown'));
+					}
 				}
 			}, 200 );
 		} );

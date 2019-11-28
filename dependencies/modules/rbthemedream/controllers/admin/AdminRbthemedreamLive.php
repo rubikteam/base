@@ -165,6 +165,7 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
         $social_icon = new RbSocialIcons();
         $alert = new RbAlert();
         $html = new RbHtml();
+        $countdown = new RbCountDown();
         $brands = new RbBrands();
         $rb_product = new RbProduct();
         $rb_product_tab = new RbProductTab();
@@ -198,6 +199,7 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
             'testimonial' => $this->module->l('Testimonial'),
             'video' => $this->module->l('Video'),
             'rb_instagram' => $this->module->l('Instagram'),
+            'countdown' => $this->module->l('CountDown'),
             'rbConfig' => array(
                 'ajaxurl' => $this->context->link->getAdminLink('AdminRbthemedreamLive').'&ajax=1',
                 'view_link' => $this->context->shop->getBaseURL(true, true) . 'view?page='.$type.'&'.$id.'='. Tools::getValue($id),
@@ -240,6 +242,7 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
                     'social-icons' => $social_icon->getDataSocialIcons(),
                     'alert' => $alert->getDataAlert(),
                     'html' => $html->getDataHtml(),
+                    'countdown' => $countdown->getDataCountDown(),
                     'prestashop-widget-Brands' => $brands->getDataBrands(),
                     'prestashop-widget-ProductsList' => $rb_product->getDataProduct(),
                     'prestashop-widget-ProductsListTabs' => $rb_product_tab->getDataProductTab(),

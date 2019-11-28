@@ -53,6 +53,7 @@ require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-instagram.php');
 require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-social-icon.php');
 require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-alert.php');
 require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-html.php');
+require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-countdown.php');
 require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-brands.php');
 require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-product.php');
 require_once(_PS_MODULE_DIR_.'rbthemedream/lib/widget/rb-product-tab.php');

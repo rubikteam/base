@@ -1498,6 +1498,7 @@ class Rbthemedream extends Module
     {
         /***************** ADD JS *******************/
         $this->context->controller->addJS(_MODULE_DIR_.'rbthemedream/views/js/plugin/rb-instagram.js');
+        $this->context->controller->addJS(_MODULE_DIR_.'rbthemedream/views/js/plugin/rb-clock.js');
         $this->context->controller->addJS($this->_path.'views/js/plugin/rb-slick.js');
         $this->context->controller->addJS($this->_path.'views/js/rb-front.js');
 
@@ -1506,6 +1507,7 @@ class Rbthemedream extends Module
         $this->context->controller->addCSS($this->_path.'views/css/slick.css');
         $this->context->controller->addCSS($this->_path.'views/css/header.css');
         $this->context->controller->addCSS($this->_path.'views/css/footer.css');
+        $this->context->controller->addCSS($this->_path.'views/css/clock.css');
 
         Media::addJsDef(
             array('rbFrontendConfig' => array(

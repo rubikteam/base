@@ -76,29 +76,30 @@ module.exports = ElementsHandler;
 },{}],2:[function(require,module,exports){
 /* global rbFrontendConfig */
 ( function( $ ) {
-	var ElementsHandler = require( 'rb-frontend/elements-handler' ),
-	    Utils = require( 'rb-frontend/utils' );
+	var ElementsHandler = require('rb-frontend/elements-handler'),
+	    Utils = require('rb-frontend/utils');
 
 	var rbFrontend = function() {
 		var self = this,
 			scopeWindow = window;
 
 		var elementsDefaultHandlers = {
-			accordion: require( 'rb-frontend/handlers/accordion' ),
-			alert: require( 'rb-frontend/handlers/alert' ),
-			counter: require( 'rb-frontend/handlers/counter' ),
-			'image-carousel': require( 'rb-frontend/handlers/image-carousel' ),
-			instagram: require( 'rb-frontend/handlers/instagram' ),
-			testimonial: require( 'rb-frontend/handlers/testimonial' ),
-			progress: require( 'rb-frontend/handlers/progress' ),
-			section: require( 'rb-frontend/handlers/section' ),
-			tabs: require( 'rb-frontend/handlers/tabs' ),
-			'prestashop-widget-Blog': require( 'rb-frontend/handlers/prestashop-blog' ),
-			'prestashop-widget-ProductsList': require( 'rb-frontend/handlers/prestashop-productlist' ),
-			'prestashop-widget-ProductsListTabs': require( 'rb-frontend/handlers/prestashop-productlisttabs' ),
-			'prestashop-widget-Brands': require( 'rb-frontend/handlers/prestashop-brands' ),
-			toggle: require( 'rb-frontend/handlers/toggle' ),
-			video: require( 'rb-frontend/handlers/video' )
+			accordion: require('rb-frontend/handlers/accordion'),
+			alert: require('rb-frontend/handlers/alert'),
+			counter: require('rb-frontend/handlers/counter'),
+			'countdown': require('rb-frontend/handlers/countdown'),
+			'image-carousel': require('rb-frontend/handlers/image-carousel'),
+			instagram: require('rb-frontend/handlers/instagram'),
+			testimonial: require('rb-frontend/handlers/testimonial'),
+			progress: require('rb-frontend/handlers/progress'),
+			section: require('rb-frontend/handlers/section'),
+			tabs: require('rb-frontend/handlers/tabs'),
+			'prestashop-widget-Blog': require('rb-frontend/handlers/prestashop-blog'),
+			'prestashop-widget-ProductsList': require('rb-frontend/handlers/prestashop-productlist'),
+			'prestashop-widget-ProductsListTabs': require('rb-frontend/handlers/prestashop-productlisttabs'),
+			'prestashop-widget-Brands': require('rb-frontend/handlers/prestashop-brands'),
+			toggle: require('rb-frontend/handlers/toggle'),
+			video: require('rb-frontend/handlers/video')
 		};
 
 		var addGlobalHandlers = function() {
@@ -199,11 +200,11 @@ jQuery( function() {
 	}
 } );
 
-},{"rb-frontend/elements-handler":1,"rb-frontend/handlers/accordion":3,"rb-frontend/handlers/alert":4,"rb-frontend/handlers/counter":5,"rb-frontend/handlers/global":6,"rb-frontend/handlers/image-carousel":7,"rb-frontend/handlers/instagram":8,"rb-frontend/handlers/prestashop-blog":9,"rb-frontend/handlers/prestashop-brands":10,"rb-frontend/handlers/prestashop-productlist":11,"rb-frontend/handlers/prestashop-productlisttabs":12,"rb-frontend/handlers/progress":13,"rb-frontend/handlers/section":14,"rb-frontend/handlers/tabs":15,"rb-frontend/handlers/testimonial":16,"rb-frontend/handlers/toggle":17,"rb-frontend/handlers/video":18,"rb-frontend/utils":19}],3:[function(require,module,exports){
-var activateSection = function( sectionIndex, $accordionTitles ) {
-	var $activeTitle = $accordionTitles.filter( '.active' ),
-		$requestedTitle = $accordionTitles.filter( '[data-section="' + sectionIndex + '"]' ),
-		isRequestedActive = $requestedTitle.hasClass( 'active' );
+},{"rb-frontend/elements-handler":1,"rb-frontend/handlers/accordion":3,"rb-frontend/handlers/alert":4,"rb-frontend/handlers/counter":5,"rb-frontend/handlers/global":6,"rb-frontend/handlers/image-carousel":7,"rb-frontend/handlers/instagram":8,"rb-frontend/handlers/prestashop-blog":9,"rb-frontend/handlers/prestashop-brands":10,"rb-frontend/handlers/prestashop-productlist":11,"rb-frontend/handlers/prestashop-productlisttabs":12,"rb-frontend/handlers/progress":13,"rb-frontend/handlers/section":14,"rb-frontend/handlers/tabs":15,"rb-frontend/handlers/testimonial":16,"rb-frontend/handlers/toggle":17,"rb-frontend/handlers/video":18,"rb-frontend/utils":19,"rb-frontend/handlers/countdown":20}],3:[function(require,module,exports){
+var activateSection = function(sectionIndex, $accordionTitles) {
+	var $activeTitle = $accordionTitles.filter('.active'),
+		$requestedTitle = $accordionTitles.filter('[data-section="' + sectionIndex + '"]'),
+		isRequestedActive = $requestedTitle.hasClass('active');
 
 	$activeTitle
 		.removeClass('active')
@@ -222,12 +223,12 @@ var activateSection = function( sectionIndex, $accordionTitles ) {
 	}
 };
 
-module.exports = function( $ ) {
-	var $this = $( this ),
-		$accordionDiv = $this.find( '.rb-accordion' ),
-		defaultActiveSection = $accordionDiv.data( 'active-section' ),
-		activeFirst =  $accordionDiv.data( 'active-first' ),
-		$accordionTitles = $this.find( '.rb-accordion-title' );
+module.exports = function($) {
+	var $this = $(this),
+		$accordionDiv = $this.find('.rb-accordion'),
+		defaultActiveSection = $accordionDiv.data('active-section'),
+		activeFirst =  $accordionDiv.data('active-first'),
+		$accordionTitles = $this.find('.rb-accordion-title');
 
 	if (! defaultActiveSection) {
 		defaultActiveSection = 1;
@@ -237,48 +238,58 @@ module.exports = function( $ ) {
 		activateSection( defaultActiveSection, $accordionTitles );
 	}
 
-	$accordionTitles.on( 'click', function() {
-		activateSection( this.dataset.section, $accordionTitles );
+	$accordionTitles.on('click', function() {
+		activateSection(this.dataset.section, $accordionTitles);
 	});
 };
 
 },{}],4:[function(require,module,exports){
-module.exports = function( $ ) {
-	$( this ).find( '.rb-alert-dismiss' ).on( 'click', function() {
-		$( this ).parent().fadeOut();
-	} );
+module.exports = function($) {
+	$(this).find( '.rb-alert-dismiss' ).on('click', function() {
+		$(this).parent().fadeOut();
+	});
 };
 
 },{}],5:[function(require,module,exports){
-module.exports = function( $ ) {
+module.exports = function($) {
+	var $number = $(this).find('.rb-counter-number');
 
-	var $number = $( this ).find(  '.rb-counter-number' );
+	$number.waypoint(function() {
+		$number.numerator({
+			duration: $number.data('duration')
+		});
+	}, {offset: '90%'});
+};
 
-	$number.waypoint( function() {
-		$number.numerator( {
-			duration: $number.data( 'duration' )
-		} );
-	}, { offset: '90%' } );
+},{}],20:[function(require,module,exports){
+module.exports = function($) {
+	var $this = $(this).find('.rb-countdown');
+	var time = $this.find('.clock').data('time');
+
+	var clock = $this.find('.clock').FlipClock(time, {
+		countdown: true,
+		clockFace: 'DailyCounter'
+	});
 };
 
 },{}],6:[function(require,module,exports){
 module.exports = function() {
-	if ( rbFrontend.isEditMode() ) {
+	if (rbFrontend.isEditMode()) {
 		return;
 	}
 
 	var $element = this,
-		animation = $element.data( 'animation' );
+		animation = $element.data('animation');
 
-	if ( ! animation ) {
+	if (! animation) {
 		return;
 	}
 
-	$element.addClass( 'rb-invisible' ).removeClass( animation );
+	$element.addClass('rb-invisible').removeClass(animation);
 
 	$element.waypoint( function() {
-		$element.removeClass( 'rb-invisible' ).addClass( animation );
-	}, { offset: '90%' } );
+		$element.removeClass('rb-invisible').addClass(animation);
+	}, { offset: '90%' });
 
 };
 
