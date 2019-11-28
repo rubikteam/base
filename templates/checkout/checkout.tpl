@@ -37,7 +37,7 @@
       {hook h='displayAfterBodyOpeningTag'}
     {/block}
 
-    <header id="header">
+    <header id="header" class="{if Configuration::get('RBTHEMEDREAM_FLOAT_HEADER') == 1}rb_megamenu sticky_enabled{/if}">
       {block name='header'}
         {include file='checkout/_partials/header.tpl'}
       {/block}

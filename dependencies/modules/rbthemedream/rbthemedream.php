@@ -437,6 +437,12 @@ class Rbthemedream extends Module
                     ),
                 ),
                 array(
+                    'type' => 'switch',
+                    'label' => $this->l('Float Header'),
+                    'name' => 'RBTHEMEDREAM_FLOAT_HEADER',
+                    'values' => $switch,
+                ),
+                array(
                     'type' => 'html',
                     'name' => 'html_data',
                     'html_content' => $this->htmlFormLayout(),
@@ -618,6 +624,7 @@ class Rbthemedream extends Module
             'RBTHEMEDREAM_HEADER' => Configuration::get('RBTHEMEDREAM_HEADER'),
             'RBTHEMEDREAM_FOOTER' => Configuration::get('RBTHEMEDREAM_FOOTER'),
             'RBTHEMEDREAM_SHOW_MAP' => Configuration::get('RBTHEMEDREAM_SHOW_MAP'),
+            'RBTHEMEDREAM_FLOAT_HEADER' => Configuration::get('RBTHEMEDREAM_FLOAT_HEADER'),
             'RBTHEMEDREAM_MAP_LATITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LATITUDE'),
             'RBTHEMEDREAM_MAP_LONGITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LONGITUDE'),
             'RBTHEMEDREAM_COMPANY_NAME' => Configuration::get('RBTHEMEDREAM_COMPANY_NAME'),

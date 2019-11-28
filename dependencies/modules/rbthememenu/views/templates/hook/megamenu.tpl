@@ -29,8 +29,7 @@
         {if isset($rb_config.RBTHEMEMENU_SKIN)&&$rb_config.RBTHEMEMENU_SKIN}skin_{$rb_config.RBTHEMEMENU_SKIN|escape:'html':'UTF-8'}{/if}  
         {if isset($rb_config.RBTHEMEMENU_TRANSITION_EFFECT)&&$rb_config.RBTHEMEMENU_TRANSITION_EFFECT}transition_{$rb_config.RBTHEMEMENU_TRANSITION_EFFECT|escape:'html':'UTF-8'}{/if}   
         {if isset($rb_config.RB_MOBILE_RB_TYPE)&&$rb_config.RB_MOBILE_RB_TYPE}transition_{$rb_config.RB_MOBILE_RB_TYPE|escape:'html':'UTF-8'}{/if} 
-        {if isset($rb_config.RBTHEMEMENU_CUSTOM_CLASS)&&$rb_config.RBTHEMEMENU_CUSTOM_CLASS}{$rb_config.RBTHEMEMENU_CUSTOM_CLASS|escape:'html':'UTF-8'}{/if} 
-        {if isset($rb_config.RBTHEMEMENU_STICKY_ENABLED)&&$rb_config.RBTHEMEMENU_STICKY_ENABLED}sticky_enabled{else}sticky_disabled{/if} 
+        {if isset($rb_config.RBTHEMEMENU_CUSTOM_CLASS)&&$rb_config.RBTHEMEMENU_CUSTOM_CLASS}{$rb_config.RBTHEMEMENU_CUSTOM_CLASS|escape:'html':'UTF-8'}{/if}
         {if isset($rb_config.RBTHEMEMENU_ACTIVE_ENABLED)&&$rb_config.RBTHEMEMENU_ACTIVE_ENABLED}enable_active_menu{/if} 
         {if isset($rb_layout_direction)&&$rb_layout_direction}{$rb_layout_direction|escape:'html':'UTF-8'}{else}rb-dir-ltr{/if}
         {if isset($rb_config.RBTHEMEMENU_HOOK_TO)&&$rb_config.RBTHEMEMENU_HOOK_TO=='customhook'}hook-custom{else}hook-default{/if}

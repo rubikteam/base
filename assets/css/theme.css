@@ -22808,7 +22808,6 @@ li.product-flag:after {
 /*** HEADER ***/
 /* line 10, ../../../../xampp/htdocs/theme_test/theme_1761/themes/Base/_dev/css/components/headers.scss */
 #header {
-  position: relative;
   z-index: 100;
 }
 

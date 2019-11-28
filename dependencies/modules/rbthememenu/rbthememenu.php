@@ -1311,24 +1311,6 @@ class Rbthememenu extends Module
                     ),
                     'default' => 1,
                 ),
-                'RBTHEMEMENU_STICKY_ENABLED' => array(
-                    'type' => 'switch',
-                    'label' => $this->l('Enable Sticky menu'),
-                    'is_bool' => true,
-                    'values' => array(
-                        array(
-                            'id' => 'active_on',
-                            'value' => 1,
-                            'label' => $this->l('Yes')
-                        ),
-                        array(
-                            'id' => 'active_off',
-                            'value' => 0,
-                            'label' => $this->l('No')
-                        )
-                    ),
-                    'default' => 1,
-                ),
                 'RBTHEMEMENU_STICKY_DISMOBILE' => array(
                     'type' => 'switch',
                     'label' => $this->l('Hide sticky menu on mobile'),
