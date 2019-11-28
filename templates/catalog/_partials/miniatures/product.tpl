@@ -23,7 +23,13 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 {block name='product_miniature_item'}
-  <article class="product-miniature js-product-miniature {if isset($config)}{$config}{/if}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemscope itemtype="http://schema.org/Product">
+  <article
+    class="product-miniature js-product-miniature {if isset($config)}{$config}{/if}"
+    data-id-product="{$product.id_product}"
+    data-id-product-attribute="{$product.id_product_attribute}"
+    itemscope
+    itemtype="http://schema.org/Product"
+  >
     {include file='catalog/rb-ajax-load.tpl'}
 
     <div class="thumbnail-container">
@@ -32,10 +38,31 @@
             {if $product.cover}
               <a href="{$product.url}" class="thumbnail product-thumbnail">
                 <img
+                  class="rb-image image-cover"
                   src = "{$product.cover.bySize.home_default.url}"
                   alt = "{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name|truncate:30:'...'}{/if}"
                   data-full-size-image-url = "{$product.cover.large.url}"
                 >
+
+                {if !empty($product.images)}
+                  {$count = 1}
+
+                  {foreach from=$product.images item=image}
+                    {if $count == 1 && $image.cover != 1}
+                      <div class="product-hover">
+                        <img
+                          class="rb-image image-hover"
+                          src = "{$image.bySize.home_default.url}"
+                          title="{$product.name|truncate:30:'...'}"
+                          width="{$image.bySize.home_default.width}"
+                          height="{$image.bySize.home_default.height}"
+                        >
+                      </div>
+
+                      {$count = $count + 1}
+                    {/if}
+                  {/foreach}
+                {/if}
               </a>
             {else}
               <a href="{$product.url}" class="thumbnail product-thumbnail">

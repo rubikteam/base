@@ -36,9 +36,31 @@
               {if $product.cover}
                 <a href="{$product.url}" class="thumbnail product-thumbnail">
                   <img
+                    class="rb-image image-cover"
                     data-lazy = "{$product.cover.bySize.home_default.url}"
                     data-full-size-image-url = "{$product.cover.large.url}"
                   >
+
+                  {if !empty($product.images)}
+                    {$count = 1}
+
+                    {foreach from=$product.images item=image}
+                      {if $count == 1 && $image.cover != 1}
+                        <div class="product-hover">
+                          <img
+                            class="rb-image image-hover"
+                            data-lazy = "{$image.bySize.home_default.url}"
+                            title="{$product.name|truncate:30:'...'}"
+                            width="{$image.bySize.home_default.width}"
+                            height="{$image.bySize.home_default.height}"
+                          >
+                        </div>
+
+                        {$count = $count + 1}
+                      {/if}
+                    {/foreach}
+                  {/if}
+
                   <div class="rb-image-loading"></div>
                 </a>
               {else}
