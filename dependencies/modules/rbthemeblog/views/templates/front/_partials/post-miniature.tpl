@@ -23,11 +23,11 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <div class="rbblog__listing__post
-    {if $blogLayout eq 'grid' AND $columns eq '3'}
+    {if $blogLayout eq 'grid'}
         col-md-4 col-sm-6 col-xs-12 col-ms-12 {cycle values="first-in-line,second-in-line,last-in-line"}
-    {elseif $blogLayout eq 'grid' AND $columns eq '4'}
+    {elseif $blogLayout eq 'grid'}
         col-md-3 col-sm-6 col-xs-12 col-ms-12 {cycle values="first-in-line,second-in-line,third-in-line,last-in-line"}
-    {elseif $blogLayout eq 'grid' AND $columns eq '2'}
+    {elseif $blogLayout eq 'grid'}
         col-md-6 col-sm-6 col-xs-12 col-ms-12 {cycle values="first-in-line,last-in-line"}
     {else}
     col-md-12

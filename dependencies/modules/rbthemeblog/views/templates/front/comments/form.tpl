@@ -85,7 +85,7 @@
 	    </form>
 	{else}
 		<div class="warning alert alert-warning">
-			<a href="{$link->getPageLink('authentication', true, null, array('back' => $post->url))|escape:'html':'UTF-8'}">
+			<a href="{$link->getPageLink('authentication')}">
 				{l s='Only registered and logged customers can add comments' mod='rbthemeblog'}
 			</a>
 		</div>

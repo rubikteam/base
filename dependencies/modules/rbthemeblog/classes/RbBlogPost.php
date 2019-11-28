@@ -536,7 +536,7 @@ class RbBlogPost extends ObjectModel
 
                 $tags = RbBlogTag::getPostTags((int) $row['id_rbblog_post']);
 
-                $row['tags'] = isset($tags[$id_lang]) && sizeof($tags[$id_lang] > 0) ? $tags[$id_lang] : false;
+                $row['tags'] = isset($tags[$id_lang]) && !empty($tags[$id_lang] > 0) ? $tags[$id_lang] : false;
                 $row['post_type'] = RbBlogPostType::getSlugById((int) $row['id_rbblog_post_type']);
 
                 if ($row['post_type'] == 'gallery') {
