@@ -59,7 +59,7 @@ class RbCountDown extends RbControl
 		$this->addControl(
 			'time',
 			array(
-                'label' => $module->l('Time coundown'),
+                'label' => $module->l('Time coundown (You Must Press key Space after select time)'),
 				'type' => 'text',
 				'default' => '12/30/2100 00:00:00',
 				'section' => 'section_countdown',

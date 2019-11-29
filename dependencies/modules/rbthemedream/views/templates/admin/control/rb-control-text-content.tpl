@@ -26,7 +26,7 @@
 	<div class="rb-control-field">
 		<label class="rb-control-title">{{{ data.label }}}</label>
 		<div class="rb-control-input-wrapper">
-			<input type="text" class="tooltip-target" data-tooltip="{{ data.title }}" title="{{ data.title }}" data-setting="{{ data.name }}" placeholder="{{ data.placeholder }}" />
+			<input type="text" class="tooltip-target<# if (data.name == 'time') { #> datepicker<# } #>" data-tooltip="{{ data.title }}" title="{{ data.title }}" data-setting="{{ data.name }}" placeholder="{{ data.placeholder }}" />
 		</div>
 	</div>
 

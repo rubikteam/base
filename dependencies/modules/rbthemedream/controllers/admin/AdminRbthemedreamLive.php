@@ -55,6 +55,8 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
             __PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/css/admin-theme.css',
             __PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/public/theme.css',
             _MODULE_DIR_.'rbthemedream/views/css/lib/rb-select2.css',
+            _MODULE_DIR_.'rbthemedream/views/css/time.css',
+            _MODULE_DIR_.'rbthemedream/views/css/slider.css',
             _MODULE_DIR_.'rbthemedream/views/css/home.css',
             _MODULE_DIR_.'rbthemedream/views/css/view.css',
             _MODULE_DIR_.'rbthemedream/views/css/front.css',
@@ -88,6 +90,7 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
             _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-helper.js',
             _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-select2.js',
             _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-clock.js',
+            _MODULE_DIR_.'rbthemedream/views/js/plugin/rb-time.js',
             _MODULE_DIR_.'rbthemedream/views/js/rb-front.js',
             _MODULE_DIR_.'rbthemedream/views/js/home.js',
         ));

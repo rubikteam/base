@@ -26,7 +26,7 @@
 * to avoid any conflicts with others containers.
 */
 (function(){$.fn.lofCountDown=function(options){return this.each(function(){new $.lofCountDown(this,options)})}
-$.lofCountDown=function(obj,options){this.options=$.extend({autoStart:!0,LeadingZero:!0,DisplayFormat:"<div>%%D%%</div><div>%%H%%</div><div>%%M%%</div><div>%%S%%</div>",FinishMessage:"Hết thời gian",CountActive:!0,TargetDate:null},options||{});if(this.options.TargetDate==null||this.options.TargetDate==''){return}
+$.lofCountDown=function(obj,options){this.options=$.extend({autoStart:!0,LeadingZero:!0,DisplayFormat:"<div>%%D%%</div><div>%%H%%</div><div>%%M%%</div><div>%%S%%</div>",FinishMessage:"Time Finished",CountActive:!0,TargetDate:null},options||{});if(this.options.TargetDate==null||this.options.TargetDate==''){return}
 this.timer=null;this.element=obj;this.CountStepper=-1;this.CountStepper=Math.ceil(this.CountStepper);this.SetTimeOutPeriod=(Math.abs(this.CountStepper)-1)*1000+990;var dthen=new Date(this.options.TargetDate);var dnow=new Date();if(this.CountStepper>0){ddiff=new Date(dnow-dthen)}
 else{ddiff=new Date(dthen-dnow)}
 gsecs=Math.floor(ddiff.valueOf()/1000);this.CountBack(gsecs,this)};$.lofCountDown.fn=$.lofCountDown.prototype;$.lofCountDown.fn.extend=$.lofCountDown.extend=$.extend;$.lofCountDown.fn.extend({calculateDate:function(secs,num1,num2){var s=((Math.floor(secs/num1))%num2).toString();if(this.options.LeadingZero&&s.length<2){s="0"+s}

@@ -147,6 +147,27 @@ HandleliveBehavior = Marionette.Behavior.extend( {
 		this.onOpenLive();
 	},
 
+	onOpenDateTimePicker: function()
+	{
+		$('.datepicker').datetimepicker({
+			prevText: 'now',
+			nextText: '',
+			dateFormat: 'mm/dd/yy',
+			currentText: 'Now',
+			closeText: 'Done',
+			ampm: false,
+			minDate: 0,
+			amNames: ['AM', 'A'],
+			pmNames: ['PM', 'P'],
+			timeFormat: 'hh:mm:ss tt',
+			timeSuffix: '',
+			timeOnlyTitle: 'Choose Time',
+			timeText: 'Time',
+			hourText: 'Hour',
+			minuteText: 'Minute'
+		});
+	},
+
 	onOpenLive: function() {
 		var currentPanelPageName = rb.getPanelView().getCurrentPageName();
 
@@ -164,7 +185,11 @@ HandleliveBehavior = Marionette.Behavior.extend( {
 		rb.getPanelView().setPage( 'live', rb.translate( 'edit_element', [ elementData.title ] ), {
 			model: this.view.model,
 			editedElementView: this.view
-		} );
+		});
+
+		if ($('.datepicker').length > 0) {
+			this.onOpenDateTimePicker();
+		}
 	}
 } );
 

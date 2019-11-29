@@ -268,7 +268,7 @@ module.exports = function($) {
 		var time = $this.find('.rb-clock').data('time');
 
 		$this.find('.rb-clock').lofCountDown({
-			TargetDate: '12/30/2100 00:00:00',
+			TargetDate: time,
 			DisplayFormat: '<li class="cd-day">%%D%% <em class="rb-day">'+rb_days+'</em></li><span class="cd-day">:</span><li>%%H%% <em class="rb-hours">'+rb_hours+'</em></li><span>:</span><li>%%M%% <em class="rb_minutes">'+rb_minutes+'</em></li><span>:</span><li>%%S%% <em class="rb_seconds">'+rb_seconds+'</em></li>',
 		});	
 	}
