@@ -50,6 +50,7 @@ class AdminRbthemedreamLiveController extends ModuleAdminController
         $this->addJS(_PS_JS_DIR_.'tiny_mce/tinymce.min.js');
         $this->addJqueryPlugin('fancybox');
         $this->addJqueryPlugin('autocomplete');
+		$this->addJqueryUi('ui.datepicker');
 
         $this->addCSS(array(
             __PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/css/admin-theme.css',

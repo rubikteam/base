@@ -29,7 +29,7 @@
 		{/if}
 
 		{if isset($instance.description) && $instance.description != ''}
-			<div class="rb-coundown-description">{$instance.description}</div>
+			<div class="rb-coundown-description">{$instance.description nofilter}</div>
 		{/if}
 	</div>
 
