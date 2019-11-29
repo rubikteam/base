@@ -152,7 +152,7 @@ class RbthemeblogListModuleFrontController extends ModuleFrontController
 
             $this->assignPagination(
             	$this->posts_per_page,
-            	sizeof(
+            	count(
             		RbBlogPost::findPosts(
 	            		$this->rbblog_search,
 	            		$this->rbblog_keyword,
@@ -167,7 +167,7 @@ class RbthemeblogListModuleFrontController extends ModuleFrontController
             $posts = $finder->findPosts();
         }
 
-        $this->assignPagination($this->posts_per_page, sizeof($posts));
+        $this->assignPagination($this->posts_per_page, count($posts));
         $posts = array_splice($posts, $this->p ? ($this->p - 1) * $this->posts_per_page : 0, $this->posts_per_page);
 
         $this->assignMetas();

@@ -313,7 +313,7 @@ class RbBlogPost extends ObjectModel
 
         $posts = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 
-        if (sizeof($posts)) {
+        if (!empty($posts)) {
             $posts = self::checkAccess($posts);
         }
 
@@ -459,7 +459,7 @@ class RbBlogPost extends ObjectModel
         if (isset($id_rbblog_category) && (int) $id_rbblog_category > 0) {
             $childrens = RbBlogCategory::getChildrens((int) $id_rbblog_category);
 
-            if ($childrens && sizeof($childrens)) {
+            if ($childrens && !empty($childrens)) {
                 $child_categories = array((int) $id_rbblog_category);
 
                 foreach ($childrens as $child) {
@@ -504,11 +504,11 @@ class RbBlogPost extends ObjectModel
 
         $result = Db::getInstance()->executeS($sql);
 
-        if (sizeof($result) && $check_access == true) {
+        if (!empty($result) && $check_access == true) {
             $result = self::checkAccess($result);
         }
 
-        if (sizeof($result)) {
+        if (!empty($result)) {
             foreach ($result as &$row) {
                 $category_rewrite = RbBlogCategory::getRewriteByCategory($row['id_rbblog_category'], $id_lang);
 

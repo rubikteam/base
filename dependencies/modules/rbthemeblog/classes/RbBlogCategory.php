@@ -396,7 +396,7 @@ class RbBlogCategory extends ObjectModel
             $categories[$row['id_rbblog_category']]['url'] = self::getLink($row['link_rewrite'], $id_lang);
             $categories[$row['id_rbblog_category']]['id'] = $row['id_rbblog_category'];
             $categories[$row['id_rbblog_category']]['is_child'] = $row['id_parent'] > 0 ? true : false;
-            if (sizeof(self::getChildrens($row['id_rbblog_category']))) {
+            if (!empty(self::getChildrens($row['id_rbblog_category']))) {
                 $categories[$row['id_rbblog_category']]['childrens'] = self::getChildrens($row['id_rbblog_category']);
             }
         }

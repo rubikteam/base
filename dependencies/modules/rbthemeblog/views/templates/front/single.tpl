@@ -131,7 +131,7 @@
 	    <div class="rbblog__post__content">
 	        {$post->content nofilter}
 
-	        {if $post_type == 'gallery' && sizeof($post->gallery)}
+	        {if $post_type == 'gallery' && !empty($post->gallery)}
 				<div class="post-gallery">
 					{foreach $post->gallery as $image}
 						<a

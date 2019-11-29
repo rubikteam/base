@@ -254,7 +254,7 @@ class BlogPostsFinder
 
         if ($this->getIdCategory() > 0) {
             $childrens = RbBlogCategory::getChildrens($this->getIdCategory());
-            if ($childrens && sizeof($childrens)) {
+            if ($childrens && !empty($childrens)) {
                 $child_categories = array($this->getIdCategory());
                 foreach ($childrens as $child) {
                     $child_categories[] = $child['id_rbblog_category'];

@@ -268,7 +268,7 @@ class RbthemeblogSingleModuleFrontController extends ModuleFrontController
 
             $ip_address = Tools::getRemoteAddr();
 
-            if (sizeof($errors)) {
+            if (!empty($errors)) {
                 $this->errors = $errors;
             } else {
                 $comment = new RbBlogComment();

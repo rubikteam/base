@@ -1087,11 +1087,14 @@ class Rbthemeblog extends Module
         }
 
         $blog_slug = Configuration::get('RBTHEMEBLOG_BLOG_SLUG');
+        Configuration::deleteByName('PS_ROUTE_modules-rbthemeblog-list');
+        Configuration::deleteByName('PS_ROUTE_module-rbthemeblog-category');
+        Configuration::deleteByName('PS_ROUTE_module-rbthemeblog-single');
 
         return array(
-            'modules-rbthemeblog-list' => array(
+            'module-rbthemeblog-list' => array(
                 'controller' => 'list',
-                'rule' => $blog_slug,
+                'rule' => $blog_slug . '.html',
                 'keywords' => array(),
                 'params' => array(
                     'fc' => 'module',
@@ -1117,7 +1120,7 @@ class Rbthemeblog extends Module
             // Category list
             'module-rbthemeblog-category' => array(
                 'controller' => 'category',
-                'rule' => $blog_slug.'/{rb_category}',
+                'rule' => $blog_slug.'/{rb_category}.html',
                 'keywords' => array(
                     'rb_category' => array(
                         'regexp' => '[_a-zA-Z0-9-\pL]*',
@@ -1153,7 +1156,7 @@ class Rbthemeblog extends Module
             // Single
             'module-rbthemeblog-single' => array(
                 'controller' => 'single',
-                'rule' => $blog_slug.'/{rb_category}/{rewrite}',
+                'rule' => $blog_slug.'/{rb_category}/{rewrite}.html',
                 'keywords' => array(
                     'rb_category' => array(
                         'regexp' => '[_a-zA-Z0-9-\pL]*',
