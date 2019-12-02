@@ -77,8 +77,25 @@ class RbProduct extends RbControl
         $productSourceOptions['np'] = $module->l('New products');
         $productSourceOptions['pd'] = $module->l('Price drops');
         $productSourceOptions['bs'] = $module->l('Best sellers');
-
         $productSourceOptions = array_merge($productSourceOptions, $categories);
+        $product_list = array();
+        $dirname = _PS_ALL_THEMES_DIR_._THEME_NAME_ . '/templates/';
+
+        if (is_dir($dirname . 'catalog/_partials/miniatures/product-list/')) {
+            $total_product = 1;
+
+            $dp = opendir($dirname . 'catalog/_partials/miniatures/product-list/');
+
+            if ($dp) {
+                while (($filename=readdir($dp)) == true) {
+                    if (($filename !=".") && ($filename !="..")) {
+                        $product_list[$total_product] = $module->l('Product - ') . $total_product;
+
+                        $total_product++;
+                    }
+                }
+            }
+        }
 
         $this->addPresControl(array(
         	'section_pswidget_options' => array(

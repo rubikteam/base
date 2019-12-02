@@ -373,7 +373,7 @@ module.exports = function($) {
         return;
     }
 
-    var slickOptions = $carousel.data('slider_options'),;
+    var slickOptions = $carousel.data('slider_options');
     $carousel.slick( slickOptions );
 };
 
