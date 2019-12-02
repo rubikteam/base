@@ -767,7 +767,7 @@ class AdminRbthemeblogPostController extends ModuleAdminController
             	'single',
             	array(
             		'rewrite' => $rbBlogPost->link_rewrite,
-            		'sb_category' => $rbBlogPost->category_rewrite
+            		'rb_category' => $rbBlogPost->category_rewrite
             	)
             ));
         }
