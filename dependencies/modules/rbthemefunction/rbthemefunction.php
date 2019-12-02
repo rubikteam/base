@@ -64,6 +64,7 @@ class Rbthemefunction extends Module
         Configuration::updateValue('RBTHEMEFUNCTION_REVIEW', '1');
         Configuration::updateValue('RBTHEMEFUNCTION_SALE_POPUP', '1');
         Configuration::updateValue('RBTHEMEFUNCTION_BUTTON_PRINT', '1');
+        Configuration::updateValue('RBTHEMEFUNCTION_GRID_VIEW', '1');
 
         Configuration::updateValue('RBTHEMEFUNCTION_POPUP_WIDTH', 770);
         Configuration::updateValue('RBTHEMEFUNCTION_POPUP_HEIGHT', 460);
@@ -351,6 +352,14 @@ class Rbthemefunction extends Module
                     'name' => 'RBTHEMEFUNCTION_BUTTON_NEXT_PREV',
                     'is_bool' => true,
                     'desc' => $this->l('Show Hide Next/Prev Product Details Page'),
+                    'values' => $switch
+                ),
+                array(
+                    'type' => 'switch',
+                    'label' => $this->l('Grid View Product List'),
+                    'name' => 'RBTHEMEFUNCTION_GRID_VIEW',
+                    'is_bool' => true,
+                    'desc' => $this->l('Grid View Product List'),
                     'values' => $switch
                 ),
             ),
@@ -658,6 +667,7 @@ class Rbthemefunction extends Module
         }
 
         return array(
+            'RBTHEMEFUNCTION_GRID_VIEW' => Configuration::get('RBTHEMEFUNCTION_GRID_VIEW'),
             'RBTHEMEFUNCTION_BUTTON_NEXT_PREV' => Configuration::get('RBTHEMEFUNCTION_BUTTON_NEXT_PREV'),
             'RBTHEMEFUNCTION_ADD_TO_CART' => Configuration::get('RBTHEMEFUNCTION_ADD_TO_CART'),
             'RBTHEMEFUNCTION_LOADING_PAGE' => Configuration::get('RBTHEMEFUNCTION_LOADING_PAGE'),
@@ -888,6 +898,7 @@ class Rbthemefunction extends Module
             'active' => Configuration::get('RBTHEMEFUNCTION_POPUP_ACTIVE'),
             'rb_width' => Configuration::get('RBTHEMEFUNCTION_POPUP_WIDTH'),
             'rb_height' => Configuration::get('RBTHEMEFUNCTION_POPUP_HEIGHT'),
+            'rb_view' => Configuration::get('RBTHEMEFUNCTION_GRID_VIEW'),
         ));
     }
 

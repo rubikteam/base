@@ -375,11 +375,12 @@ class Rbthemedream extends Module
 
         $header = array();
         $footer = array();
-        $dirname = _PS_ALL_THEMES_DIR_._THEME_NAME_ . '/templates/_partials/';
+        $product_list = array();
+        $dirname = _PS_ALL_THEMES_DIR_._THEME_NAME_ . '/templates/';
         
-        if (is_dir($dirname . 'header/')) {
+        if (is_dir($dirname . '_partials/header/')) {
             $total_files = 1;
-            $dp = opendir($dirname . 'header/');
+            $dp = opendir($dirname . '_partials/header/');
 
             if ($dp) {
                 while (($filename=readdir($dp)) == true) {
@@ -395,10 +396,10 @@ class Rbthemedream extends Module
             }
         }
 
-        if (is_dir($dirname . 'footer/')) {
+        if (is_dir($dirname . '_partials/footer/')) {
             $total_footer = 1;
 
-            $dp = opendir($dirname . 'footer/');
+            $dp = opendir($dirname . '_partials/footer/');
 
             if ($dp) {
                 while (($filename=readdir($dp)) == true) {
@@ -409,6 +410,25 @@ class Rbthemedream extends Module
                         );
 
                         $total_footer++;
+                    }
+                }
+            }
+        }
+
+        if (is_dir($dirname . 'catalog/_partials/miniatures/product-list/')) {
+            $total_product = 1;
+
+            $dp = opendir($dirname . 'catalog/_partials/miniatures/product-list/');
+
+            if ($dp) {
+                while (($filename=readdir($dp)) == true) {
+                    if (($filename !=".") && ($filename !="..")) {
+                        $product_list[] = array(
+                            'id' => $total_product,
+                            'name' => $this->l('Product - ') . $total_product,
+                        );
+
+                        $total_product++;
                     }
                 }
             }
@@ -435,6 +455,22 @@ class Rbthemedream extends Module
                         'id' => 'id',
                         'name' => 'name'
                     ),
+                ),
+                array(
+                    'type' => 'select',
+                    'label' => $this->l('Select Product List'),
+                    'name' => 'RBTHEMEDREAM_PRODUCT_LIST',
+                    'options' => array(
+                        'query' => $product_list,
+                        'id' => 'id',
+                        'name' => 'name'
+                    ),
+                ),
+                array(
+                    'type' => 'text',
+                    'label' => $this->l('Col Product List'),
+                    'name' => 'RBTHEMEDREAM_COL_PRODUCT_LIST',
+                    'desc' => 'col-md-3',
                 ),
                 array(
                     'type' => 'switch',
@@ -623,6 +659,8 @@ class Rbthemedream extends Module
         return array(
             'RBTHEMEDREAM_HEADER' => Configuration::get('RBTHEMEDREAM_HEADER'),
             'RBTHEMEDREAM_FOOTER' => Configuration::get('RBTHEMEDREAM_FOOTER'),
+            'RBTHEMEDREAM_PRODUCT_LIST' => Configuration::get('RBTHEMEDREAM_PRODUCT_LIST'),
+            'RBTHEMEDREAM_COL_PRODUCT_LIST' => Configuration::get('RBTHEMEDREAM_COL_PRODUCT_LIST'),
             'RBTHEMEDREAM_SHOW_MAP' => Configuration::get('RBTHEMEDREAM_SHOW_MAP'),
             'RBTHEMEDREAM_FLOAT_HEADER' => Configuration::get('RBTHEMEDREAM_FLOAT_HEADER'),
             'RBTHEMEDREAM_MAP_LATITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LATITUDE'),

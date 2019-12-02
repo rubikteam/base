@@ -175,6 +175,16 @@ class RbProduct extends RbControl
                     'list' => $module->l('List')
                 ),
             ),
+            'product_list' => array(
+                'label' => $module->l('Select Product List'),
+                'type' => 'select',
+                'default' => 1,
+                'condition' => array(
+                    'view' => 'list',
+                ),
+                'section' => 'section_pswidget_options',
+                'options' => $product_list,
+            ),
             'slides_to_show' => array(
                 'responsive' => true,
                 'label' => $module->l('Show per line'),
@@ -485,6 +495,7 @@ class RbProduct extends RbControl
                 'view' => $optionsSource['view'],
                 'products_col' => isset($optionsSource['products_col']) ? $optionsSource['products_col'] : 'col-md-3',
                 'row' => isset($optionsSource['items_per_column']) ? $optionsSource['items_per_column'] : 1,
+                'product_list' => isset($optionsSource['product_list']) ? $optionsSource['product_list'] : 1,
             );
 
             if ($optionsSource['view'] == 'grid' || $optionsSource['view'] == 'grid_s'){

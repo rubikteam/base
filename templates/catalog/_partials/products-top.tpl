@@ -24,6 +24,22 @@
  *}
 <div id="js-product-list-top" class="row products-selection">
   <div class="col-md-6 hidden-sm-down total-products">
+    {block name='rb_gird_list'}
+      <div class="rb_display">
+          <div id="rb_grid" class="rb-grid type-view">
+            <a rel="nofollow" href="#" title="{l s='Grid' d='Shop.Theme.Global'}">
+              <i class="material-icons">grid_on</i>
+            </a>
+          </div>
+
+          <div id="rb_list" class="rb-list type-view">
+            <a rel="nofollow" href="#" title="{l s='List' d='Shop.Theme.Global'}">
+              <i class="material-icons">list</i>
+            </a>
+          </div>
+      </div>
+    {/block}
+
     {if $listing.pagination.total_items > 1}
       <p>{l s='There are %product_count% products.' d='Shop.Theme.Catalog' sprintf=['%product_count%' => $listing.pagination.total_items]}</p>
     {else if $listing.pagination.total_items > 0}

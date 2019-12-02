@@ -43,7 +43,7 @@
 	                {/if}
 	            			{foreach from=$tab.products item="product"}
 	                			{if $tab.view == 'list'}
-					        		{include file="catalog/_partials/miniatures/product.tpl" product=$product config=$tab.products_col row=$tab.row}
+					        		{include file="catalog/_partials/miniatures/product.tpl" rb_list=$tab.product_list product=$product config=$tab.products_col row=$tab.row}
 					        	{else}
 					        		{include file="catalog/_partials/miniatures/product-slick.tpl" product=$product config=$tab.products_col row=$tab.row}
 					        	{/if}

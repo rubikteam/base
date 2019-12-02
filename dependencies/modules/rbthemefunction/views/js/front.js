@@ -45,6 +45,7 @@ $(document).ready(function() {
 	sendReview();
 	rbFormRegister();
 	addQuickview();
+	selectViewProductList();
 
 	prestashop.on('updateProductList', function() {
 		addCompare();
@@ -70,6 +71,39 @@ $(document).ready(function() {
 		removeCompare($(this), 0);
 	});
 });
+
+$(document).on('click', '.type-view', function(e){
+  	e.preventDefault();
+  	var $this= $(this);
+
+  	if ($this.hasClass('rb-grid')) {
+  		$('#js-product-list .rb-product-list').removeClass('list');
+  		$('#js-product-list .rb-product-list').addClass('grid');
+  		$.cookie('rb_view_product', 'grid');
+  	} else {
+  		$('#js-product-list .rb-product-list').removeClass('grid');
+  		$('#js-product-list .rb-product-list').addClass('list');
+  		$.cookie('rb_view_product', 'list');
+  	}
+
+  	$('.type-view').removeClass('selected');
+  	$this.addClass('selected');
+});
+
+function selectViewProductList()
+{
+	if ($.cookie('rb_view_product') == 'grid') {
+		$('#rb_grid').trigger('click');
+	} else if ($.cookie('rb_view_product') == 'grid') {
+		$('#rb_list').trigger('click');
+	} else {
+		if (rb_view == 1) {
+			$('#rb_grid').trigger('click');
+		} else {
+			$('#rb_list').trigger('click');
+		}
+	}
+}
 
 function addQuickview()
 {
