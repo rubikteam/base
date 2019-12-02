@@ -330,7 +330,6 @@ module.exports = function( $ ) {
 
 },{}],8:[function(require,module,exports){
 module.exports = function( $ ) {
-
 	var $instagramWrapper = $( this ).find( '.rb-instagram' );
     var $carousel = $( this ).find( '.rb-instagram-carousel' );
 
@@ -356,35 +355,12 @@ module.exports = function( $ ) {
 		list: true,
 		captions: false,
         success: function() {
-
             if ( ! $carousel.length ) {
                 return;
             }
 
-            var savedOptions = $carousel.data( 'slider_options' ),
-                defaultOptions = {
-                    responsive: [
-                        {
-                            breakpoint: 767,
-                            settings: {
-                                slidesToShow: savedOptions.slidesToShowTablet,
-                                slidesToScroll: savedOptions.slidesToShowTablet
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: savedOptions.slidesToShowMobile,
-                                slidesToScroll: savedOptions.slidesToShowMobile
-                            }
-                        }
-                    ]
-                },
-
-                slickOptions = $.extend( {lazyLoad: 'ondemand'}, defaultOptions, $carousel.data( 'slider_options' ) );
-
-            $carousel.slick();
-
+            var savedOptions = $carousel.data('slider_options');
+    		$carousel.slick(savedOptions);
         },
 	});
 };

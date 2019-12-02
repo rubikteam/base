@@ -28,17 +28,17 @@ require_once(_PS_MODULE_DIR_.'rbthemedream/lib/control/rb-control.php');
 
 class RbInstagram extends RbControl
 {
-	public function __construct()
+    public function __construct()
     {
-    	parent::__construct();
-    	$this->setControl();
+        parent::__construct();
+        $this->setControl();
     }
 
     public function setControl()
     {
-    	$module = new Rbthemedream();
+        $module = new Rbthemedream();
 
-    	$this->addControl(
+        $this->addControl(
             'section_instagram',
             array(
                 'label' => $module->l('Instagram feed'),
@@ -115,19 +115,11 @@ class RbInstagram extends RbControl
         );
 
         $this->addControl(
-            'section_instagram_options',
-            array(
-                'label' => $module->l('View options'),
-                'type' => 'section',
-            )
-        );
-
-        $this->addControl(
             'instagram_view',
             array(
                 'label' => $module->l('View'),
                 'type' => 'select',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => array(
                     'slider' => $module->l('Slider'),
                     'grid' => $module->l('Grid'),
@@ -151,7 +143,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Show per line'),
                 'type' => 'select',
                 'label_block' => true,
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'default' => '6',
                 'options' => $slidesToShow,
                 'condition' => array(
@@ -169,9 +161,30 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Show per line'),
                 'type' => 'select',
                 'label_block' => true,
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'default' => '6',
                 'options' =>  $slides_to_show,
+                'condition' => array(
+                    'instagram_view' => 'slider',
+                ),
+            )
+        );
+
+        //                 array(
+        //     'name' => 'photos_to_display',
+        //     'label' => $module->l('Photo On Row (992-4,768-3)'),
+        //     'type' => 'text',
+        //     'condition' => array(
+        //         'instagram_view' => 'slider',
+        //     ),
+        // ),
+
+        $this->addControl(
+            'photos_to_display',
+            array(
+                'label' => $module->l('Photo On Row (992-4,768-3)'),
+                'type' => 'text',
+                'section' => 'section_instagram',
                 'condition' => array(
                     'instagram_view' => 'slider',
                 ),
@@ -184,7 +197,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Slides to Scroll'),
                 'type' => 'select',
                 'default' => '2',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => $slides_to_show,
                 'condition' => array(
                     'slides_to_show!' => '1',
@@ -199,7 +212,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Navigation'),
                 'type' => 'select',
                 'default' => 'both',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => array(
                     'both' => $module->l('Arrows and Dots'),
                     'arrows' => $module->l('Arrows'),
@@ -218,7 +231,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Pause on Hover'),
                 'type' => 'select',
                 'default' => 'yes',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => array(
                     'yes' => $module->l('Yes'),
                     'no' => $module->l('No'),
@@ -235,7 +248,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Autoplay'),
                 'type' => 'select',
                 'default' => 'yes',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => array(
                     'yes' => $module->l('Yes'),
                     'no' => $module->l('No'),
@@ -252,7 +265,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Autoplay Speed'),
                 'type' => 'number',
                 'default' => 5000,
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'condition' => array(
                     'instagram_view' => 'slider',
                 ),
@@ -265,7 +278,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Infinite Loop'),
                 'type' => 'select',
                 'default' => 'yes',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => array(
                     'yes' => $module->l('Yes'),
                     'no' => $module->l('No'),
@@ -282,7 +295,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Effect'),
                 'type' => 'select',
                 'default' => 'slide',
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'options' => array(
                     'slide' => $module->l('Slide'),
                     'fade' => $module->l('Fade'),
@@ -300,7 +313,7 @@ class RbInstagram extends RbControl
                 'label' => $module->l('Animation Speed'),
                 'type' => 'number',
                 'default' => 500,
-                'section' => 'section_instagram_options',
+                'section' => 'section_instagram',
                 'condition' => array(
                     'instagram_view' => 'slider',
                 ),
@@ -344,7 +357,6 @@ class RbInstagram extends RbControl
                 ),
             )
         );
-
 
         $this->addControl(
             'instagram_overlay_color',
@@ -524,18 +536,18 @@ class RbInstagram extends RbControl
 
     public function getDataInstagram()
     {
-    	$controls = $this->getControls();
+        $controls = $this->getControls();
 
         $data = array(
-    		'title' => 'Instagram',
-    		'controls' => $controls,
-    		'tabs_controls' => $this->tabs_controls,
-    		'categories' => array('basic'),
-    		'keywords' => '',
-    		'icon' => 'instagram'
-    	);
+            'title' => 'Instagram',
+            'controls' => $controls,
+            'tabs_controls' => $this->tabs_controls,
+            'categories' => array('basic'),
+            'keywords' => '',
+            'icon' => 'instagram'
+        );
 
-    	return $data;
+        return $data;
     }
 
     public function rbRender($instance = array())
@@ -555,10 +567,45 @@ class RbInstagram extends RbControl
             $show_dots = (in_array($instance['navigation'], array('dots', 'both')));
             $show_arrows = (in_array($instance['navigation'], array('arrows', 'both')));
 
+            if (isset($instance['photos_to_display']) &&
+                $instance['photos_to_display'] != ''
+            ) {
+                $configs = explode(',', $instance['photos_to_display']);
+
+                foreach ($configs as $key_cf => $config) {
+                    $config = explode('-', $config);
+
+                    $config_obj[] = array(
+                        'breakpoint' => abs($config[0]),
+                        'settings' => array(
+                            'slidesToShow' => abs($config[1]),
+                            'slidesToScroll' => abs($config[1]),
+                        )
+                    );
+                }
+            } else {
+                $config_obj = array(
+                    array(
+                        'breakpoint' => 992,
+                        'settings' => array(
+                            'slidesToShow' => abs($instance['photos_to_show_s_tablet']),
+                            'slidesToScroll' => abs($instance['slides_to_scroll']),
+                        ),
+                    ),
+                    array(
+                        'breakpoint' => 576,
+                        'settings' => array(
+                            'slidesToShow' => abs($instance['photos_to_show_s_mobile']),
+                            'slidesToScroll' => abs($instance['slides_to_scroll']),
+                        ),
+                    ),
+                );
+            }
+
             $slick_options = array(
+                'responsive' => $config_obj,
                 'slidesToShow' => abs(intval($instance['photos_to_show_s'])),
-                'slidesToShowTablet' => abs(intval($instance['photos_to_show_s_tablet'])),
-                'slidesToShowMobile' => abs(intval($instance['photos_to_show_s_mobile'])),
+                'slidesToScroll' => abs($instance['slides_to_scroll']),
                 'autoplaySpeed' => abs(intval($instance['autoplay_speed'])),
                 'autoplay' => ('yes' === $instance['autoplay']),
                 'infinite' => ('yes' === $instance['infinite']),
