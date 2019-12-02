@@ -573,7 +573,7 @@ class Rbthemefunction extends Module
                 ),
                 array(
                     'type' => 'switch',
-                    'label' => $this->l('Slick Product Detail'),
+                    'label' => $this->l('Slick Autoplay'),
                     'name' => 'RBTHEMEFUNCTION_SLICK_AUTOPLAY',
                     'is_bool' => true,
                     'values' => $switch
