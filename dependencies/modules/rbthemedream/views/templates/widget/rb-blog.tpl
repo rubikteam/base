@@ -89,7 +89,7 @@
     {/if}
     <div>
         <div class="blog-viewall">
-            <a class="btn" href="http://localhost/stack/rb_stark/en/blog.html" title="View All">{l s='View All' mod='rbthemedream'}</a>
+            <a class="btn" href="{$rb_list}" title="View All">{l s='View All' mod='rbthemedream'}</a>
         </div>
     </div>
 {/if}
