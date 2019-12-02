@@ -170,15 +170,6 @@ class RbInstagram extends RbControl
             )
         );
 
-        //                 array(
-        //     'name' => 'photos_to_display',
-        //     'label' => $module->l('Photo On Row (992-4,768-3)'),
-        //     'type' => 'text',
-        //     'condition' => array(
-        //         'instagram_view' => 'slider',
-        //     ),
-        // ),
-
         $this->addControl(
             'photos_to_display',
             array(

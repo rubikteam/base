@@ -329,15 +329,15 @@ module.exports = function( $ ) {
 };
 
 },{}],8:[function(require,module,exports){
-module.exports = function( $ ) {
-	var $instagramWrapper = $( this ).find( '.rb-instagram' );
-    var $carousel = $( this ).find( '.rb-instagram-carousel' );
+module.exports = function($) {
+	var $instagramWrapper = $(this).find('.rb-instagram');
+    var $carousel = $(this).find('.rb-instagram-carousel');
 
 	if ( ! $instagramWrapper.length ) {
 		return;
 	}
 
-	var options = $instagramWrapper.data( 'options' );
+	var options = $instagramWrapper.data('options');
 
 	if (options.token == '' ) {
 		return;
@@ -366,34 +366,14 @@ module.exports = function( $ ) {
 };
 
 },{}],9:[function(require,module,exports){
-module.exports = function( $ ) {
-    var $carousel = $( this ).find( '.rb-blog-carousel' );
-    if ( ! $carousel.length ) {
+module.exports = function($) {
+    var $carousel = $(this).find('.rb-blog-carousel');
+
+    if (!$carousel.length) {
         return;
     }
 
-    var savedOptions = $carousel.data( 'slider_options' ),
-        defaultOptions = {
-            responsive: [
-                {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowTablet,
-                        slidesToScroll: savedOptions.slidesToShowTablet
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowMobile,
-                        slidesToScroll: savedOptions.slidesToShowMobile
-                    }
-                }
-            ]
-        },
-
-        slickOptions = $.extend( {}, defaultOptions, $carousel.data( 'slider_options' ) );
-
+    var slickOptions = $carousel.data('slider_options'),;
     $carousel.slick( slickOptions );
 };
 

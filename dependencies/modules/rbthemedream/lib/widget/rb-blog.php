@@ -141,6 +141,14 @@ class RbBlog extends RbControl
                     'view' => 'grid',
                 ),
             ),
+            'blogs_to_display' => array(
+                'label' => $module->l('Photo On Row (992-4,768-3)'),
+                'type' => 'text',
+                'condition' => array(
+                    'view' => 'carousel',
+                ),
+                'section' => 'section_pswidget_options',
+            ),
             'navigation' => array(
                 'label' => $module->l('Navigation'),
                 'type' => 'select',
@@ -423,10 +431,45 @@ class RbBlog extends RbControl
                 $show_dots = (in_array( $optionsSource['navigation'], array('dots', 'both')));
                 $show_arrows = (in_array( $optionsSource['navigation'], array('arrows', 'both')));
 
+                if (isset($instance['blogs_to_display']) &&
+                    $instance['blogs_to_display'] != ''
+                ) {
+                    $configs = explode(',', $instance['blogs_to_display']);
+
+                    foreach ($configs as $key_cf => $config) {
+                        $config = explode('-', $config);
+
+                        $config_obj[] = array(
+                            'breakpoint' => abs($config[0]),
+                            'settings' => array(
+                                'slidesToShow' => abs($config[1]),
+                                'slidesToScroll' => abs($config[1]),
+                            )
+                        );
+                    }
+                } else {
+                    $config_obj = array(
+                        array(
+                            'breakpoint' => 992,
+                            'settings' => array(
+                                'slidesToShow' => abs($optionsSource['slides_to_show_tablet']),
+                                'slidesToScroll' => abs(2),
+                            ),
+                        ),
+                        array(
+                            'breakpoint' => 576,
+                            'settings' => array(
+                                'slidesToShow' => abs($optionsSource['slides_to_show_mobile']),
+                                'slidesToScroll' => abs(2),
+                            ),
+                        ),
+                    );
+                }
+
                 $options  = array(
+                    'responsive' => $config_obj,
                     'slidesToShow' => abs($optionsSource['slides_to_show']),
-                    'slidesToShowTablet' => abs($optionsSource['slides_to_show_tablet']),
-                    'slidesToShowMobile' => abs($optionsSource['slides_to_show_mobile']),
+                    'slidesToScroll' => abs(2),
                     'autoplaySpeed' => abs($optionsSource['autoplay_speed']),
                     'autoplay' => ('yes' === $optionsSource['autoplay']),
                     'infinite' => ('yes' === $optionsSource['infinite']),

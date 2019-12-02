@@ -28,18 +28,68 @@
             <div class="rb-blog-carousel simpleblog-posts {$classes nofilter}" data-slider_options='{$options|@json_encode nofilter}'>
                 {foreach $posts as $post}
                     <div class="simpleblog-posts-column">
-                        {include file="module:rbthemeblog/views/templates/front/_partials/post-miniature.tpl" post=$post blogLayout=$blogLayout is_category=$is_category}
+                        <div class="rb-left-block">
+                            <div class="rb-blog-image-container">
+                                <a class="rb-blog-img-link" href="{$post.url}" title="{$post.title}" itemprop="url">
+                                    <img class="img-fluid slick-loading" data-lazy="{$post.banner_thumb}" alt="{$post.title}" itemprop="image">
+                                    <div class="rb-image-loading"></div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="right-block">
+                            <div class="rb-blog-meta">
+                                <h5 class="rb-blog-title" itemprop="name">
+                                    <a href="{$post.url}" title="{$post.title}">{$post.title}</a>
+                                </h5>
+
+                                <p class="rb-blog-desc" itemprop="description">
+                                    {$post.short_content nofilter}
+                                </p>
+
+                                <a href="{$post.url}" title="{$post.title}" class="post-btn-more">{l s='Read More' mod='rbthemedream'}</a>
+                            </div>
+                        </div>
                     </div>
                 {/foreach}
             </div>
         </section>
-    {elseif $view == 'grid' || $view == 'list'}
+    {else}
         <section class="rb-blog-posts rb-blog-posts-grid rbthemeblog">
             <div class="row simpleblog-posts">
                 {foreach $posts as $post}
-                    <div class="simpleblog-posts-column {$options.gridClasses nofilter}">{include file="module:rbthemeblog/views/templates/front/post-miniature.tpl" post=$post blogLayout=$blogLayout is_category=$is_category}</div>
+                    <div class="simpleblog-posts-column {$options.gridClasses nofilter}">
+                        <div class="simpleblog-posts-column">
+                            <div class="rb-left-block">
+                                <div class="rb-blog-image-container">
+                                    <a class="rb-blog-img-link" href="{$post.url}" title="{$post.title}" itemprop="url">
+                                        <img class="img-fluid" src="{$post.banner_thumb}" alt="{$post.title}" itemprop="image">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="right-block">
+                                <div class="rb-blog-meta">
+                                    <h5 class="rb-blog-title" itemprop="name">
+                                        <a href="{$post.url}" title="{$post.title}">{$post.title}</a>
+                                    </h5>
+
+                                    <p class="rb-blog-desc" itemprop="description">
+                                        {$post.short_content nofilter}
+                                    </p>
+
+                                    <a href="{$post.url}" title="{$post.title}" class="post-btn-more">{l s='Read More' mod='rbthemedream'}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {/foreach}
             </div>
         </section>
     {/if}
+    <div>
+        <div class="blog-viewall">
+            <a class="btn" href="http://localhost/stack/rb_stark/en/blog.html" title="View All">{l s='View All' mod='rbthemedream'}</a>
+        </div>
+    </div>
 {/if}
