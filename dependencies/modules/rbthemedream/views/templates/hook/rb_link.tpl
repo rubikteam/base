@@ -61,24 +61,20 @@
 	            </div>
 	        </div>
 	    {else}
-	        <div class="col-md-6 links">
-	        	<div class="row">
-	        		<div class="col-md-6 wrapper">
-			            <p class="h3 hidden-sm-down">{$rb_link.title}</p>
-			            <ul>
-			                {foreach $rb_link.links as $link}
-			                    {if isset($link.data.url) && isset($link.data.title)}
-			                        <li>
-			                            <a href="{$link.data.url}" {if isset($link.data.description)}title="{$link.data.description}"{/if}
-			                            >
-			                                {$link.data.title}
-			                            </a>
-			                        </li>
-			                    {/if}
-			                {/foreach}
-			            </ul>
-		            </div>
-	            </div>
+	        <div class="links RbBlockLink">
+	            <p class="h3 hidden-sm-down">{$rb_link.title}</p>
+	            <ul>
+	                {foreach $rb_link.links as $link}
+	                    {if isset($link.data.url) && isset($link.data.title)}
+	                        <li>
+	                            <a href="{$link.data.url}" {if isset($link.data.description)}title="{$link.data.description}"{/if}
+	                            >
+	                                {$link.data.title}
+	                            </a>
+	                        </li>
+	                    {/if}
+	                {/foreach}
+	            </ul>
 	        </div>
 	    {/if}
 	{/foreach}
