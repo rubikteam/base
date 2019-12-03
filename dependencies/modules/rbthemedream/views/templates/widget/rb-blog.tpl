@@ -43,9 +43,9 @@
                                     <a href="{$post.url}" title="{$post.title}">{$post.title}</a>
                                 </h5>
 
-                                <p class="rb-blog-desc" itemprop="description">
+                                <div class="rb-blog-desc" itemprop="description">
                                     {$post.short_content nofilter}
-                                </p>
+                                </div>
 
                                 <a href="{$post.url}" title="{$post.title}" class="post-btn-more">{l s='Read More' mod='rbthemedream'}</a>
                             </div>
@@ -74,9 +74,9 @@
                                         <a href="{$post.url}" title="{$post.title}">{$post.title}</a>
                                     </h5>
 
-                                    <p class="rb-blog-desc" itemprop="description">
+                                    <div class="rb-blog-desc" itemprop="description">
                                         {$post.short_content nofilter}
-                                    </p>
+                                    </div>
 
                                     <a href="{$post.url}" title="{$post.title}" class="post-btn-more">{l s='Read More' mod='rbthemedream'}</a>
                                 </div>
