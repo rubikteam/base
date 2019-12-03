@@ -162,6 +162,7 @@ class Rbthemedream extends Module
         $res &= $this->registerHook('displayHome');
         $res &= $this->registerHook('displayRbFooter');
         $res &= $this->registerHook('displayRbSocial');
+        $res &= $this->registerHook('displayRbMap');
         $res &= $this->registerHook('moduleRoutes');
         $res &= $this->registerHook('actionAdminControllerSetMedia');
 
@@ -509,40 +510,6 @@ class Rbthemedream extends Module
                     'label' => $this->l('Longitude'),
                     'name' => 'RBTHEMEDREAM_MAP_LONGITUDE',
                 ),
-                array(
-                    'col' => 3,
-                    'type' => 'text',
-                    'label' => $this->l('Company Name'),
-                    'name' => 'RBTHEMEDREAM_COMPANY_NAME',
-                ),
-                array(
-                    'type' => 'textarea',
-                    'label' => $this->l('Address'),
-                    'name' => 'RBTHEMEDREAM_ADDRESS',
-                ),
-                array(
-                    'col' => 3,
-                    'type' => 'text',
-                    'label' => $this->l('Phone Number'),
-                    'name' => 'RBTHEMEDREAM_PHONE_NUMBER',
-                ),
-                array(
-                    'col' => 3,
-                    'type' => 'text',
-                    'prefix' => '<i class="icon icon-envelope"></i>',
-                    'desc' => $this->l('Enter a valid email address'),
-                    'name' => 'RBTHEMEDREAM_EMAIL',
-                    'label' => $this->l('Email'),
-                ),
-                array(
-                    'type' => 'textarea',
-                    'label' => $this->l('Custom text'),
-                    'name' => 'RBTHEMEDREAM_CONTENT_PAGE',
-                    'autoload_rte' => true,
-                    'lang' => true,
-                    'cols' => 60,
-                    'rows' => 30,
-                ),
             ),
             'submit' => array(
                 'title' => $this->l('Save'),
@@ -650,12 +617,6 @@ class Rbthemedream extends Module
 
     protected function getConfigFormValues()
     {
-        $content_page =  array();
-
-        foreach (Language::getLanguages(false) as $lang) {
-            $content_page[$lang['id_lang']] = Configuration::get('RBTHEMEDREAM_CONTENT_PAGE', $lang['id_lang']);
-        }
-
         return array(
             'RBTHEMEDREAM_HEADER' => Configuration::get('RBTHEMEDREAM_HEADER'),
             'RBTHEMEDREAM_FOOTER' => Configuration::get('RBTHEMEDREAM_FOOTER'),
@@ -665,11 +626,6 @@ class Rbthemedream extends Module
             'RBTHEMEDREAM_FLOAT_HEADER' => Configuration::get('RBTHEMEDREAM_FLOAT_HEADER'),
             'RBTHEMEDREAM_MAP_LATITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LATITUDE'),
             'RBTHEMEDREAM_MAP_LONGITUDE' => Configuration::get('RBTHEMEDREAM_MAP_LONGITUDE'),
-            'RBTHEMEDREAM_COMPANY_NAME' => Configuration::get('RBTHEMEDREAM_COMPANY_NAME'),
-            'RBTHEMEDREAM_ADDRESS' => Configuration::get('RBTHEMEDREAM_ADDRESS'),
-            'RBTHEMEDREAM_PHONE_NUMBER' => Configuration::get('RBTHEMEDREAM_PHONE_NUMBER'),
-            'RBTHEMEDREAM_EMAIL' => Configuration::get('RBTHEMEDREAM_EMAIL'),
-            'RBTHEMEDREAM_CONTENT_PAGE' => $content_page,
             'RBTHEMEDREAM_FACEBOOK' => Configuration::get('RBTHEMEDREAM_FACEBOOK'),
             'RBTHEMEDREAM_TWITTER' => Configuration::get('RBTHEMEDREAM_TWITTER'),
             'RBTHEMEDREAM_INSTAGRAM' => Configuration::get('RBTHEMEDREAM_INSTAGRAM'),
@@ -698,17 +654,7 @@ class Rbthemedream extends Module
         }
 
         foreach (array_keys($form_values) as $key) {
-            if ($key == 'RBTHEMEDREAM_CONTENT_PAGE') {
-                $content_page =  array();
-
-                foreach (Language::getLanguages(false) as $lang) {
-                    $content_page[$lang['id_lang']] = Tools::getValue('RBTHEMEDREAM_CONTENT_PAGE_' . $lang['id_lang']);
-                }
-
-                Configuration::updateValue($key, $content_page, true);
-            } else {
-                Configuration::updateValue($key, Tools::getValue($key));
-            }
+            Configuration::updateValue($key, Tools::getValue($key));
         }
     }
 
@@ -1383,16 +1329,6 @@ class Rbthemedream extends Module
         $content .= ";\n";
         $content .= 'Configuration::updateValue("RBTHEMEDREAM_MAP_LONGITUDE", "'.Configuration::get('RBTHEMEDREAM_MAP_LONGITUDE').'")';
         $content .= ";\n";
-        $content .= 'Configuration::updateValue("RBTHEMEDREAM_COMPANY_NAME", "'.Configuration::get('RBTHEMEDREAM_COMPANY_NAME').'")';
-        $content .= ";\n";
-        $content .= 'Configuration::updateValue("RBTHEMEDREAM_ADDRESS", "'.Configuration::get('RBTHEMEDREAM_ADDRESS').'")';
-        $content .= ";\n";
-        $content .= 'Configuration::updateValue("RBTHEMEDREAM_PHONE_NUMBER", "'.Configuration::get('RBTHEMEDREAM_PHONE_NUMBER').'")';
-        $content .= ";\n";
-        $content .= 'Configuration::updateValue("RBTHEMEDREAM_EMAIL", "'.Configuration::get('RBTHEMEDREAM_EMAIL').'")';
-        $content .= ";\n";
-        $content .= 'Configuration::updateValue("RBTHEMEDREAM_CONTENT_PAGE", "'.Configuration::get('RBTHEMEDREAM_CONTENT_PAGE').'")';
-        $content .= ";\n";
         $content .= 'Configuration::updateValue("RBTHEMEDREAM_FACEBOOK", "'.Configuration::get('RBTHEMEDREAM_FACEBOOK').'")';
         $content .= ";\n";
         $content .= 'Configuration::updateValue("RBTHEMEDREAM_TWITTER", "'.Configuration::get('RBTHEMEDREAM_TWITTER').'")';
@@ -1661,6 +1597,20 @@ class Rbthemedream extends Module
         return $this->display(__FILE__, 'views/templates/hook/rb-social.tpl');
     }
 
+    public function hookdisplayRbMap()
+    {
+        if (Configuration::get('RBTHEMEDREAM_SHOW_MAP') != 1) {
+            return;
+        }
+
+        $this->smarty->assign(array(
+            'latitude' => Configuration::get('RBTHEMEDREAM_MAP_LATITUDE'),
+            'longitude' => Configuration::get('RBTHEMEDREAM_MAP_LONGITUDE'),
+        ));
+
+        return $this->display(__FILE__, 'views/templates/hook/rb_map.tpl');
+    }
+
     public function hookdisplayRbFooter()
     {
         return $this->renderByHookName('displayRbFooter');
@@ -1680,27 +1630,6 @@ class Rbthemedream extends Module
         $var = array(
             'rb_links' => $rb_links,
         );
-
-        if ($hook_name == 'displayRbFooter') {
-            $var['type'] = 'contact';
-            $var['company'] = Configuration::get('RBTHEMEDREAM_COMPANY_NAME');
-            $var['address'] = Configuration::get('RBTHEMEDREAM_ADDRESS');
-            $var['phone'] = Configuration::get('RBTHEMEDREAM_PHONE_NUMBER');
-            $var['email'] = Configuration::get('RBTHEMEDREAM_EMAIL');
-            $var['content'] = Configuration::get('RBTHEMEDREAM_CONTENT_PAGE');
-            $var['map'] = Configuration::get('RBTHEMEDREAM_SHOW_MAP');
-            $var['latitude'] = Configuration::get('RBTHEMEDREAM_MAP_LATITUDE');
-            $var['longitude'] = Configuration::get('RBTHEMEDREAM_MAP_LONGITUDE');
-
-            /* Social Link */
-
-            $var['facebook'] = Configuration::get('RBTHEMEDREAM_FACEBOOK');
-            $var['twitter'] = Configuration::get('RBTHEMEDREAM_TWITTER');
-            $var['instagram'] = Configuration::get('RBTHEMEDREAM_INSTAGRAM');
-            $var['pinterest'] = Configuration::get('RBTHEMEDREAM_PINTEREST');
-            $var['youtube'] = Configuration::get('RBTHEMEDREAM_YOUTUBE');
-            $var['vimeo'] = Configuration::get('RBTHEMEDREAM_VIMEO');
-        }
 
         $this->smarty->assign($var);
 

@@ -31,8 +31,8 @@
 	                    {if isset($link.data.url) && isset($link.data.title)}
 	                        <li>
 	                            <a
-	                                    href="{$link.data.url}"
-	                                    {if isset($link.data.description)}title="{$link.data.description}"{/if}
+	                                href="{$link.data.url}"
+	                                {if isset($link.data.description)}title="{$link.data.description}"{/if}
 	                            >
 	                                {$link.data.title}
 	                            </a>
@@ -82,8 +82,4 @@
 	        </div>
 	    {/if}
 	{/foreach}
-{/if}
-
-{if isset($type) && $type == 'contact'}
-	{include 'module:rbthemedream/views/templates/hook/rb_info.tpl'}
 {/if}

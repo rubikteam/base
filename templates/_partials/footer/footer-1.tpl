@@ -33,9 +33,11 @@
   <div class="container">
     <div class="row">
       <!-- New Hook -->
-        {hook h='displayRbFooter'}
-        {hook h='displayRbEmail'}
         {hook h='displayRbFooterContact'}
+        {hook h='displayRbSocial'}
+        {hook h='displayRbEmail'}
+        {hook h='displayRbMap'}
+        {hook h='displayRbFooter'}
       <!-- End -->
       {block name='hook_footer'}
         {hook h='displayFooter'}

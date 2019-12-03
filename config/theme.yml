@@ -120,6 +120,8 @@ global_settings:
         - ps_customtext
       displayRbSocial:
         - rbthemedream
+      displayRbMap:
+        - rbthemedream
       displayRbTopContact:
         -ps_contactinfo
       displayRbFooterContact:
