@@ -202,19 +202,9 @@ class Rbthemedream extends Module
         $errors = array();
 
         if (((bool)Tools::isSubmit('submitRbthemedreamModule')) == true) {
-            $background_color = Tools::getValue('RBTHEMEDREAM_BACKGROUND_COLOR');
-
-            if (!Validate::isColor($background_color)) {
-                $errors[] = $this->trans(
-                    'Invalid value for the Background Color',
-                    array(),
-                    'Modules.Rbthemedream.Admin'
-                );
-            }
-
             $latitude = Tools::getValue('RBTHEMEDREAM_MAP_LATITUDE');
 
-            if (!Validate::isFloat($latitude)) {
+            if (!Validate::isFloat($latitude) && $latitude != '') {
                 $errors[] = $this->trans(
                     'Invalid value for the Latitude',
                     array(),
@@ -224,29 +214,9 @@ class Rbthemedream extends Module
 
             $longitude = Tools::getValue('RBTHEMEDREAM_MAP_LONGITUDE');
 
-            if (!Validate::isFloat($longitude)) {
+            if (!Validate::isFloat($longitude) && $longitude != '') {
                 $errors[] = $this->trans(
                     'Invalid value for the Longitude',
-                    array(),
-                    'Modules.Rbthemedream.Admin'
-                );
-            }
-
-            $phone = Tools::getValue('RBTHEMEDREAM_PHONE_NUMBER');
-
-            if (!Validate::isInt($phone)) {
-                $errors[] = $this->trans(
-                    'Invalid value for the Phone Number',
-                    array(),
-                    'Modules.Rbthemedream.Admin'
-                );
-            }
-
-            $email = Tools::getValue('RBTHEMEDREAM_EMAIL');
-
-            if (!Validate::isEmail($email)) {
-                $errors[] = $this->trans(
-                    'Invalid value for the Email',
                     array(),
                     'Modules.Rbthemedream.Admin'
                 );
