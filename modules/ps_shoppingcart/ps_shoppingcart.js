@@ -25,6 +25,7 @@ $(document).ready(function () {
 
         $(document).on('click', '#js-cart-close', function (e) {
             $('#blockcart, #mobile-cart-wrapper, #_mobile_blockcart-content, #_desktop_blockcart-content').removeClass('show');
+            $('#header').trigger('click');
             e.stopPropagation();
         });
 
