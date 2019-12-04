@@ -390,32 +390,7 @@ module.exports = function ($) {
         respondTo = 'iframe-window';
     }
 
-    var savedOptions = $carousel.data('slider_options'),
-        defaultOptions = {
-            respondTo: respondTo,
-            infinite: false,
-            autoplaySpeed: 4500,
-            rows: savedOptions.itemsPerColumn,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowTablet,
-                        slidesToScroll: savedOptions.slidesToShowTablet
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: savedOptions.slidesToShowMobile,
-                        slidesToScroll: savedOptions.slidesToShowMobile
-                    }
-                }
-            ]
-        },
-
-        slickOptions = $.extend({}, defaultOptions, $carousel.data('slider_options'));
-
+    var slickOptions = $carousel.data('slider_options');
     $carousel.slick(slickOptions);
 
     if (rbFrontendConfig.isEditMode) {

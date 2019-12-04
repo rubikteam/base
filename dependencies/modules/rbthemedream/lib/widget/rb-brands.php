@@ -138,6 +138,14 @@ class RbBrands extends RbControl
                 'section' => 'section_pswidget_options',
                 'options' => $slidesToShowSlider,
             ),
+            'brand_to_display'=> array(
+                'label' => $module->l('Brands On Row (992-4,768-3)'),
+                'type' => 'text',
+                'section' => 'section_pswidget_options',
+                'condition' => array(
+                    'view' => 'carousel',
+                ),
+            ),
             'items_per_column' => array(
                 'label' => $module->l('Items per column'),
                 'type' => 'select',
@@ -342,15 +350,48 @@ class RbBrands extends RbControl
 
             } else {
                 $widgetOptions['arrows_position'] = $optionsSource['arrows_position'];
-
                 $show_dots = (in_array($optionsSource['navigation'], array('dots', 'both')));
                 $show_arrows = (in_array($optionsSource['navigation'], array('arrows', 'both')));
 
+                if (isset($optionsSource['brand_to_display']) &&
+                    $optionsSource['brand_to_display'] != ''
+                ) {
+                    $configs = explode(',', $instance['brand_to_display']);
+
+                    foreach ($configs as $key_cf => $config) {
+                        $config = explode('-', $config);
+
+                        $config_obj[] = array(
+                            'breakpoint' => abs($config[0]),
+                            'settings' => array(
+                                'slidesToShow' => abs($config[1]),
+                                'slidesToScroll' => abs($config[1]),
+                            )
+                        );
+                    }
+                } else {
+                    $config_obj = array(
+                        array(
+                            'breakpoint' => 992,
+                            'settings' => array(
+                                'slidesToShow' => abs($optionsSource['slides_to_show_s_tablet']),
+                                'slidesToScroll' => abs($optionsSource['slides_to_show_s']),
+                            ),
+                        ),
+                        array(
+                            'breakpoint' => 576,
+                            'settings' => array(
+                                'slidesToShow' => abs($optionsSource['slides_to_show_s_mobile']),
+                                'slidesToScroll' => abs($optionsSource['slides_to_show_s']),
+                            ),
+                        ),
+                    );
+                }
+
                 $widgetOptions['options'] = array(
+                    'responsive' => $config_obj,
                     'slidesToShow' => abs($optionsSource['slides_to_show_s']),
                     'slidesToScroll' => abs($optionsSource['slides_to_show_s']),
-                    'slidesToShowTablet' => abs($optionsSource['slides_to_show_s_tablet']),
-                    'slidesToShowMobile' => abs($optionsSource['slides_to_show_s_mobile']),
                     'navigation' => $optionsSource['navigation'],
                     'itemsPerColumn' => $optionsSource['items_per_column'],
                     'autoplay' => ('yes' === $optionsSource['autoplay']),

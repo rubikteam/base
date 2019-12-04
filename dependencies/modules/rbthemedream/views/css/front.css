@@ -25,6 +25,9 @@
 * Don't forget to prefix your containers with your own identifier
 * to avoid any conflicts with others containers.
 */
+.rb-brands-item {
+    position: relative;
+}
 .simpleblog-posts-column .rb-blog-image-container {
     position: relative;
 }

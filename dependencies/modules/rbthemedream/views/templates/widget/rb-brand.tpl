@@ -36,9 +36,10 @@
 	{else}
 	    <div class="rb-brands-carousel slick-arrows-{$widgetOptions.arrows_position}"  data-slider_options='{$widgetOptions.options|@json_encode nofilter}'>
 	        {foreach from=$widgetOptions.brands item=brand name=brand_list}
-	            <div>
+	            <div class="rb-brands-item">
 	                <a href="{$brand.link}">
-	                    <img src="{$brand.image}" alt="{$brand.name}" />
+	                    <img class="img-fluid slick-loading" data-lazy="{$brand.image}" alt="{$brand.name}" />
+	                    <div class="rb-image-loading"></div>
 	                </a>
 	            </div>
 	        {/foreach}
