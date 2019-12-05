@@ -46,12 +46,14 @@ $(document).ready(function() {
 	rbFormRegister();
 	addQuickview();
 	selectViewProductList();
+	hoverImage();
 
 	prestashop.on('updateProductList', function() {
 		addCompare();
 		addWishlist();
 		ajaxloading();
 		addQuickview();
+		hoverImage();
 	});
 
 	prestashop.on('updatedProduct', function() {  
@@ -89,6 +91,17 @@ $(document).on('click', '.type-view', function(e){
   	$('.type-view').removeClass('selected');
   	$this.addClass('selected');
 });
+
+function hoverImage()
+{
+	if ($('#index').length == 0 && $('.product-miniature').length > 0) {
+		$('.rb-cover').hover(function() {
+			var $this = $(this).closest('.product-thumbnail').find('.rb-image');
+			var img = $this.data('lazy');
+			$this.attr('src', img);
+		});
+	}
+}
 
 function selectViewProductList()
 {
