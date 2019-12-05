@@ -178,8 +178,10 @@ function SalePopup() {
 }
 
 $(document).ajaxComplete(function(event, jqxhr, data) {
-	if (typeof data.data != 'undefined' && data.data.indexOf('action=add-to-cart') != -1) {
-		showHideLoading(obj, 0);
+	if (typeof data.data != 'undefined' && data.data != null) {
+		if (data.data.indexOf('action=add-to-cart') != -1) {
+			showHideLoading(obj, 0);
+		}
 	}
 });
 
