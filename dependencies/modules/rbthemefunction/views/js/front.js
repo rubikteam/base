@@ -96,8 +96,8 @@ $(document).on('click', '.type-view', function(e){
 
 function rbExpandCategoryTree()
 {
-	if ($('.rb-categoty-active').length > 0) {
-		$('.rb-categoty-active').parents('li').each(function() {
+	if ($('.rb-category-active').length > 0) {
+		$('.rb-category-active').parents('li').each(function() {
             $(this).children('[data-toggle="collapse"]').attr('aria-expanded', 'true');
             $(this).children('.collapse').attr('aria-expanded', 'true');
             $(this).children('.collapse').addClass('in');

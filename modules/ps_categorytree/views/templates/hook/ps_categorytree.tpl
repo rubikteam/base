@@ -33,7 +33,7 @@
         {foreach from=$nodes item=node}
           <li data-depth="{$depth}">
             {if $depth===0}
-              <a href="{$node.link}" {if isset($id_category) && $id_category == $node.id}class="rb-categoty-active"{/if}>
+              <a href="{$node.link}" {if isset($id_category) && $id_category == $node.id}class="rb-category-active"{/if}>
                 {$node.name}
               </a>
 
@@ -48,7 +48,7 @@
               {/if}
             {else}
               <a
-                class="category-sub-link{if isset($id_category) && $id_category == $node.id} rb-categoty-active{/if}"
+                class="category-sub-link{if isset($id_category) && $id_category == $node.id} rb-category-active{/if}"
                 href="{$node.link}"
               >
                 {$node.name}
