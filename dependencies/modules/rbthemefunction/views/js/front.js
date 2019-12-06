@@ -47,6 +47,7 @@ $(document).ready(function() {
 	addQuickview();
 	selectViewProductList();
 	hoverImage();
+	rbExpandCategoryTree();
 
 	prestashop.on('updateProductList', function() {
 		addCompare();
@@ -54,6 +55,7 @@ $(document).ready(function() {
 		ajaxloading();
 		addQuickview();
 		hoverImage();
+		rbExpandCategoryTree();
 	});
 
 	prestashop.on('updatedProduct', function() {  
@@ -91,6 +93,17 @@ $(document).on('click', '.type-view', function(e){
   	$('.type-view').removeClass('selected');
   	$this.addClass('selected');
 });
+
+function rbExpandCategoryTree()
+{
+	if ($('.rb-categoty-active').length > 0) {
+		$('.rb-categoty-active').parents('li').each(function() {
+            $(this).children('[data-toggle="collapse"]').attr('aria-expanded', 'true');
+            $(this).children('.collapse').attr('aria-expanded', 'true');
+            $(this).children('.collapse').addClass('in');
+        });
+	}
+}
 
 function hoverImage()
 {

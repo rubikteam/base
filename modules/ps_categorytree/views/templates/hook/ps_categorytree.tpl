@@ -22,6 +22,9 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
+{if Tools::getIsset(controller) && Tools::getValue('controller') == 'category'}
+  {assign var="id_category" value=Tools::getValue('id_category')}
+{/if}
 
 {function name="categories" nodes=[] depth=0}
   {strip}
@@ -30,7 +33,10 @@
         {foreach from=$nodes item=node}
           <li data-depth="{$depth}">
             {if $depth===0}
-              <a href="{$node.link}">{$node.name}</a>
+              <a href="{$node.link}" {if isset($id_category) && $id_category == $node.id}class="rb-categoty-active"{/if}>
+                {$node.name}
+              </a>
+
               {if $node.children}
                 <span class="collapse-icons" data-toggle="collapse" data-target="#exCollapsingNavbar{$node.id}">
                   <i class="fa fa-angle-down add" aria-hidden="true"></i>
@@ -41,7 +47,13 @@
                 </div>
               {/if}
             {else}
-              <a class="category-sub-link" href="{$node.link}">{$node.name}</a>
+              <a
+                class="category-sub-link{if isset($id_category) && $id_category == $node.id} rb-categoty-active{/if}"
+                href="{$node.link}"
+              >
+                {$node.name}
+              </a>
+              
               {if $node.children}
                 <span class="arrows collapse-icons" data-toggle="collapse" data-target="#exCollapsingNavbar{$node.id}">
                    <i class="fa fa-angle-down add" aria-hidden="true"></i>
