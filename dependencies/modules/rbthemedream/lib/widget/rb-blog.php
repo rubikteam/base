@@ -489,7 +489,7 @@ class RbBlog extends RbControl
             $module = new Rbthemedream();
 
             $this->context->smarty->assign(array(
-                'rb_list' => Context::getContext()->link->getModuleLink('rbthemeblog', 'list'),
+                'rb_list_blog' => Context::getContext()->link->getModuleLink('rbthemeblog', 'list'),
                 'posts' => $posts,
                 'view' => $optionsSource['view'],
                 'options' => $options,
