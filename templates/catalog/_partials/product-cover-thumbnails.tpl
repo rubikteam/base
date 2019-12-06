@@ -26,10 +26,27 @@
   {block name='product_cover'}
     <div class="product-cover">
       {if $product.cover}
-        <img class="js-qv-product-cover" data-zoom-image="{$product.cover.bySize.large_default.url}" src="{$product.cover.bySize.medium_default.url}" alt="{$product.cover.legend}" title="{$product.cover.legend}" style="width:100%;" itemprop="image">
-        <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
-          <i class="material-icons zoom-in">&#xE8FF;</i>
-        </div>
+        <img
+          class="images-zoom"
+          data-zoom-image="{$product.cover.bySize.medium_default.url}"
+          src="{$product.cover.bySize.home_default.url}"
+          alt="{$product.cover.legend}"
+          title="{$product.cover.legend}"
+          itemprop="image"
+          style="width:100%"
+          data-rb-image="{$product.cover.bySize.large_default.url}"
+        >
+        {foreach from=$product.images item=image}
+          {if $product.cover.id_image != $image.id_image}
+            <img
+              class="images-zoom"
+              data-zoom-image="{$image.bySize.medium_default.url}"
+              src="{$image.bySize.home_default.url}"
+              style="width:100%"
+              data-rb-image="{$image.bySize.large_default.url}"
+            >
+          {/if}
+        {/foreach}
       {else}
         <img src="{$urls.no_picture_image.bySize.large_default.url}" style="width:100%;">
       {/if}
@@ -42,8 +59,13 @@
         {$count = 1}
 
         {foreach from=$product.images item=image}
-          <a class="thumb-container" href="#" data-image="{$image.bySize.medium_default.url}" data-zoom-image="{$image.bySize.large_default.url}">
-              <img class="img img-thumb" id="rb_img_{$count}" src="{$image.bySize.small_default.url}" />
+          <a
+            class="thumb-container"
+            href="#"
+            data-image="{$image.bySize.medium_default.url}"
+            data-zoom-image="{$image.bySize.large_default.url}"
+          >
+            <img class="img img-thumb" id="rb_img_{$count}" src="{$image.bySize.small_default.url}" />
           </a>
 
           {$count = $count + 1}
