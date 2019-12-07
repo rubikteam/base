@@ -497,9 +497,7 @@ class Rbthemefunction extends Module
             )
         );
 
-        if (file_exists(dirname(__FILE__).'/views/img/imgbg_'.$this->context->shop->id.'.jpg')) {
-            $url_img = $this->_path."/views/img/imgbg_".$this->context->shop->id.".jpg";
-        }
+        $url_img = $this->_path."/views/img/imgbg_".$this->context->shop->id.".jpg";
 
         $fields_form[2]['form'] = array(
             'input' => array(
