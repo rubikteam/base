@@ -23,20 +23,14 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <div class="rb-countdown row">
-	<div class="col-md-6">
-		{if isset($instance.title) && $instance.title != ''}
-			<div class="rb-coundown-title">{$instance.title}</div>
-		{/if}
-
-		{if isset($instance.description) && $instance.description != ''}
-			<div class="rb-coundown-description">{$instance.description nofilter}</div>
-		{/if}
-	</div>
-
-	<div class="col-md-6">
-		<ul
-			class="rb-clock"
-			data-time="{if isset($instance.time) && $instance.time != ''}{$instance.time}{else}12/30/2100 00:00:00{/if}"
-		></ul>
-	</div>
+	{if isset($instance.title) && $instance.title != ''}
+		<div class="rb-coundown-title">{$instance.title}</div>
+	{/if}
+	<ul
+		class="rb-clock"
+		data-time="{if isset($instance.time) && $instance.time != ''}{$instance.time}{else}12/30/2100 00:00:00{/if}"
+	></ul>
+	{if isset($instance.description) && $instance.description != ''}
+		<div class="rb-coundown-description">{$instance.description nofilter}</div>
+	{/if}
 </div>
