@@ -497,7 +497,11 @@ class Rbthemefunction extends Module
             )
         );
 
-        $url_img = $this->_path."/views/img/imgbg_".$this->context->shop->id.".jpg";
+        $url_img = '';
+
+        if (file_exists(dirname(__FILE__).'/views/img/imgbg_'.$this->context->shop->id.'.jpg')) {
+            $url_img = $this->_path."/views/img/imgbg_".$this->context->shop->id.".jpg";
+        }
 
         $fields_form[2]['form'] = array(
             'input' => array(
@@ -541,7 +545,7 @@ class Rbthemefunction extends Module
                     'label' => $this->l('Background Image'),
                     'name' => 'image',
                     'value' => true,
-                    'thumb' => $url_img,
+                    'thumb' => $url_img ? $url_img : '',
                 ),
                 array(
                     'type' => 'textarea',
