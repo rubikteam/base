@@ -22,14 +22,11 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-<section class="crossselling-products block block-section">
-    <h4 class="section-title"><span>{l s='Customers who bought this product also bought:' d='Shop.Theme.Catalog'}</span>
-    </h4>
-    <div class="block-content">
-        <div class="products slick-products-carousel products-grid slick-default-carousel slick-arrows-{$iqitTheme.pl_crsl_style}">
-            {foreach from=$products item="product"}
-                {include file="catalog/_partials/miniatures/product.tpl" product=$product carousel=true}
-            {/foreach}
-        </div>
-    </div>
+<section class="featured-products clearfix mt-3">
+  	<h2>{l s='Customers who bought this product also bought:' d='Shop.Theme.Catalog'}</h2>
+  	<div class="products">
+	    {foreach from=$products item="product"}
+	      {include file="catalog/_partials/miniatures/product.tpl" product=$product}
+	    {/foreach}
+  	</div>
 </section>

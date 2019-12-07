@@ -22,19 +22,17 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-
-<section class="category-products block block-section">
-  <h4 class="section-title"><span>   {if $products|@count == 1}
-        {l s='%s other product in the same category:' sprintf=[$products|@count] d='Modules.Categoryproducts.Shop'}
-      {else}
-        {l s='%s other products in the same category:' sprintf=[$products|@count] d='Modules.Categoryproducts.Shop'}
-      {/if}</span>
-  </h4>
-  <div class="block-content">
-    <div class="products slick-products-carousel products-grid slick-default-carousel slick-arrows-{$iqitTheme.pl_crsl_style}">
+<section class="featured-products clearfix mt-3">
+  <h2>
+    {if $products|@count == 1}
+      {l s='%s other product in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
+    {else}
+      {l s='%s other products in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
+    {/if}
+  </h2>
+  <div class="products">
       {foreach from=$products item="product"}
-        {include file="catalog/_partials/miniatures/product.tpl" product=$product carousel=true}
+          {include file="catalog/_partials/miniatures/product.tpl" product=$product}
       {/foreach}
-    </div>
   </div>
 </section>

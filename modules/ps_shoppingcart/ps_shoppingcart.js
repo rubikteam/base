@@ -15,14 +15,11 @@
  * The safest way to do so is to place your "override" inside the theme's main JS file.
  *
  */
-
 $(document).ready(function () {
     prestashop.blockcart = prestashop.blockcart || {};
-
     var showModal = prestashop.blockcart.showModal || function (modal) {};
 
     $(document).ready(function () {
-
         $(document).on('click', '#js-cart-close', function (e) {
             $('#blockcart, #mobile-cart-wrapper, #_mobile_blockcart-content, #_desktop_blockcart-content').removeClass('show');
             $('#header').trigger('click');
@@ -32,7 +29,6 @@ $(document).ready(function () {
         $(document).on('click', '#blockcart-content', function (e) {
             e.stopPropagation();
         });
-
 
         prestashop.on(
             'updateCart',
