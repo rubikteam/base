@@ -24,12 +24,12 @@
  *}
 {block name='product_miniature_item'}
     {if isset($rb_list) && $rb_list != ''}
-      {include file='catalog/_partials/miniatures/product-list/product-$rb_list.tpl'}
+      {include file="catalog/_partials/miniatures/product-list/product-$rb_list.tpl"}
     {else if Configuration::get('RBTHEMEDREAM_PRODUCT_LIST') != ''}
       {$rb_list = Configuration::get('RBTHEMEDREAM_PRODUCT_LIST')}
 
-      {include file='catalog/_partials/miniatures/product-list/product-$rb_list.tpl'}
+      {include file="catalog/_partials/miniatures/product-list/product-$rb_list.tpl"}
     {else}
-      {include file='catalog/_partials/miniatures/product-list/product-1.tpl'}
+      {include file="catalog/_partials/miniatures/product-list/product-1.tpl"}
     {/if}
 {/block}
