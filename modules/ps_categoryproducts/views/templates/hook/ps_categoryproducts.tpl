@@ -30,9 +30,9 @@
       {l s='%s other products in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
     {/if}
   </h2>
-  <div class="products">
-      {foreach from=$products item="product"}
-          {include file="catalog/_partials/miniatures/product.tpl" product=$product}
-      {/foreach}
+  <div class="products featured-products-slick">
+    {foreach from=$products item="product"}
+      {include file="catalog/_partials/miniatures/product-slick.tpl" product=$product}
+    {/foreach}
   </div>
 </section>

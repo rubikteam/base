@@ -26,38 +26,118 @@
 * to avoid any conflicts with others containers.
 */
 $(document).ajaxComplete(function(event, jqxhr, data) {
+	$('.product-actions .rb-ajax-loading').hide();
+
 	if (typeof data.data != 'undefined' && data.data != null) {
 		if (data.data.indexOf('action=quickview') != -1) {
 			setTimeout(function() {
-				initSlick();
+				initSlick('.quickview ');
 			}, 400);
 		}
 	}
 });
 
 $(document).ready(function() {
-	initSlick();
+	initSlick('');
 	rbZoom();
 	zoomView();
+	afterChangeSlick();
+	changeCombi();
 
+	if ($('.featured-products-slick').length > 0) {
+		productCategorySlick();
+	}
+
+	prestashop.on('updatedProduct', function() {  
+		initSlick('');
+		rbZoom();
+		zoomView();
+		afterChangeSlick();
+		changeCombi();
+	});
+});
+
+function productCategorySlick()
+{
+	$('.featured-products-slick').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 1000,
+		responsive: [
+		{
+			breakpoint: 1200,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 992,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 576,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 400,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
+		]
+	});
+}
+
+function changeCombi()
+{
+	$('.product-variants input').click(function() {
+		$('.product-actions .rb-ajax-loading').show();
+	});
+}
+
+function afterChangeSlick()
+{
 	$('.product-cover').on('afterChange', function(event, slick, currentSlide) {
 		rbZoom();
 		zoomView();
 	});
-});
+}
 
 function initSlick(check)
 {
 	if (rb_slick['active'] == 1) {
 		if ($('#rb_gallery').length > 0) {
-			$('.product-cover').slick({
+			$(check + '.product-cover').slick({
 				slidesToShow: 1,
 	  			slidesToScroll: 1,
 	  			autoplay: false,
 	  			asNavFor: '#rb_gallery',
 			});
 
-			$('#rb_gallery').slick({
+			$(check + '#rb_gallery').slick({
 	  			slidesToShow: rb_slick['slideshow'] != '' ? Number(rb_slick['slideshow']) : 1,
 	  			slidesToScroll: rb_slick['slidesToScroll'] != '' ? Number(rb_slick['slidesToScroll']) : 1,
 	  			autoplay: rb_slick['autoplay'] == 1 ? true : false,
