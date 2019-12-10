@@ -26,7 +26,7 @@
 	<div class="product-button-prev">
 		{if isset($productPrev) && !empty($productPrev)}
 			<a class="btn btn-default button button-prev" href="{$productPrev.url}" title="{$productPrev.name}">
-				<i class="material-icons">navigate_next</i>
+				<i class="fa fa-angle-left"></i>
             </a>
 
             <div class="button-hover">
@@ -39,7 +39,7 @@
 	<div class="product-button-next">
 		{if isset($productNext) && !empty($productNext)}
 			<a class="btn btn-default button button-prev" href="{$productNext.url}" title="{$productNext.name}">
-				<i class="material-icons">navigate_before</i>
+				<i class="fa fa-angle-right"></i>
             </a>
 
             <div class="button-hover">
