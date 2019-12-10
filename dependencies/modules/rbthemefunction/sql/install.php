@@ -27,7 +27,7 @@
 $sql = array();
 
 $sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'rbthemefunction_review` (
-    `id_review` int(11) NOT NULL AUTO_INCREMENT,
+    `id_rbthemefunction_review` int(11) NOT NULL AUTO_INCREMENT,
     `id_product` int(11) NOT NULL,
     `id_customer` int(11) NOT NULL,
     `id_guest` int(11) NOT NULL,
@@ -38,7 +38,7 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'rbthemefunction_review` (
     `validate` tinyint(1) NOT NULL,
     `deleted` tinyint(1) NOT NULL,
     `date_add` datetime NOT NULL,
-    PRIMARY KEY  (`id_review`)
+    PRIMARY KEY  (`id_rbthemefunction_review`)
 ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;';
 
 $sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'rbthemefunction_wishlist` (

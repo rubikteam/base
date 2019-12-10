@@ -33,7 +33,7 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
         $this->context = Context::getContext();
         $this->bootstrap = true;
         $this->table = 'rbthemefunction_review';
-        $this->identifier = 'id_review';
+        $this->identifier = 'id_rbthemefunction_review';
         $this->className = 'RbthemefunctionReview';
         $this->obj_review = new RbthemefunctionReview();
         parent::__construct();
@@ -52,16 +52,16 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
     public function postProcess()
     {
 
-        if (Tools::isSubmit('deleterbthemefunction_review') && Tools::getValue('id_review')) {
-            $id_review = (int) Tools::getValue('id_review');
-            $review = new RbthemefunctionReview($id_review);
+        if (Tools::isSubmit('deleterbthemefunction_review') && Tools::getValue('id_rbthemefunction_review')) {
+            $id_rbthemefunction_review = (int) Tools::getValue('id_rbthemefunction_review');
+            $review = new RbthemefunctionReview($id_rbthemefunction_review);
             $review->delete();
             $this->redirect_after = self::$currentIndex.'&token='.$this->token;
         }
 
-        if (Tools::isSubmit('approveReview') && Tools::getValue('id_review')) {
-            $id_review = (int) Tools::getValue('id_review');
-            $review = new RbthemefunctionReview($id_review);
+        if (Tools::isSubmit('approveReview') && Tools::getValue('id_rbthemefunction_review')) {
+            $id_rbthemefunction_review = (int) Tools::getValue('id_rbthemefunction_review');
+            $review = new RbthemefunctionReview($id_rbthemefunction_review);
             $review->validate();
             $this->redirect_after = self::$currentIndex.'&token='.$this->token;
         }
@@ -78,7 +78,7 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
         $helper->show_toolbar = false;
         $helper->module = $this->module;
         $helper->listTotal = count($reviews);
-        $helper->identifier = 'id_review';
+        $helper->identifier = 'id_rbthemefunction_review';
         $helper->title = $this->l('Approved Reviews');
         $helper->table = 'rbthemefunction_review';
         $helper->token = $this->token;
@@ -95,7 +95,7 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
         $template = $this->createTemplate('list-action-approve.tpl');
 
         $template->assign(array(
-            'href' => $this->context->link->getAdminLink('AdminRbthemefunctionReview').'&approveReview&id_review='.$id,
+            'href' => $this->context->link->getAdminLink('AdminRbthemefunctionReview').'&approveReview&id_rbthemefunction_review='.$id,
             'action' => $this->l('Approve'),
         ));
         
@@ -117,7 +117,7 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
             $helper->show_toolbar = false;
             $helper->module = $this->module;
             $helper->listTotal = count($reviews);
-            $helper->identifier = 'id_review';
+            $helper->identifier = 'id_rbthemefunction_review';
             $helper->title = $this->l('Reviews waiting for approval');
             $helper->table = 'rbthemefunction_review';
             $helper->token = $this->token;
@@ -132,7 +132,7 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
     public function getStandardFieldList()
     {
         return array(
-            'id_review' => array(
+            'id_rbthemefunction_review' => array(
                 'title' => $this->l('ID'),
                 'type' => 'text',
             ),

@@ -43,7 +43,7 @@ class RbthemefunctionReview extends ObjectModel
      */
     public static $definition = array(
         'table' => 'rbthemefunction_review',
-        'primary' => 'id_review',
+        'primary' => 'id_rbthemefunction_review',
         'multilang_shop' => false,
         'fields' => array(
             'id_product' =>     array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
@@ -67,7 +67,7 @@ class RbthemefunctionReview extends ObjectModel
 
     public function getByValidate($validate = '0', $deleted = false)
     {
-        $sql  = 'SELECT  pc.`id_review`, pc.`id_product`,
+        $sql  = 'SELECT  pc.`id_rbthemefunction_review`, pc.`id_product`,
         if (c.`id_customer`, CONCAT(c.`firstname`, \' \',  c.`lastname`), pc.`customer_name`) customer_name,
         pc.`title`, pc.`content`, pc.`grade`, pc.`date_add`, pl.`name`
         FROM `'._DB_PREFIX_.'rbthemefunction_review` pc
@@ -107,7 +107,7 @@ class RbthemefunctionReview extends ObjectModel
 
         if (!Cache::isStored($cache_id)) {
             $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-            SELECT pc.`id_review`, pc.`customer_name`, pc.`content`, pc.`grade`, pc.`date_add`, pc.`title`
+            SELECT pc.`id_rbthemefunction_review`, pc.`customer_name`, pc.`content`, pc.`grade`, pc.`date_add`, pc.`title`
             FROM `'._DB_PREFIX_.'rbthemefunction_review` pc
             WHERE pc.`id_product` = '.(int)($id_product).($validate == '1' ? ' AND pc.`validate` = 1' : '').'
             ORDER BY pc.`date_add` DESC
@@ -127,7 +127,7 @@ class RbthemefunctionReview extends ObjectModel
         $success = (Db::getInstance()->execute(
             'UPDATE `'._DB_PREFIX_.'rbthemefunction_review` SET
             `validate` = '.(int)$validate.'
-            WHERE `id_review` = '.(int)$this->id
+            WHERE `id_rbthemefunction_review` = '.(int)$this->id
         ));
 
         Hook::exec('actionObjectProductReviewValidateAfter', array('object' => $this));
