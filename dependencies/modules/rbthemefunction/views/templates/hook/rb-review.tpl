@@ -36,41 +36,41 @@
 {/if}
 
 {if $type == 'content'}
-	<div class="row">
-		<div class="rb-review-list col-xs-6 col-sm-6">
+	<div class="product_reviews_block_tab">
+		<div class="rb-review-list">
 			{if isset($reviews) && !empty($reviews)}
 				<div id="product_reviews_block">
 					{foreach from=$reviews item=review}
 						{if $review.content}
 							<div class="review" itemprop="review" itemscope itemtype="https://schema.org/Review">
-								<div class="review-info row">
-									<div class="review_author col-sm-3">
-										<span>{l s='Grade' mod='rbthemefunction'}&nbsp;</span>
-										<div class="star_content clearfix"  itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-											{section name="i" start=0 loop=5 step=1}
-												{if $review.grade le $smarty.section.i.index}
-													<div class="star"></div>
-												{else}
-													<div class="star star_on"></div>
-												{/if}
-											{/section}
-											<meta itemprop="worstRating" content = "0" />
-											<meta itemprop="ratingValue" content = "{$review.grade|escape:'html':'UTF-8'}" />
-											<meta itemprop="bestRating" content = "5" />
+								<div class="review-info">
+									<img alt="" src="../modules/rbthemefunction/views/img/author.png" class="avatar avatar-60 photo" height="60" width="60">
+									<div class="comment-text">
+										<div class="review_author">
+											<div class="review_author_infos">
+												<strong itemprop="author">{$review.customer_name|escape:'html':'UTF-8'}</strong>
+												<meta itemprop="datePublished" content="{$review.date_add|escape:'html':'UTF-8'|substr:0:10}" />
+												<em>- {$review.date_add|escape:'html':'UTF-8'}</em>
+											</div>
+											<div class="star_content clearfix"  itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+												{section name="i" start=0 loop=5 step=1}
+													{if $review.grade le $smarty.section.i.index}
+														<div class="star"></div>
+													{else}
+														<div class="star star_on"></div>
+													{/if}
+												{/section}
+												<meta itemprop="worstRating" content = "0" />
+												<meta itemprop="ratingValue" content = "{$review.grade|escape:'html':'UTF-8'}" />
+												<meta itemprop="bestRating" content = "5" />
+											</div>
 										</div>
-										<div class="review_author_infos">
-											<strong itemprop="author">{$review.customer_name|escape:'html':'UTF-8'}</strong>
-											<meta itemprop="datePublished" content="{$review.date_add|escape:'html':'UTF-8'|substr:0:10}" />
-											<em>{$review.date_add|escape:'html':'UTF-8'}</em>
+										<div class="review-detail">
+											<p itemprop="name" class="title_block">
+												<strong>{$review.title}</strong>
+											</p>
+											<p itemprop="reviewBody">{$review.content nofilter}</p>
 										</div>
-									</div>
-
-									<div class="review-detail col-sm-9">
-										<p itemprop="name" class="title_block">
-											<strong>{$review.title}</strong>
-										</p>
-
-										<p itemprop="reviewBody">{$review.content nofilter}</p>
 									</div>
 								</div>
 							</div>
@@ -89,48 +89,55 @@
 		</div>
 
 		{if $rb_login == 1}
-			<div class="rb-new-review-form col-xs-6 col-sm-6">
-				<ul id="criterions_list">
-					<li>
-						<label>{l s='Quality' mod='rbthemefunction'}:</label>
-						<div class="star_content">
-							<input class="star not_uniform" type="radio" name="criterion" value="1">
-							<input class="star not_uniform" type="radio" name="criterion" value="2">
-							<input class="star not_uniform" type="radio" name="criterion" value="3">
-							<input class="star not_uniform" type="radio" name="criterion" value="4" checked="checked">
-							<input class="star not_uniform" type="radio" name="criterion" value="5">
+			<div class="rb-new-review-form">
+				<div class="modal-header">
+					<h4 class="modal-title h2">
+						{l s='Write a review' mod='rbthemefunction'}		
+					</h4>
+				</div>
+				<div class="modal-body">
+					<ul id="criterions_list">
+						<li>
+							<label>{l s='Quality' mod='rbthemefunction'}:</label>
+							<div class="star_content">
+								<input class="star not_uniform" type="radio" name="criterion" value="1">
+								<input class="star not_uniform" type="radio" name="criterion" value="2">
+								<input class="star not_uniform" type="radio" name="criterion" value="3">
+								<input class="star not_uniform" type="radio" name="criterion" value="4" checked="checked">
+								<input class="star not_uniform" type="radio" name="criterion" value="5">
+							</div>
+							<div class="clearfix"></div>
+						</li>
+					</ul>
+
+					<form class="form-new-review" action="" method="POST">
+						<div class="form-group">
+							<label class="form-control-label" for="new_review_title">
+								{l s='Title' mod='rbthemefunction'} <sup class="required">*</sup>
+							</label>
+							<input type="text" class="form-control" id="new_review_title" required="" name="new_review_title">					  
 						</div>
-						<div class="clearfix"></div>
-					</li>
-				</ul>
 
-				<form class="form-new-review" action="" method="POST">
-					<div class="form-group">
-						<label class="form-control-label" for="new_review_title">
-							{l s='Title' mod='rbthemefunction'} <sup class="required">*</sup>
-						</label>
-						<input type="text" class="form-control" id="new_review_title" required="" name="new_review_title">					  
-					</div>
+						<div class="form-group">
+							<label class="form-control-label" for="new_review_content">
+								{l s='Comment' mod='rbthemefunction'} <sup class="required">*</sup>
+							</label>
 
-					<div class="form-group">
-						<label class="form-control-label" for="new_review_content">
-							{l s='Comment' mod='rbthemefunction'} <sup class="required">*</sup>
-						</label>
+							<textarea type="text" class="form-control" id="rb_review_content" required="" name="rb_review_content"></textarea>				  
+						</div>
 
-						<textarea type="text" class="form-control" id="rb_review_content" required="" name="rb_review_content"></textarea>				  
-					</div>
+						<div class="form-group">
+							<label class="form-control-label"><sup>*</sup> {l s='Required fields' mod='rbthemefunction'}</label>
+							<input id="id_product_review" name="id_product_review" type="hidden" value="{$id_product}"/>
+						</div>
 
-					<div class="form-group">
-						<label class="form-control-label"><sup>*</sup> {l s='Required fields' mod='rbthemefunction'}</label>
-						<input id="id_product_review" name="id_product_review" type="hidden" value="{$id_product}"/>
-					</div>
+						{include file='module:rbthemefunction/views/templates/rb-ajax-loading.tpl'}
 
-					{include file='module:rbthemefunction/views/templates/rb-ajax-loading.tpl'}
-
-					<button class="btn btn-primary rb-control-submit pull-xs-right" type="submit">
-						{l s='Submit' mod='rbthemefunction'}
-					</button>
-				</form>
+						<button class="btn btn-primary rb-control-submit pull-xs-right" type="submit">
+							{l s='Submit' mod='rbthemefunction'}
+						</button>
+					</form>
+				</div>
 			</div>
 		{/if}
 	</div>
