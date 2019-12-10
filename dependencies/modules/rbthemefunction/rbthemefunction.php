@@ -793,10 +793,8 @@ class Rbthemefunction extends Module
 
     public function hookActionAdminControllerSetMedia()
     {
-        if (Tools::getValue('module_name') == $this->name) {
-            $this->context->controller->addJS($this->_path.'views/js/back.js');
-            $this->context->controller->addCSS($this->_path.'views/css/back.css');
-        }
+        $this->context->controller->addJS($this->_path.'views/js/back.js');
+        $this->context->controller->addCSS($this->_path.'views/css/back.css');
     }
 
     public function hookHeader()

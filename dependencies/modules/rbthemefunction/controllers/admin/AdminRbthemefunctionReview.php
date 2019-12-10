@@ -49,9 +49,15 @@ class AdminRbthemefunctionReviewController extends ModuleAdminController
         return $return;
     }
 
+    public function initProcess()
+    {
+        if (Tools::getIsset('action') && Tools::getValue('action') == 'getNewReview') {
+            $this->ajaxProcessgetNewReview();
+        }
+    }
+
     public function postProcess()
     {
-
         if (Tools::isSubmit('deleterbthemefunction_review') && Tools::getValue('id_rbthemefunction_review')) {
             $id_rbthemefunction_review = (int) Tools::getValue('id_rbthemefunction_review');
             $review = new RbthemefunctionReview($id_rbthemefunction_review);
