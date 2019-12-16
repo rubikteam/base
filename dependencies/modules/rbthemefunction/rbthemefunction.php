@@ -591,7 +591,7 @@ class Rbthemefunction extends Module
                 ),
                 array(
                     'type' => 'text',
-                    'label' => $this->l('Slide To Scroll'),
+                    'label' => $this->l('Slide Speed'),
                     'name' => 'RBTHEMEFUNCTION_SLICK_AUTOSPEED',
                     'col' => 3
                 ),
