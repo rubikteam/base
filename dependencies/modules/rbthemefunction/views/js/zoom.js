@@ -130,6 +130,8 @@ function initSlick(check)
 {
 	if (rb_slick['active'] == 1) {
 		if ($('#rb_gallery').length > 0) {
+			$(check + '.product-img-slick').fadeIn(3000);
+			
 			$(check + '.product-cover').slick({
 				slidesToShow: 1,
 	  			slidesToScroll: 1,

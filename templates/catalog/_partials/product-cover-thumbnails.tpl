@@ -24,7 +24,7 @@
  *}
 <div class="images-container">
   {block name='product_cover'}
-    <div class="product-cover">
+    <div class="product-cover{if Configuration::get('RBTHEMEFUNCTION_SLICK_ACTIVE') == 1} product-img-slick{/if}">
       {if $product.cover}
         <img
           class="images-zoom"
@@ -36,17 +36,20 @@
           style="width:100%"
           data-rb-image="{$product.cover.bySize.large_default.url}"
         >
-        {foreach from=$product.images item=image}
-          {if $product.cover.id_image != $image.id_image}
-            <img
-              class="images-zoom"
-              data-zoom-image="{$image.bySize.medium_default.url}"
-              src="{$image.bySize.home_default.url}"
-              style="width:100%"
-              data-rb-image="{$image.bySize.large_default.url}"
-            >
-          {/if}
-        {/foreach}
+
+        {if Configuration::get('RBTHEMEFUNCTION_SLICK_ACTIVE') == 1}
+          {foreach from=$product.images item=image}
+            {if $product.cover.id_image != $image.id_image}
+              <img
+                class="images-zoom"
+                data-zoom-image="{$image.bySize.medium_default.url}"
+                src="{$image.bySize.home_default.url}"
+                style="width:100%"
+                data-rb-image="{$image.bySize.large_default.url}"
+              >
+            {/if}
+          {/foreach}
+        {/if}
       {else}
         <img src="{$urls.no_picture_image.bySize.large_default.url}" style="width:100%;">
       {/if}
@@ -55,7 +58,7 @@
 
   {block name='product_images'}
     {if Configuration::get('RBTHEMEFUNCTION_ZOOM_ACTIVE') == 1 && Configuration::get('RBTHEMEFUNCTION_SLICK_ACTIVE') == 1}
-      <div id="rb_gallery">
+      <div id="rb_gallery" class="product-img-slick">
         {$count = 1}
 
         {foreach from=$product.images item=image}
