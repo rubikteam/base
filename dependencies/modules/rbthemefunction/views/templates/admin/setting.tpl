@@ -48,7 +48,7 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#fieldset_3_3" role="tab" data-toggle="tab">
-						{l s='Settings Slick' mod='rbthemefunction'}
+						{l s='Settings Slick Thumb' mod='rbthemefunction'}
 					</a>
 				</li>
 				<li class="nav-item">
