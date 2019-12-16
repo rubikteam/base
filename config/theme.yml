@@ -106,6 +106,8 @@ global_settings:
         - rbthemefunction
       displayRbTopCompare:
         - rbthemefunction
+      displayTagCateProduct:
+        - rbthemefunction
       displayRbTopWishlist:
         - rbthemefunction
       displayRbTopCart:

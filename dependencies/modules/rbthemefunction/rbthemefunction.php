@@ -126,6 +126,7 @@ class Rbthemefunction extends Module
         $this->registerHook('displayFacebookLogin');
         $this->registerHook('displayNextPrevProduct');
         $this->registerHook('ActionAdminControllerSetMedia');
+        $this->registerHook('displayTagCateProduct');
     }
 
     public function uninstall()
@@ -360,6 +361,14 @@ class Rbthemefunction extends Module
                     'name' => 'RBTHEMEFUNCTION_GRID_VIEW',
                     'is_bool' => true,
                     'desc' => $this->l('Grid View Product List'),
+                    'values' => $switch
+                ),
+                array(
+                    'type' => 'switch',
+                    'label' => $this->l('Show Category, Tag'),
+                    'name' => 'RBTHEMEFUNCTION_TAG_CATEGORY',
+                    'is_bool' => true,
+                    'desc' => $this->l('Show Category, Tag Product Detail'),
                     'values' => $switch
                 ),
             ),
@@ -679,6 +688,7 @@ class Rbthemefunction extends Module
             'RBTHEMEFUNCTION_REVIEW' => Configuration::get('RBTHEMEFUNCTION_REVIEW'),
             'RBTHEMEFUNCTION_SALE_POPUP' => Configuration::get('RBTHEMEFUNCTION_SALE_POPUP'),
             'RBTHEMEFUNCTION_BUTTON_PRINT' => Configuration::get('RBTHEMEFUNCTION_BUTTON_PRINT'),
+            'RBTHEMEFUNCTION_TAG_CATEGORY' => Configuration::get('RBTHEMEFUNCTION_TAG_CATEGORY'),
             'RBTHEMEFUNCTION_APP_ID' => Configuration::get('RBTHEMEFUNCTION_APP_ID'),
             'RBTHEMEFUNCTION_PAGE_ID' => Configuration::get('RBTHEMEFUNCTION_PAGE_ID'),
             'RBTHEMEFUNCTION_ACTIVE_CHAT' => Configuration::get('RBTHEMEFUNCTION_ACTIVE_CHAT'),
@@ -1180,6 +1190,26 @@ class Rbthemefunction extends Module
         ));
 
         return $this->display(__FILE__, 'views/templates/hook/rb-next-prev.tpl');
+    }
+
+    public function hookdisplayTagCateProduct($params)
+    {
+        if (Configuration::get('RBTHEMEFUNCTION_TAG_CATEGORY') != 1) {
+            return;
+        }
+
+        $id_product = $params['product']['id_product'];
+        $obj_product = new Product($id_product, $this->id_lang, $this->id_shop);
+        $categories = Product::getProductCategoriesFull($id_product, $this->id_lang);
+        $tags = $obj_product->getTags($this->id_lang);
+
+        $this->smarty->assign(array(
+            'obj_link' => $this->context->link,
+            'categories' => $categories,
+            'tags' => $tags,
+        ));
+
+        return $this->display(__FILE__, 'views/templates/hook/rb-tag-cate.tpl');
     }
 
     public function dataProduct($products)
