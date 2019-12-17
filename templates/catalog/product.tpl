@@ -149,6 +149,10 @@
                     {/if}
                   {/block}
 
+                  {block name='product-print'}
+                    {hook h='displayTagCateProduct' product=$product}
+                  {/block}
+
                   {block name='product_additional_info'}
                     {include file='catalog/_partials/product-additional-info.tpl'}
                   {/block}
