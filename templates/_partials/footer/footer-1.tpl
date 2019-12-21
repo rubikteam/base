@@ -61,3 +61,7 @@
     </div>
   </div>
 </div>
+
+<div id="rb-back-top">
+  <a href="#"><i class="material-icons">vertical_align_top</i></a>
+</div>
