@@ -28,10 +28,12 @@
 
 {if $type == 'edit'}
 	{if $rb_login == 1}
-		<a class="rb-open-review btn-primary btn" href="#rb_li_review">
-			<i class="material-icons">rate_review</i>
-			{l s='Add Review' mod='rbthemefunction'}
-		</a>
+		<div class="product_reviews">
+			<a class="rb-open-review" href="#rb_li_review">
+				<i class="fa fa-pencil-square-o"></i>
+				{l s='Add Review' mod='rbthemefunction'}
+			</a>
+		</div>
 	{/if}
 {/if}
 
@@ -44,7 +46,9 @@
 						{if $review.content}
 							<div class="review" itemprop="review" itemscope itemtype="https://schema.org/Review">
 								<div class="review-info">
-									<img alt="" src="../modules/rbthemefunction/views/img/author.png" class="avatar avatar-60 photo" height="60" width="60">
+									<div class="author_image">
+										<img alt="" src="../modules/rbthemefunction/views/img/author.png" class="avatar avatar-60 photo" height="60" width="60">
+									</div>
 									<div class="comment-text">
 										<div class="review_author">
 											<div class="review_author_infos">
