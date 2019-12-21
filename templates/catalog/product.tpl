@@ -149,7 +149,7 @@
                     {/if}
                   {/block}
 
-                  {block name='product-print'}
+                  {block name='product-cate-tag'}
                     {hook h='displayTagCateProduct' product=$product}
                   {/block}
 
